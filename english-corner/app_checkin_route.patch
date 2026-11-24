@@ -1,0 +1,24 @@
+diff --git a/app.py b/app.py
+index c2c8a59..c7f15a0 100644
+--- a/app.py
++++ b/app.py
+@@ -1606,10 +1606,17 @@ def _admin_authed() -> bool:
+ 
+ @app.route("/checkin")
+ def checkin_page():
+-    """英语角签到页（移动端优先，扫码即开）。"""
++    """英语角签到页（移动端优先，扫码即开）。
++
++    2026-11 起这一页同时承载「签到 / 反馈」两段，现场只发一张二维码：
++    反馈段复用 /api/ec-feedback 与 feedback.py 的白名单，所以这里把两套
++    选项一起交给模板；两段共用同一个当天场次，数据仍分开存。
++    """
+     return render_template("checkin.html", session=checkin.DEFAULT_SESSION,
+                            roles=checkin.ROLES, sources=checkin.SOURCES,
+-                           first_time=checkin.FIRST_TIME)
++                           first_time=checkin.FIRST_TIME,
++                           fb_sources=feedback.SOURCES, fb_roles=feedback.ROLES,
++                           fb_skills=feedback.SKILLS, fb_notify=feedback.NOTIFY)
+ 
+ 
+ @app.route("/api/checkin", methods=["POST"])

@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<title>JFC 英语角 · 签到</title>
+<style>
+  :root{
+    /* JFC 品牌：白色主体 + 金蓝为副色（对齐 jfc_doc_template 白底页眉 + 海军蓝 + 金线） */
+    --paper:#FFFFFF; --paper-deep:#F6F7F9; --card:#FFFFFF;
+    --ink:#264183; --ink-soft:#6E7684;
+    --navy:#264183;
+    --gold:#C8963E;
+    --seal:#264183; --seal-dim:rgba(38,65,131,.09);
+    --line:rgba(38,65,131,.14);
+    --ok:#1E9E6A; --bad:#C0392B;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    border-top:6px solid var(--gold);          /* 金线压顶，与二维码桌卡呼应 */
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",Arial,sans-serif;
+    -webkit-font-smoothing:antialiased; font-size:16px; line-height:1.5;
+  }
+  .wrap{max-width:560px; margin:0 auto; padding:28px 20px 56px;}
+  .brand{font-size:13px; letter-spacing:.18em; text-transform:uppercase; color:var(--seal); font-weight:700;}
+  /* JFC logo 自带白底；页面改为白底主体后无需承载牌，图案直接浮在白页上 */
+  .logo-plate{display:inline-block; margin-bottom:20px; line-height:0;}
+  .logo-plate img{display:block; width:150px; height:auto;}
+  h1{font-size:30px; font-weight:800; margin:8px 0 4px; letter-spacing:-.02em;}
+  .sub{color:var(--ink-soft); font-size:14px; margin:0 0 26px;}
+  .field{margin-bottom:20px;}
+  .field > span{display:block; font-size:13px; font-weight:600; color:var(--ink-soft); margin-bottom:8px; letter-spacing:.02em;}
+  .field > span i{color:var(--seal); font-style:normal;}
+  input[type=text]{
+    width:100%; padding:14px 16px; font-size:17px; font-family:inherit;
+    background:var(--paper-deep); color:var(--ink);
+    border:1px solid var(--line); border-radius:12px; outline:none;
+  }
+  input[type=text]:focus{border-color:var(--seal); background:#fff; box-shadow:0 0 0 3px var(--seal-dim);}
+  .chips{display:flex; flex-wrap:wrap; gap:8px;}
+  .chip{
+    padding:11px 15px; border-radius:999px; border:1px solid var(--line);
+    background:var(--paper-deep); color:var(--ink-soft);
+    font-size:14px; font-family:inherit; font-weight:500; cursor:pointer;
+  }
+  .chip[aria-pressed="true"]{background:var(--seal-dim); border-color:var(--seal); color:var(--seal); font-weight:600;}
+  button.primary{
+    width:100%; margin-top:8px; padding:17px; border:0; border-radius:14px;
+    background:var(--navy); color:#fff; font-size:17px; font-weight:800;
+    font-family:inherit; cursor:pointer; letter-spacing:.02em;
+  }
+  button.primary:disabled{opacity:.5;}
+  .msg{margin-top:14px; font-size:14px; min-height:20px;}
+  .msg.bad{color:var(--bad);}
+  /* 签到成功 */
+  .done{text-align:center; padding:44px 0;}
+  .done .tick{
+    width:76px; height:76px; margin:0 auto 20px; border-radius:50%;
+    background:var(--seal-dim); color:var(--seal);
+    display:flex; align-items:center; justify-content:center; font-size:40px;
+  }
+  .done h2{font-size:24px; margin:0 0 8px;}
+  .done p{color:var(--ink-soft); margin:0;}
+  .done .again{
+    margin-top:24px; padding:12px 24px; font-size:14px; font-family:inherit;
+    cursor:pointer; background:transparent; color:var(--seal);
+    border:1px solid var(--seal); border-radius:999px;
+  }
+  .done .again:hover{background:var(--seal-dim);}
+  /* 管理端 */
+  footer{margin-top:44px; padding-top:20px; border-top:1px solid var(--line); text-align:center;}
+  footer a{display:inline-block; padding:14px 16px; color:var(--ink-soft); font-size:13px; text-decoration:none;}
+  footer a:hover{color:var(--seal);}
+  .stat-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin:18px 0 22px;}
+  .stat{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px;}
+  .stat b{display:block; font-size:26px; font-weight:800; letter-spacing:-.02em;}
+  .stat small{color:var(--ink-soft); font-size:12px;}
+  .bars{margin:0 0 22px;}
+  .bar-row{display:flex; align-items:center; gap:10px; margin-bottom:7px; font-size:13px;}
+  .bar-row .lbl{flex:0 0 40%; color:var(--ink-soft);}
+  .bar-row .track{flex:1; height:8px; background:var(--paper-deep); border-radius:99px; overflow:hidden;}
+  .bar-row .fill{display:block; height:100%; background:var(--seal); border-radius:99px;}
+  .bar-row .num{flex:0 0 28px; text-align:right; font-variant-numeric:tabular-nums;}
+  table{width:100%; border-collapse:collapse; font-size:13px;}
+  th,td{text-align:left; padding:9px 8px; border-bottom:1px solid var(--line);}
+  th{color:var(--ink-soft); font-weight:600; font-size:12px;}
+  td.name{font-weight:600;}
+  .row-actions{display:flex; gap:8px; margin:16px 0;}
+  .row-actions button{
+    flex:1; padding:12px; border-radius:10px; border:1px solid var(--line);
+    background:var(--paper-deep); color:var(--ink); font-family:inherit; font-size:14px; cursor:pointer;
+  }
+  .row-actions button:hover{border-color:var(--seal); color:var(--seal);}
+  .empty{color:var(--ink-soft); font-size:14px; padding:20px 0;}
+  h3{font-size:15px; margin:24px 0 10px; color:var(--ink-soft); font-weight:600;}
+  .del{background:none; border:0; color:var(--ink-soft); cursor:pointer; font-size:12px; padding:14px 8px; white-space:nowrap;}
+  .del:hover{color:var(--bad);}
+  th:last-child, td:last-child{width:52px; white-space:nowrap; text-align:right;}
+  /* 现场签到台：字要大，站着两米外也该看清有没有签进去 */
+  .desk-field{margin-bottom:13px;}
+  .desk-field > span{display:block; font-size:12px; font-weight:600; color:var(--ink-soft);
+    margin-bottom:5px; letter-spacing:.03em;}
+  .desk-field > span i{color:var(--seal); font-style:normal;}
+  .desk-input{
+    width:100%; padding:15px 16px; font-size:22px; font-weight:700; font-family:inherit;
+    background:var(--paper-deep); color:var(--ink);
+    border:2px solid var(--line); border-radius:12px; outline:none;
+  }
+  .desk-input:focus{border-color:var(--seal); background:#fff; box-shadow:0 0 0 3px var(--seal-dim);}
+  .desk-input.company{font-size:18px; font-weight:600;}
+  .desk-input.contact{font-size:18px; font-weight:500;}
+  /* 客人表单的字段说明 */
+  .field .hint{display:block; margin-top:7px; font-size:12px; font-style:normal;
+    color:var(--ink-soft); line-height:1.45;}
+  .desk-flash{margin-top:16px; font-size:21px; font-weight:700; min-height:30px; line-height:1.35;}
+  .desk-flash.ok{color:var(--ok);}
+  .desk-flash.bad{color:var(--bad);}
+  .desk-count{color:var(--ink-soft); font-size:13px; margin-top:20px; letter-spacing:.04em;}
+  .desk-list{list-style:none; padding:0; margin:6px 0 0;}
+  .desk-list li{padding:10px 0; border-bottom:1px solid var(--line); font-size:16px;}
+  .desk-list li b{font-weight:700;}
+  .desk-list li span{color:var(--ink-soft); font-size:12px; margin-left:10px;}
+  /* ── 签到 / 反馈：同一张码内切换 ─────────────────────── */
+  .tabs{display:flex; gap:6px; padding:5px; margin:18px 0 22px;
+    background:var(--paper-deep); border:1px solid var(--line); border-radius:14px;}
+  .tab{flex:1; padding:12px 10px; border:0; border-radius:10px; background:transparent;
+    color:var(--ink-soft); font-family:inherit; font-size:16px; font-weight:600;
+    letter-spacing:.06em; cursor:pointer; min-height:46px;}
+  .tab[aria-selected="true"]{background:var(--card); color:var(--seal); font-weight:800;
+    box-shadow:0 1px 2px rgba(38,65,131,.12);}
+  /* display:flex 会盖掉 UA 的 [hidden]，签到台与管理端隐藏切换条要显式关掉 */
+  .tabs[hidden]{display:none;}
+  /* 反馈问卷：题号沿用签到表的金 / 蓝配色，控件与签到字段同规格 */
+  .q{margin-bottom:24px;}
+  .q > .label{display:block; font-size:15px; font-weight:600; margin-bottom:10px;}
+  .q > .label .no{color:var(--gold); font-weight:800; margin-right:6px;}
+  .q .hint{color:var(--ink-soft); font-size:12px; font-weight:400; margin-left:4px;}
+  textarea{width:100%; min-height:78px; padding:13px 15px; font-size:16px; font-family:inherit;
+    background:var(--paper-deep); color:var(--ink); border:1px solid var(--line);
+    border-radius:12px; outline:none; resize:vertical; line-height:1.5;}
+  textarea:focus{border-color:var(--seal); background:#fff; box-shadow:0 0 0 3px var(--seal-dim);}
+  .rating{display:flex; gap:8px;}
+  .rating button{flex:1; min-height:52px; border-radius:12px; border:1px solid var(--line);
+    background:var(--paper-deep); color:var(--ink-soft); font-family:inherit;
+    font-size:17px; font-weight:700; cursor:pointer;}
+  .rating button[aria-pressed="true"]{background:var(--seal); border-color:var(--seal); color:#fff;}
+  .scale{display:flex; justify-content:space-between; color:var(--ink-soft); font-size:12px; margin-top:6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 同一张二维码（/checkin）里切换「签到 / 反馈」两段：现场只发一张码。
+       旧的 /ec-feedback 页面保留，老物料扫到的反馈码仍然能用。
+       logo 内联成 data URI：走公网时每个外链请求都要多跑一趟国际往返（实测 +1.8s），
+       内联后首屏不再等它。源图 static/jfc-logo.png 27KB 压成 WebP 7.7KB（对照测过，
+       肉眼无差；PNG-8 渐变有可见色带）。换 logo 时两处 img 都要重新生成同一份。 -->
+  <div class="logo-plate"><img src="data:image/webp;base64,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" alt="JAZZFRONT CONSULTING (JFC)"></div>
+  <div class="brand">JFC English Corner</div>
+
+  <nav class="tabs" id="tabs" role="tablist" aria-label="英语角现场">
+    <button type="button" class="tab" role="tab" id="tab-checkin" aria-controls="checkin-view" aria-selected="true" data-tab="checkin">签到</button>
+    <button type="button" class="tab" role="tab" id="tab-feedback" aria-controls="feedback-view" aria-selected="false" data-tab="feedback">反馈</button>
+  </nav>
+
+  <section id="checkin-view" role="tabpanel" aria-labelledby="tab-checkin">
+    <h1>活动签到</h1>
+    <p class="sub">{{ session }} · 扫码签到，约 10 秒</p>
+
+    <form id="form" autocomplete="off">
+      <!-- 2026-11 第二版：四项必填 —— 姓名 / 公司 / 身份 / 联系方式。
+           上一版只留姓名，导出的名单一半查无此人，构不成一条可跟进的线索。
+           这一版把四项设成必填，前后端都校验格式，挡住「pie」「GZYY」这类乱填。
+           首次参加仍由服务端按历史记录判定，不在表单里问。 -->
+      <label class="field">
+        <span>姓名 <i>*</i></span>
+        <input type="text" id="name" name="name" placeholder="你的全名" autocomplete="name">
+      </label>
+
+      <label class="field">
+        <span>公司 / 机构 <i>*</i></span>
+        <input type="text" id="company" name="company" placeholder="公司或机构全称" autocomplete="organization">
+      </label>
+
+      <div class="field">
+        <span>你的身份 <i>*</i></span>
+        <div class="chips" data-group="role">
+          {% for r in roles if r in ('企业主 / 创始人', '经理 / 主管', '其他') %}<button type="button" class="chip" data-value="{{ r }}">{{ r }}</button>{% endfor %}
+        </div>
+      </div>
+
+      <label class="field">
+        <span>微信或手机号 <i>*</i></span>
+        <input type="text" id="wechat" name="wechat" placeholder="手机 11 位，或微信 ID" autocomplete="tel">
+        <em class="hint">用于接收下次活动通知。微信 ID 为 6 至 20 位、字母开头。</em>
+      </label>
+
+      <button type="submit" class="primary" id="submit">签 到</button>
+      <div class="msg" id="msg"></div>
+    </form>
+
+    <footer><a href="#" id="adminLink">管理端 · 查看统计</a></footer>
+  </section>
+
+  <!-- ── 反馈 ───────────────────────────────────────────────
+       与 /ec-feedback 同一套题（7 题、无必填），提交仍走 /api/ec-feedback，
+       两条入口共用同一份数据，不另起一套存储。 -->
+  <section id="feedback-view" role="tabpanel" aria-labelledby="tab-feedback" hidden>
+    <h1>活动反馈</h1>
+    <p class="sub">{{ session }} · 约 1 分钟，帮助我们做得更好</p>
+
+    <form id="fb-form" autocomplete="off">
+      <div class="q">
+        <span class="label"><span class="no">1</span>您是如何得知本次英语角的？</span>
+        <div class="chips" data-group="source" data-mode="single">
+          {% for s in fb_sources %}<button type="button" class="chip" data-value="{{ s }}">{{ s }}</button>{% endfor %}
+        </div>
+      </div>
+
+      <div class="q">
+        <span class="label"><span class="no">2</span>您当前的身份是？</span>
+        <div class="chips" data-group="role" data-mode="single">
+          {% for r in fb_roles %}<button type="button" class="chip" data-value="{{ r }}">{{ r }}</button>{% endfor %}
+        </div>
+      </div>
+
+      <div class="q">
+        <span class="label"><span class="no">3</span>今天您在英语交流上的舒适度<span class="hint">1 = 很紧张，5 = 很自在</span></span>
+        <div class="rating" data-group="comfort">
+          {% for n in range(1, 6) %}<button type="button" data-value="{{ n }}">{{ n }}</button>{% endfor %}
+        </div>
+        <div class="scale"><span>很紧张</span><span>很自在</span></div>
+      </div>
+
+      <div class="q">
+        <span class="label"><span class="no">4</span>您今天最大的收获是什么？<span class="hint">选填</span></span>
+        <textarea id="fb-takeaway" placeholder="一句话也行"></textarea>
+      </div>
+
+      <div class="q">
+        <span class="label"><span class="no">5</span>您希望在哪些方面提升英语？<span class="hint">可多选</span></span>
+        <div class="chips" data-group="skills" data-mode="multi">
+          {% for s in fb_skills %}<button type="button" class="chip" data-value="{{ s }}">{{ s }}</button>{% endfor %}
+        </div>
+      </div>
+
+      <div class="q">
+        <span class="label"><span class="no">6</span>您希望下次讨论什么主题？<span class="hint">选填</span></span>
+        <input type="text" id="fb-next-topic" placeholder="例如：AI 与职业发展">
+      </div>
+
+      <div class="q">
+        <span class="label"><span class="no">7</span>是否愿意收到下次活动通知？</span>
+        <div class="chips" data-group="notify" data-mode="single">
+          {% for n in fb_notify %}<button type="button" class="chip" data-value="{{ n }}">{{ n }}</button>{% endfor %}
+        </div>
+        <!-- 选「愿意」才展开。作为第 7 题的补充而非独立题号，填表的人不会以为漏了一题。 -->
+        <div id="fb-wechat-q" hidden style="margin-top:12px">
+          <span class="hint" style="display:block;margin:0 0 8px 0">请留下微信，方便发送活动通知（选填）</span>
+          <input type="text" id="fb-wechat" placeholder="微信号">
+        </div>
+      </div>
+
+      <button type="submit" class="primary" id="fb-submit">提 交</button>
+      <div class="msg" id="fb-msg"></div>
+    </form>
+
+    <footer><a href="/ec-feedback#admin">管理端 · 反馈统计</a></footer>
+  </section>
+
+  <!-- ── 签到成功 ─────────────────────────────────────────── -->
+  <section id="done-view" class="done" hidden>
+    <div class="tick">✓</div>
+    <h2 id="done-name">签到成功</h2>
+    <p>欢迎参加 JFC 英语角，祝你练得开心 ☕</p>
+    <!-- 现场常见：两人（甚至一家人）共用一部手机。没有这个入口，第二位扫码只会看到
+         「已签到」，表单根本不出现 —— 人就静默丢了。纸面时代不存在这个问题。 -->
+    <button type="button" id="again" class="again">再签一位（这部手机）</button>
+  </section>
+
+  <!-- ── 反馈提交成功 ─────────────────────────────────────── -->
+  <section id="feedback-done-view" class="done" hidden>
+    <div class="tick">✓</div>
+    <h2>感谢你的反馈</h2>
+    <p>你的意见会直接用在下一场英语角的安排上 ☕</p>
+    <!-- 反馈与签到同一个现场：两人共用一部手机时，第二位只会看到成功页而问卷不出现。 -->
+    <button type="button" id="fb-again" class="again">再填一份（这部手机）</button>
+  </section>
+
+  <!-- ── 现场签到台（?desk=1）───────────────────────────────
+       给工作人员用的。笔记本开 http://localhost:8888/checkin?desk=1，
+       输姓名按回车即入库：不走公网、不用客人掏手机，隧道断没断都能签。
+       错峰到场也不怕——来一个录一个，不依赖门口那一刻。 -->
+  <section id="desk-view" hidden>
+    <div class="brand">JFC English Corner · Front Desk</div>
+    <h1>现场签到台</h1>
+    <p class="sub">{{ session }} · 四项填完按回车，约 10 秒一位</p>
+
+    <div class="desk-field">
+      <span>姓名 <i>*</i></span>
+      <input class="desk-input" id="desk-name" type="text" placeholder="全名" autocomplete="off" autocapitalize="off">
+    </div>
+    <div class="desk-field">
+      <span>公司 / 机构 <i>*</i></span>
+      <input class="desk-input company" id="desk-company" type="text" placeholder="公司或机构全称" autocomplete="off" autocapitalize="off">
+    </div>
+    <div class="desk-field">
+      <span>身份 <i>*</i></span>
+      <div class="chips" data-group="role">
+        {% for r in roles if r in ('企业主 / 创始人', '经理 / 主管', '其他') %}<button type="button" class="chip" data-value="{{ r }}">{{ r }}</button>{% endfor %}
+      </div>
+    </div>
+    <div class="desk-field">
+      <span>微信或手机号 <i>*</i></span>
+      <input class="desk-input contact" id="desk-wechat" type="text" placeholder="手机 11 位，或微信 ID" autocomplete="off" autocapitalize="off">
+    </div>
+
+    <div class="desk-flash" id="desk-flash"></div>
+    <div class="desk-count" id="desk-count"></div>
+    <ol class="desk-list" id="desk-list"></ol>
+
+    <footer><a href="/checkin">客人自助签到页 →</a></footer>
+  </section>
+
+  <!-- ── 管理端 ───────────────────────────────────────────── -->
+  <section id="admin-view" hidden>
+    <div class="logo-plate"><img src="data:image/webp;base64,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" alt="JAZZFRONT CONSULTING (JFC)"></div>
+    <div class="brand">Admin</div>
+    <h1>签到统计</h1>
+    <p class="sub" id="admin-sub">{{ session }}</p>
+
+    <div class="row-actions">
+      <button id="refresh">刷新</button>
+      <button id="export">导出 CSV</button>
+      <button id="logout">退出</button>
+    </div>
+
+    <div id="stats"></div>
+    <div id="records"></div>
+    <div class="msg bad" id="admin-msg"></div>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  const SESSION = {{ session|tojson }};
+  const STORE_KEY = 'ec-checkin-' + SESSION;
+  const TOKEN_KEY = 'checkin-token';
+  const QUEUE_KEY = 'ec-checkin-queue';              // 提交失败时暂存，联网后自动补传
+  const DESK_LOG_KEY = 'ec-desk-log-' + SESSION;     // 签到台本机已录名单（刷新不丢）
+  const DESK = new URLSearchParams(location.search).get('desk') === '1';
+
+  const FB_STORE_KEY = 'ec-feedback-' + SESSION;   // 反馈按场次分开记，与签到同口径
+  const $ = (id) => document.getElementById(id);
+  const form = $('form'), msg = $('msg');
+  const fbForm = $('fb-form'), fbMsg = $('fb-msg');
+  const state = { role:'', source:'', first_time:'' };                    // 签到段
+  const fbState = { source:'', role:'', comfort:'', notify:'', skills:[] }; // 反馈段
+
+  // 与服务端 checkin.py 同一套口径，前端先拦一次省一个来回
+  const RE_PHONE = /^1[3-9]\d{9}$/;
+  const RE_WECHAT = /^[A-Za-z][-_A-Za-z0-9]{5,19}$/;
+
+  function contactOk(raw){
+    const s = (raw || '').trim();
+    return RE_PHONE.test(s.replace(/[\s-]/g, '')) || RE_WECHAT.test(s);
+  }
+
+  // 四项必填，客人页与签到台共用。通过返回 null；
+  // 否则返回 { id, msg }，id 为 null 表示只需提示、不用聚焦。
+  function checkEntry(v, ids){
+    if (!v.name || v.name.trim().length < 2)
+      return { id: ids.name, msg: '请填写姓名全名' };
+    if (!v.company || v.company.trim().length < 2)
+      return { id: ids.company, msg: '请填写公司或机构全称' };
+    if (!v.role)
+      return { id: null, msg: '请选择身份' };
+    if (!v.wechat || !v.wechat.trim())
+      return { id: ids.wechat, msg: '请填写微信或手机号' };
+    if (!contactOk(v.wechat))
+      return { id: ids.wechat, msg: '联系方式格式不对：手机 11 位；微信 ID 6 至 20 位、字母开头' };
+    return null;
+  }
+
+  // ── 选择项（签到段与反馈段各用各的 state，避免同名 source/role 串味）──
+  function chipsState(group){
+    return group.closest('#feedback-view') ? fbState : state;
+  }
+
+  document.querySelectorAll('.chips').forEach(group => {
+    const key = group.dataset.group, multi = group.dataset.mode === 'multi';
+    group.querySelectorAll('.chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const st = chipsState(group);
+        const on = chip.getAttribute('aria-pressed') === 'true';
+        if (multi) {
+          chip.setAttribute('aria-pressed', on ? 'false' : 'true');
+          const v = chip.dataset.value;
+          st[key] = on ? st[key].filter(x => x !== v) : st[key].concat(v);
+        } else {
+          group.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed','false'));
+          chip.setAttribute('aria-pressed', on ? 'false' : 'true');
+          st[key] = on ? '' : chip.dataset.value;
+          if (key === 'notify') $('fb-wechat-q').hidden = (st.notify !== '愿意');
+        }
+      });
+    });
+  });
+
+  // ── 反馈段的 1–5 评分（签到页没有，单独绑）──
+  document.querySelectorAll('.rating').forEach(group => {
+    group.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        group.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed','false'));
+        btn.setAttribute('aria-pressed','true');
+        fbState[group.dataset.group] = btn.dataset.value;
+      });
+    });
+  });
+
+  function showDone(name){
+    $('checkin-view').hidden = true;
+    $('admin-view').hidden = true;
+    $('feedback-view').hidden = true;
+    $('feedback-done-view').hidden = true;
+    $('done-view').hidden = false;
+    $('done-name').textContent = name ? (name + '，签到成功') : '签到成功';
+  }
+
+  function showFbDone(){
+    $('feedback-view').hidden = true;
+    $('checkin-view').hidden = true;
+    $('done-view').hidden = true;
+    $('admin-view').hidden = true;
+    $('feedback-done-view').hidden = false;
+  }
+
+  // ── 签到 / 反馈两段切换 ─────────────────────────────────
+  // 现场只发一张二维码（/checkin）。默认落在签到；点「反馈」切过去，
+  // URL 用 ?tab=feedback 记住，便于把反馈那一段单独发给没到现场的人。
+  // 已在本机签过 / 填过时，切回来直接显示成功页（同一场次），与原来一致。
+  function tabFromUrl(){
+    return new URLSearchParams(location.search).get('tab') === 'feedback' ? 'feedback' : 'checkin';
+  }
+
+  function setTab(name, remember){
+    const fb = name === 'feedback';
+    $('tab-checkin').setAttribute('aria-selected', fb ? 'false' : 'true');
+    $('tab-feedback').setAttribute('aria-selected', fb ? 'true' : 'false');
+    $('admin-view').hidden = true;
+    if (fb) {
+      const done = !!localStorage.getItem(FB_STORE_KEY);
+      $('checkin-view').hidden = true;
+      $('done-view').hidden = true;
+      $('feedback-view').hidden = done;
+      $('feedback-done-view').hidden = !done;
+    } else {
+      const done = localStorage.getItem(STORE_KEY);
+      $('feedback-view').hidden = true;
+      $('feedback-done-view').hidden = true;
+      $('checkin-view').hidden = !!done;
+      $('done-view').hidden = !done;
+      if (done) $('done-name').textContent = done + '，签到成功';
+    }
+    if (remember) {
+      const u = new URL(location.href);
+      if (fb) u.searchParams.set('tab', 'feedback');
+      else u.searchParams.delete('tab');
+      history.replaceState(null, '', u);
+    }
+  }
+
+  // ── 断网队列 ──────────────────────────────────────────────
+  // 提交失败 = 网络到不了服务器，不是数据错了。存本机，联网后自动补传。
+  // 页面本身打不开的话这条救不了 —— 那条路靠签到台代签（?desk=1）。
+  function queueAdd(payload){
+    let q = [];
+    try { q = JSON.parse(localStorage.getItem(QUEUE_KEY) || '[]'); } catch(e){ q = []; }
+    if (!Array.isArray(q)) q = [];
+    q.push(payload);
+    localStorage.setItem(QUEUE_KEY, JSON.stringify(q));
+    return q.length;
+  }
+
+  async function flushQueue(){
+    let q = [];
+    try { q = JSON.parse(localStorage.getItem(QUEUE_KEY) || '[]'); } catch(e){ return; }
+    if (!Array.isArray(q) || !q.length) return;
+    const left = [];
+    for (const p of q){
+      try {
+        const r = await fetch('/api/checkin', {
+          method: 'POST', headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(p)
+        });
+        // 4xx 是数据本身不合法，重传也过不了；5xx 与网络错误才留在队里
+        if (r.status >= 500) left.push(p);
+      } catch (e) { left.push(p); }
+    }
+    localStorage.setItem(QUEUE_KEY, JSON.stringify(left));
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const payload = Object.assign({
+      session: SESSION,
+      name: $('name').value.trim(),
+      company: $('company').value.trim(),
+      wechat: $('wechat').value.trim()
+    }, state);
+
+    const bad = checkEntry(payload, { name: 'name', company: 'company', wechat: 'wechat' });
+    if (bad) {
+      msg.className = 'msg bad';
+      msg.textContent = bad.msg;
+      if (bad.id) $(bad.id).focus();
+      return;
+    }
+
+    $('submit').disabled = true;
+    msg.className = 'msg'; msg.textContent = '提交中…';
+
+    let resp = null;
+    try { resp = await fetch('/api/checkin', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(payload)
+    }); } catch (e) { resp = null; }        // 网络层直接失败
+
+    if (!resp || resp.status >= 500) {
+      const n = queueAdd(payload);
+      msg.className = 'msg bad';
+      msg.textContent = '网络不通，已存本机（待补传 ' + n + ' 条）。也可以直接到签到台登记。';
+      $('submit').disabled = false;
+      return;
+    }
+
+    const data = await resp.json().catch(() => ({}));
+    if (!resp.ok || !data.ok) {
+      msg.className = 'msg bad';
+      msg.textContent = '签到失败：' + (data.error || ('HTTP ' + resp.status)) + '（可让工作人员手动登记）';
+      $('submit').disabled = false;
+      return;
+    }
+
+    localStorage.setItem(STORE_KEY, payload.name);
+    showDone(payload.name);
+  });
+
+  // ── 反馈问卷提交（与 /ec-feedback 共用 /api/ec-feedback 与存储）──
+  fbForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    $('fb-submit').disabled = true;
+    fbMsg.className = 'msg'; fbMsg.textContent = '提交中…';
+
+    const payload = Object.assign({
+      session: SESSION,
+      takeaway: $('fb-takeaway').value.trim(),
+      next_topic: $('fb-next-topic').value.trim(),
+      wechat: $('fb-wechat-q').hidden ? '' : $('fb-wechat').value.trim()
+    }, fbState);
+
+    try {
+      const resp = await fetch('/api/ec-feedback', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(payload)
+      });
+      const data = await resp.json().catch(() => ({}));
+      if (!resp.ok || !data.ok) throw new Error(data.error || '提交失败');
+      localStorage.setItem(FB_STORE_KEY, '1');
+      showFbDone();
+    } catch (err) {
+      fbMsg.className = 'msg bad';
+      fbMsg.textContent = '提交失败：' + err.message;
+      $('fb-submit').disabled = false;
+    }
+  });
+
+  // 同一部手机再填一份：skills 是数组、微信块是折叠的，不能像签到那样一刀切置空串。
+  $('fb-again').addEventListener('click', () => {
+    localStorage.removeItem(FB_STORE_KEY);
+    $('feedback-done-view').hidden = true;
+    $('feedback-view').hidden = false;
+    fbForm.reset();
+    fbState.source = ''; fbState.role = ''; fbState.comfort = '';
+    fbState.notify = ''; fbState.skills = [];
+    document.querySelectorAll('#feedback-view .chip[aria-pressed="true"], #feedback-view .rating button[aria-pressed="true"]')
+            .forEach(b => b.setAttribute('aria-pressed', 'false'));
+    $('fb-wechat-q').hidden = true;
+    fbMsg.className = 'msg'; fbMsg.textContent = '';
+    $('fb-submit').disabled = false;
+  });
+
+  // ── 管理端 ──
+  function token(){ return localStorage.getItem(TOKEN_KEY) || ''; }
+  function headers(){ return token() ? {'X-Checkin-Token': token()} : {}; }
+
+  function bar(label, count, total){
+    const pct = total ? Math.round(count / total * 100) : 0;
+    return `<div class="bar-row"><span class="lbl">${label}</span>
+      <span class="track"><span class="fill" style="width:${pct}%"></span></span>
+      <span class="num">${count}</span></div>`;
+  }
+
+  async function loadAdmin(){
+    $('admin-msg').textContent = '';
+    const resp = await fetch('/api/checkin/list', {headers: headers()});
+    if (resp.status === 401) {
+      $('admin-msg').textContent = '需要访问口令（token）。';
+      const t = prompt('请输入管理端口令：');
+      if (t === null) { location.hash = ''; return; }
+      localStorage.setItem(TOKEN_KEY, t.trim());
+      return loadAdmin();
+    }
+    const data = await resp.json();
+    const s = data.stats || {};
+    const total = s.total || 0;
+
+    $('stats').innerHTML = `
+      <div class="stat-grid">
+        <div class="stat"><b>${total}</b><small>已签到</small></div>
+        <div class="stat"><b>${s.first_time||0}</b><small>首次参加</small></div>
+        <div class="stat"><b>${s.contacts||0}</b><small>留了微信</small></div>
+        <div class="stat"><b>${s.companies||0}</b><small>公司数</small></div>
+      </div>
+      <h3>渠道来源</h3><div class="bars">${
+        Object.entries(s.by_source||{}).map(([k,v]) => bar(k,v,total)).join('') || '<div class="empty">暂无</div>'}</div>
+      <h3>身份构成</h3><div class="bars">${
+        Object.entries(s.by_role||{}).map(([k,v]) => bar(k,v,total)).join('') || '<div class="empty">暂无</div>'}</div>`;
+
+    const rows = (data.records||[]).slice().reverse();
+    $('records').innerHTML = rows.length ? `
+      <h3>签到名单（最新在前）</h3>
+      <table><thead><tr><th>姓名</th><th>公司</th><th>身份</th><th>来源</th><th></th></tr></thead>
+      <tbody>${rows.map(r => `<tr>
+        <td class="name">${esc(r.name)}</td>
+        <td>${esc(r.company||'—')}</td>
+        <td>${esc(r.role||'—')}</td>
+        <td>${esc(r.source||'—')}</td>
+        <td><button class="del" data-id="${r.id}">删除</button></td>
+      </tr>`).join('')}</tbody></table>` : '<div class="empty">还没有人签到。</div>';
+
+    $('records').querySelectorAll('.del').forEach(b => {
+      b.addEventListener('click', async () => {
+        if (!confirm('删除这条签到记录？')) return;
+        await fetch('/api/checkin/' + b.dataset.id, {method:'DELETE', headers: headers()});
+        loadAdmin();
+      });
+    });
+  }
+
+  function esc(s){
+    return String(s == null ? '' : s).replace(/[&<>"']/g, c =>
+      ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  async function exportCsv(){
+    const resp = await fetch('/api/checkin/export', {headers: headers()});
+    if (!resp.ok) { $('admin-msg').textContent = '导出失败（' + resp.status + '）'; return; }
+    const blob = await resp.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'EC_checkin_' + SESSION + '.csv';
+    a.click(); URL.revokeObjectURL(url);
+  }
+
+  function openAdmin(){
+    $('tabs').hidden = true;
+    $('checkin-view').hidden = true;
+    $('done-view').hidden = true;
+    $('feedback-view').hidden = true;
+    $('feedback-done-view').hidden = true;
+    $('admin-view').hidden = false;
+    loadAdmin();
+  }
+
+  // 同一部手机再签一位：清掉本机记录 → 回到空表单。
+  // 必须把 state 与 chip 的 aria-pressed 一起复位，否则上一位的选择会跟着带过去。
+  $('again').addEventListener('click', () => {
+    localStorage.removeItem(STORE_KEY);
+    $('done-view').hidden = true;
+    $('checkin-view').hidden = false;
+    form.reset();
+    Object.keys(state).forEach(k => { state[k] = ''; });
+    document.querySelectorAll('.chip[aria-pressed="true"]')
+            .forEach(c => c.setAttribute('aria-pressed', 'false'));
+    msg.className = 'msg'; msg.textContent = '';
+    $('submit').disabled = false;
+    $('name').focus();
+  });
+
+  $('adminLink').addEventListener('click', (e) => { e.preventDefault(); openAdmin(); });
+  $('refresh').addEventListener('click', loadAdmin);
+  $('export').addEventListener('click', exportCsv);
+  $('logout').addEventListener('click', () => {
+    localStorage.removeItem(TOKEN_KEY);
+    location.hash = ''; location.reload();
+  });
+
+  // ── 现场签到台（?desk=1）─────────────────────────────────
+  // 只加前端、不加后端路由：走同一个 /api/checkin，app.py 一行不动。
+  function deskLog(){
+    try {
+      const l = JSON.parse(localStorage.getItem(DESK_LOG_KEY) || '[]');
+      return Array.isArray(l) ? l : [];
+    } catch(e){ return []; }
+  }
+
+  function renderDesk(){
+    const l = deskLog();
+    $('desk-count').textContent = l.length ? '本机已录 ' + l.length + ' 位' : '还没有录入';
+    $('desk-list').innerHTML = l.slice(-40).reverse().map(x =>
+      '<li><b>' + esc(x.name) + '</b>　' + esc(x.company || '') +
+      (x.wechat ? '　' + esc(x.wechat) : '') +
+      '<span>' + esc(x.t) + '</span></li>').join('');
+  }
+
+  function deskRemember(p){
+    const l = deskLog(), d = new Date();
+    const hh = ('0' + d.getHours()).slice(-2), mm = ('0' + d.getMinutes()).slice(-2);
+    l.push({ name: p.name, company: p.company, role: p.role, wechat: p.wechat, t: hh + ':' + mm });
+    localStorage.setItem(DESK_LOG_KEY, JSON.stringify(l));
+    renderDesk();
+  }
+
+  async function deskSubmit(){
+    const flash = $('desk-flash');
+    const payload = Object.assign({
+      session: SESSION,
+      name: $('desk-name').value.trim(),
+      company: $('desk-company').value.trim(),
+      wechat: $('desk-wechat').value.trim()
+    }, state);
+
+    const bad = checkEntry(payload, { name: 'desk-name', company: 'desk-company', wechat: 'desk-wechat' });
+    if (bad) {
+      flash.className = 'desk-flash bad';
+      flash.textContent = '✗ ' + bad.msg;
+      if (bad.id) $(bad.id).focus();
+      return;
+    }
+
+    flash.className = 'desk-flash'; flash.textContent = '提交中…';
+
+    let resp = null;
+    try { resp = await fetch('/api/checkin', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(payload)
+    }); } catch (e) { resp = null; }
+
+    if (!resp) {
+      // 本机 Flask 都连不上 = 后端没起。暂存，别让队伍卡在门口。
+      queueAdd(payload);
+      flash.className = 'desk-flash ok';
+      flash.textContent = '✓ ' + payload.name + ' 已暂存（后台未连上），稍后自动补传';
+    } else if (!resp.ok) {
+      const d = await resp.json().catch(() => ({}));
+      flash.className = 'desk-flash bad';
+      flash.textContent = '✗ ' + (d.error || ('HTTP ' + resp.status));
+      return;                              // 留住输入，改完再按回车
+    } else {
+      const d = await resp.json().catch(() => ({}));
+      const dup = d.record && d.record.duplicate;
+      flash.className = 'desk-flash ok';
+      flash.textContent = dup
+        ? '✓ ' + payload.name + ' 已在册（本场重复，未重复计数）'
+        : '✓ ' + payload.name + ' · ' + payload.company + ' 已签到';
+    }
+
+    deskRemember(payload);
+    ['desk-name', 'desk-company', 'desk-wechat'].forEach(id => { $(id).value = ''; });
+    Object.keys(state).forEach(k => { state[k] = ''; });
+    document.querySelectorAll('#desk-view .chip[aria-pressed="true"]')
+            .forEach(c => c.setAttribute('aria-pressed', 'false'));
+    $('desk-name').focus();
+  }
+
+  function openDesk(){
+    $('tabs').hidden = true;
+    $('checkin-view').hidden = true;
+    $('done-view').hidden = true;
+    $('feedback-view').hidden = true;
+    $('feedback-done-view').hidden = true;
+    $('admin-view').hidden = true;
+    $('desk-view').hidden = false;
+    renderDesk();
+    $('desk-name').focus();
+  }
+
+  ['desk-name','desk-company','desk-wechat'].forEach(id => {
+    $(id).addEventListener('keydown', (e) => {
+      if (e.key === 'Enter'){ e.preventDefault(); deskSubmit(); }
+    });
+  });
+
+  window.addEventListener('online', flushQueue);
+  flushQueue();                            // 页面一打开就把上次没传上去的补掉
+
+  $('tab-checkin').addEventListener('click', () => setTab('checkin', true));
+  $('tab-feedback').addEventListener('click', () => setTab('feedback', true));
+
+  if (DESK) openDesk();
+  else if (location.hash === '#admin') openAdmin();
+  else setTab(tabFromUrl());
+})();
+</script>
+</body>
+</html>
