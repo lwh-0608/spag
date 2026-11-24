@@ -28,7 +28,11 @@ struct RootView: View {
                 UIApplication.shared.isIdleTimerDisabled = true
             }
             FoodSeeder.seedIfNeeded(context: context)
-            DemoData.seedIfNeeded(context: context)
+            if DemoMode.isOn {
+                DemoData.seedIfNeeded(context: context)
+            } else {
+                purgeDemoData()
+            }
             if DemoMode.isOn {
                 health.enableDemo()
             } else {
@@ -45,6 +49,19 @@ struct RootView: View {
             case "/profile": selection = 3
             default: break
             }
+        }
+    }
+
+    /// 正常启动时清除历史演示数据，避免混入真实记录
+    private func purgeDemoData() {
+        let demoEntries = (try? context.fetch(FetchDescriptor<MealEntry>(predicate: #Predicate { $0.isDemo }))) ?? []
+        for entry in demoEntries { context.delete(entry) }
+        let demoWeights = (try? context.fetch(FetchDescriptor<WeightLog>(predicate: #Predicate { $0.isDemo }))) ?? []
+        for log in demoWeights { context.delete(log) }
+        let demoProfiles = (try? context.fetch(FetchDescriptor<BodyProfile>(predicate: #Predicate { $0.isDemo }))) ?? []
+        for profile in demoProfiles { context.delete(profile) }
+        if !demoEntries.isEmpty || !demoWeights.isEmpty || !demoProfiles.isEmpty {
+            try? context.save()
         }
     }
 }

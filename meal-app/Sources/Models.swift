@@ -162,16 +162,18 @@ final class MealEntry {
     var itemsData: Data
     var priceOverride: Double?
     var note: String
+    var isDemo: Bool = false
     var createdAt: Date
 
     init(id: UUID = UUID(), date: Date = Date(), mealType: MealType, items: [MealItemSnapshot] = [],
-         priceOverride: Double? = nil, note: String = "") {
+         priceOverride: Double? = nil, note: String = "", isDemo: Bool = false) {
         self.id = id
         self.date = date
         self.mealTypeRaw = mealType.rawValue
         self.itemsData = (try? JSONEncoder().encode(items)) ?? Data()
         self.priceOverride = priceOverride
         self.note = note
+        self.isDemo = isDemo
         self.createdAt = Date()
     }
 
@@ -209,11 +211,12 @@ final class BodyProfile {
     var targetWeightKg: Double
     var goalRaw: String
     var budgetPerDay: Double
+    var isDemo: Bool = false
     var updatedAt: Date
 
     init(sex: Sex = .male, birthYear: Int = 1995, heightCm: Double = 175,
          weightKg: Double = 70, targetWeightKg: Double = 65,
-         goal: Goal = .lightLoss, budgetPerDay: Double = 60) {
+         goal: Goal = .lightLoss, budgetPerDay: Double = 60, isDemo: Bool = false) {
         self.sexRaw = sex.rawValue
         self.birthYear = birthYear
         self.heightCm = heightCm
@@ -221,6 +224,7 @@ final class BodyProfile {
         self.targetWeightKg = targetWeightKg
         self.goalRaw = goal.rawValue
         self.budgetPerDay = budgetPerDay
+        self.isDemo = isDemo
         self.updatedAt = Date()
     }
 
@@ -244,10 +248,12 @@ final class WeightLog {
     @Attribute(.unique) var id: UUID
     var date: Date
     var weightKg: Double
+    var isDemo: Bool = false
 
-    init(id: UUID = UUID(), date: Date = Date(), weightKg: Double) {
+    init(id: UUID = UUID(), date: Date = Date(), weightKg: Double, isDemo: Bool = false) {
         self.id = id
         self.date = date
         self.weightKg = weightKg
+        self.isDemo = isDemo
     }
 }
