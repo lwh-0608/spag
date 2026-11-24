@@ -18,9 +18,12 @@ struct RootView: View {
             ReportView()
                 .tabItem { Label("报告", systemImage: "chart.bar.xaxis") }
                 .tag(2)
+            AvatarPageView()
+                .tabItem { Label("形象", systemImage: "figure.stand") }
+                .tag(3)
             ProfileView()
                 .tabItem { Label("我的", systemImage: "person.crop.circle") }
-                .tag(3)
+                .tag(4)
         }
         .tint(Theme.accent)
         .task {
@@ -41,12 +44,21 @@ struct RootView: View {
             }
         }
         .onOpenURL { url in
+            if url.host == "avatar-customize" {
+                selection = 3
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                    NotificationCenter.default.post(name: .openAvatarCustomize, object: nil)
+                }
+                return
+            }
             guard url.host == "tab" else { return }
             switch url.path {
             case "/today": selection = 0
             case "/record": selection = 1
             case "/report": selection = 2
-            case "/profile": selection = 3
+            case "/avatar":
+                selection = 3
+            case "/profile": selection = 4
             default: break
             }
         }
@@ -64,6 +76,10 @@ struct RootView: View {
             try? context.save()
         }
     }
+}
+
+extension Notification.Name {
+    static let openAvatarCustomize = Notification.Name("openAvatarCustomize")
 }
 
 struct MealSheetTarget: Identifiable {

@@ -213,6 +213,12 @@ final class BodyProfile {
     var budgetPerDay: Double
     var isDemo: Bool = false
     var updatedAt: Date
+    // 3D 形象自定义
+    var avatarSkinHex: String = "F2C9A0"
+    var avatarHairStyle: String = "short"
+    var avatarHairHex: String = "1C1C1E"
+    var avatarEyeHex: String = "5B3A29"
+    var avatarFaceWidth: Double = 1.0
 
     init(sex: Sex = .male, birthYear: Int = 1995, heightCm: Double = 175,
          weightKg: Double = 70, targetWeightKg: Double = 65,

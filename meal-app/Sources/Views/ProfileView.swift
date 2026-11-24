@@ -17,6 +17,12 @@ struct ProfileView: View {
     @State private var exportURL: URL?
     @State private var loaded = false
     @State private var statusMessage = ""
+    @State private var showSavedToast = false
+    @FocusState private var focusedField: FocusedField?
+
+    private enum FocusedField: Hashable {
+        case height, weight, targetWeight, budget
+    }
 
     var body: some View {
         NavigationStack {
@@ -33,6 +39,7 @@ struct ProfileView: View {
                         TextField("元", text: $budgetPerDay)
                             .keyboardType(.decimalPad)
                             .multilineTextAlignment(.trailing)
+                            .focused($focusedField, equals: .budget)
                     }
                 }
 
@@ -53,17 +60,26 @@ struct ProfileView: View {
                     HStack {
                         Text("身高 cm")
                         Spacer()
-                        TextField("175", text: $heightCm).keyboardType(.decimalPad).multilineTextAlignment(.trailing)
+                        TextField("175", text: $heightCm)
+                            .keyboardType(.decimalPad)
+                            .multilineTextAlignment(.trailing)
+                            .focused($focusedField, equals: .height)
                     }
                     HStack {
                         Text("体重 kg")
                         Spacer()
-                        TextField("70", text: $weightKg).keyboardType(.decimalPad).multilineTextAlignment(.trailing)
+                        TextField("70", text: $weightKg)
+                            .keyboardType(.decimalPad)
+                            .multilineTextAlignment(.trailing)
+                            .focused($focusedField, equals: .weight)
                     }
                     HStack {
                         Text("目标体重 kg")
                         Spacer()
-                        TextField("65", text: $targetWeightKg).keyboardType(.decimalPad).multilineTextAlignment(.trailing)
+                        TextField("65", text: $targetWeightKg)
+                            .keyboardType(.decimalPad)
+                            .multilineTextAlignment(.trailing)
+                            .focused($focusedField, equals: .targetWeight)
                     }
                 }
 
@@ -108,6 +124,22 @@ struct ProfileView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("保存") { saveProfile() }
+                }
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button("完成") { focusedField = nil }
+                }
+            }
+            .scrollDismissesKeyboard(.interactively)
+            .overlay(alignment: .top) {
+                if showSavedToast {
+                    Text("已保存")
+                        .font(.footnote.weight(.medium))
+                        .padding(.horizontal, 14)
+                        .padding(.vertical, 8)
+                        .background(.regularMaterial, in: Capsule())
+                        .padding(.top, 8)
+                        .transition(.opacity)
                 }
             }
             .onAppear(perform: loadProfile)
@@ -157,6 +189,11 @@ struct ProfileView: View {
         }
         try? context.save()
         statusMessage = "已保存"
+        focusedField = nil
+        withAnimation { showSavedToast = true }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+            withAnimation { showSavedToast = false }
+        }
     }
 
     private func generateExport() -> URL? {
