@@ -1,0 +1,593 @@
+{
+ "generated": "qa/cards_check.py",
+ "counts": {
+  "PASS": 68,
+  "FAIL": 1,
+  "WARN": 4,
+  "INFO": 10
+ },
+ "findings": [
+  {
+   "level": "PASS",
+   "group": "A",
+   "check": "A1 required files present",
+   "target": "18 side PDFs + combined + A4 proof + 18 previews + assets",
+   "msg": ""
+  },
+  {
+   "level": "PASS",
+   "group": "B",
+   "check": "B1 side PDF page size 111×154mm",
+   "target": "18/18",
+   "msg": "111.17×154.18mm (±0.6mm)"
+  },
+  {
+   "level": "PASS",
+   "group": "B",
+   "check": "B1 side PDF single page",
+   "target": "18/18",
+   "msg": ""
+  },
+  {
+   "level": "PASS",
+   "group": "B",
+   "check": "B2 combined 18 pages",
+   "target": "CSCV_FieldCards_v1_print.pdf",
+   "msg": "18 pages"
+  },
+  {
+   "level": "PASS",
+   "group": "B",
+   "check": "B2 combined page size 111×154mm",
+   "target": "CSCV_FieldCards_v1_print.pdf",
+   "msg": "all 18 pages"
+  },
+  {
+   "level": "PASS",
+   "group": "B",
+   "check": "B2 combined page order",
+   "target": "CSCV_FieldCards_v1_print.pdf",
+   "msg": "p1..p18 = C1 front/back … C9 front/back"
+  },
+  {
+   "level": "PASS",
+   "group": "B",
+   "check": "B3 combined text equals single-side PDFs",
+   "target": "18/18",
+   "msg": ""
+  },
+  {
+   "level": "PASS",
+   "group": "B",
+   "check": "B4 combined pages pixel-equal to single-side PDFs",
+   "target": "18/18",
+   "msg": "mean|Δ| ≤ 2/255"
+  },
+  {
+   "level": "PASS",
+   "group": "B",
+   "check": "B12 trim-marks PDF",
+   "target": "CSCV_FieldCards_v1_print_marks.pdf",
+   "msg": "18 pages, 117×160mm, 105×148 trim lines, content identical to combined PDF"
+  },
+  {
+   "level": "PASS",
+   "group": "B",
+   "check": "B5 A4 proof page count",
+   "target": "A4_office_proof.pdf",
+   "msg": "6 pages (3 front sheets + 3 back sheets)"
+  },
+  {
+   "level": "PASS",
+   "group": "B",
+   "check": "B6 A4 proof page size A4",
+   "target": "A4_office_proof.pdf",
+   "msg": "210×297mm"
+  },
+  {
+   "level": "PASS",
+   "group": "B",
+   "check": "B7 A4 proof 4-up",
+   "target": "A4_office_proof.pdf",
+   "msg": "≤4 trimmed cards per sheet"
+  },
+  {
+   "level": "PASS",
+   "group": "B",
+   "check": "B8 A4 proof cards at 96% trim size (no bleed)",
+   "target": "A4_office_proof.pdf",
+   "msg": "100.8×142.0mm each"
+  },
+  {
+   "level": "PASS",
+   "group": "B",
+   "check": "B9 A4 proof raster resolution",
+   "target": "A4_office_proof.pdf",
+   "msg": "≈300dpi"
+  },
+  {
+   "level": "PASS",
+   "group": "B",
+   "check": "B10 A4 proof sheet labels",
+   "target": "A4_office_proof.pdf",
+   "msg": "FRONT / BACK label on every sheet"
+  },
+  {
+   "level": "PASS",
+   "group": "B",
+   "check": "B11 A4 proof label renders cleanly",
+   "target": "A4_office_proof.pdf",
+   "msg": "no replacement glyphs in labels"
+  },
+  {
+   "level": "PASS",
+   "group": "C",
+   "check": "C1 all fonts embedded",
+   "target": "18 side PDFs",
+   "msg": "Type3 via CharProcs + Type0/CID via FontFile2; no unembedded font"
+  },
+  {
+   "level": "PASS",
+   "group": "C",
+   "check": "C2 ext n/a only on Type3",
+   "target": "n/a reserved for embedded Type3 glyph programs",
+   "msg": ""
+  },
+  {
+   "level": "PASS",
+   "group": "C",
+   "check": "C3 text extractable",
+   "target": "18/18",
+   "msg": "ToUnicode present on every font"
+  },
+  {
+   "level": "INFO",
+   "group": "C",
+   "check": "C4 font inventory",
+   "target": "20 distinct / 602 uses",
+   "msg": "Type3 uses=501; named={'Type0:AAAAAA+Menlo-Regular': 16, 'Type0:BAAAAA+Menlo-Regular': 18, 'Type0:FAAAAA+Menlo-Regular': 8, 'Type0:IAAAAA+Menlo-Regular': 8, 'Type0:EAAAAA+Menlo-Regular': 6, 'Type0:HAAAAA+Menlo-Regular': 8, 'Type0:JAAAAA+Menlo-Regular': 8, 'Type0:KAAAAA+Menlo-Regular': 1, 'Type0:EAAAAA+AvenirNextCondensed-DemiBold': 2, 'Type0:MAAAAA+Menlo-Regular': 4, 'Type0:NAAAAA+AvenirNextCondensed-DemiBold': 3, 'Type0:OAAAAA+Menlo-Regular': 2, 'Type0:DAAAAA+AvenirNextCondensed-DemiBold': 2, 'Type0:LAAAAA+Menlo-Regular': 4, 'Type0:MAAAAA+AvenirNextCondensed-DemiBold': 3, 'Type0:NAAAAA+Menlo-Regular': 2, 'Type0:AAAAAA+AvenirNextCondensed-DemiBold': 2, 'Type0:CAAAAA+Menlo-Regular': 2, 'Type0:GAAAAA+Menlo-Regular': 2}"
+  },
+  {
+   "level": "PASS",
+   "group": "C",
+   "check": "C5 Menlo embedded",
+   "target": "Menlo-Regular subsets (Type0/Identity-H)",
+   "msg": ""
+  },
+  {
+   "level": "PASS",
+   "group": "C",
+   "check": "C6 CJK text present on CN fronts",
+   "target": "9/9",
+   "msg": "PingFang SC embedded as Type3 glyph programs (allowed)"
+  },
+  {
+   "level": "INFO",
+   "group": "C",
+   "check": "C7 CJK embedding style",
+   "target": "PingFang SC -> Type3",
+   "msg": "Chromium/Skia embeds macOS system CJK fonts as Type3; glyph programs are inside the PDF (vector, self-contained). Accepted per task-7 item 2 (Type3/CID allowed)."
+  },
+  {
+   "level": "FAIL",
+   "group": "D",
+   "check": "D1 logo on every page, top-left, ≈20mm wide",
+   "target": "",
+   "msg": "C1_front: logo width 27.5mm (spec ≈20mm); C1_back: logo width 27.5mm (spec ≈20mm); C2_front: logo width 27.5mm (spec ≈20mm); C2_back: logo width 27.5mm (spec ≈20mm); C3_front: logo width 27.5mm (spec ≈20mm); C3_back: logo width 27.5mm (spec ≈20mm); C4_front: logo width 27.5mm (spec ≈20mm); C4_back: logo width 27.5mm (spec ≈20mm); C5_front: logo width 27.5mm (spec ≈20mm); C5_back: logo width 27.5mm (spec ≈20mm)"
+  },
+  {
+   "level": "PASS",
+   "group": "D",
+   "check": "D2 correct logo colour per layout",
+   "target": "18/18",
+   "msg": "navy on paper, white on ink"
+  },
+  {
+   "level": "PASS",
+   "group": "D",
+   "check": "D3 illustration reaches bleed, covers ≥6% of the side",
+   "target": "5/5 cards",
+   "msg": "C1:111×44mm, C2:111×154mm, C3:111×52mm, C4:111×36mm, C5:111×44mm"
+  },
+  {
+   "level": "PASS",
+   "group": "D",
+   "check": "D4 photo/logo effective resolution ≥300dpi",
+   "target": "5 photo bands + 18 logos",
+   "msg": "photo 300dpi; logo ≈1947dpi"
+  },
+  {
+   "level": "PASS",
+   "group": "D",
+   "check": "D5 no MISSING IMAGE / placeholder",
+   "target": "18/18",
+   "msg": "no placeholder text"
+  },
+  {
+   "level": "PASS",
+   "group": "D",
+   "check": "D6 data.json photo mapping → file → SOURCES",
+   "target": "C1..C5",
+   "msg": "img1..img5 as in CARD-SPEC §4"
+  },
+  {
+   "level": "PASS",
+   "group": "D",
+   "check": "D7 staff cards photo-free",
+   "target": "C6..C9",
+   "msg": "no photo band on staff cards"
+  },
+  {
+   "level": "PASS",
+   "group": "D",
+   "check": "D8 photo band matches recorded source",
+   "target": "C1_front",
+   "msg": "img1_city.jpg, mean|Δ|=16.0"
+  },
+  {
+   "level": "PASS",
+   "group": "D",
+   "check": "D8 photo band matches recorded source",
+   "target": "C2_front",
+   "msg": "img2_factory.jpg, mean|Δ|=38.2"
+  },
+  {
+   "level": "PASS",
+   "group": "D",
+   "check": "D8 photo band matches recorded source",
+   "target": "C3_front",
+   "msg": "img3_inspection_v2.jpg, mean|Δ|=6.8"
+  },
+  {
+   "level": "PASS",
+   "group": "D",
+   "check": "D8 photo band matches recorded source",
+   "target": "C4_front",
+   "msg": "img4_team.jpg, mean|Δ|=16.9"
+  },
+  {
+   "level": "PASS",
+   "group": "D",
+   "check": "D8 photo band matches recorded source",
+   "target": "C5_front",
+   "msg": "img5_port_v2.jpg, mean|Δ|=15.4"
+  },
+  {
+   "level": "WARN",
+   "group": "D",
+   "check": "D9 background reaches bleed edge",
+   "target": "",
+   "msg": "white strip up to 0.17mm on the right/bottom edge of all 18 sides (inside the 3 mm bleed, trimmed off by the cutter; Chromium rounds the 111×154mm page box to whole CSS px). Suggest extending the background 0.3mm or rendering the exact page box before a reprint."
+  },
+  {
+   "level": "PASS",
+   "group": "E",
+   "check": "E8 footer baseline consistent across sides",
+   "target": "",
+   "msg": "footer top edge: C7_front 137.4mm … C1_back 141.6mm (spread 4.3mm of 154mm file; back/staff sides sit at 141.4–141.6mm)"
+  },
+  {
+   "level": "INFO",
+   "group": "E",
+   "check": "E9 photo band positions by layout family",
+   "target": "5/5",
+   "msg": "tops [-0.1, 22.4, 52.2, 57.8, 60.5] mm — intentionally different per layout family (C1 band / C2 full bleed / C3 high band / C4 short band / C5 top band); each still reaches the bleed edge"
+  },
+  {
+   "level": "PASS",
+   "group": "E",
+   "check": "E1 all text inside 7mm safe margin (10mm from file edge)",
+   "target": "18/18",
+   "msg": "tightest text box 10.0/143.7mm from file edge"
+  },
+  {
+   "level": "PASS",
+   "group": "E",
+   "check": "E2 no text inside 3mm bleed",
+   "target": "18/18",
+   "msg": ""
+  },
+  {
+   "level": "PASS",
+   "group": "E",
+   "check": "E3 no overlapping text blocks",
+   "target": "18/18",
+   "msg": "no line pair shares a baseline band"
+  },
+  {
+   "level": "PASS",
+   "group": "E",
+   "check": "E4 title line count within spec",
+   "target": "18/18",
+   "msg": "CN ≤2 lines, EN ≤3 lines"
+  },
+  {
+   "level": "PASS",
+   "group": "E",
+   "check": "E5 no orphan line in title",
+   "target": "18/18",
+   "msg": "no lone char / stub last line"
+  },
+  {
+   "level": "WARN",
+   "group": "E",
+   "check": "E6 staff monogram block size = CARD-SPEC §2",
+   "target": "",
+   "msg": "C6_front: 27.8mm vs CARD-SPEC 40mm; C6_back: 27.8mm vs CARD-SPEC 40mm; C8_front: 27.8mm vs CARD-SPEC 40mm; C8_back: 27.8mm vs CARD-SPEC 40mm; C9_front: 23.5mm vs CARD-SPEC 40mm; C9_back: 23.5mm vs CARD-SPEC 40mm"
+  },
+  {
+   "level": "INFO",
+   "group": "E",
+   "check": "E7 subtitle line counts",
+   "target": "promo cards",
+   "msg": "C1_front: 1; C1_back: 2; C2_front: 1; C2_back: 1; C3_front: 1; C3_back: 1; C4_front: 1; C4_back: 2; C5_front: 1; C5_back: 2"
+  },
+  {
+   "level": "PASS",
+   "group": "E",
+   "check": "E10 text/backing contrast (screen proxy)",
+   "target": "18/18",
+   "msg": "≥3.0:1 body text / ≥2.4:1 fine print; covers text over photo/gradient/paper/ink"
+  },
+  {
+   "level": "PASS",
+   "group": "F",
+   "check": "F1 data.json copy present in rendered text",
+   "target": "18/18",
+   "msg": "eyebrow/title/sub/points/footer/name/role/headline/note all found (case-insensitive, whitespace-insensitive)"
+  },
+  {
+   "level": "PASS",
+   "group": "F",
+   "check": "F2 no unapproved copy on cards",
+   "target": "18/18",
+   "msg": "every rendered character traceable to data.json (staff initials are drawn twice: bordered block + decorative ghost monogram)"
+  },
+  {
+   "level": "WARN",
+   "group": "F",
+   "check": "F3 staff quote/skills not stored in data.json",
+   "target": "",
+   "msg": "C6: quote, C6: skills, C7: quote, C7: skills, C8: quote, C8: skills, C9: quote, C9: skills — these strings are hard-coded in cards/templates/layouts.py (QUOTES/SKILLS). PRINT-SPEC §6 says all card copy lives in cards/data.json, so this is a content-traceability gap (not a print defect)."
+  },
+  {
+   "level": "PASS",
+   "group": "F",
+   "check": "F4 bracket placeholders kept",
+   "target": "C7/C8/C9",
+   "msg": "[姓名]/[Name]/[职位]/[Role] retained"
+  },
+  {
+   "level": "PASS",
+   "group": "F",
+   "check": "F5 C9 no-publish note",
+   "target": "C9 front/back",
+   "msg": "方括号须填写、不得原样发布"
+  },
+  {
+   "level": "PASS",
+   "group": "F",
+   "check": "F6 no absolute/superlative wording",
+   "target": "18/18",
+   "msg": "no 最/第一/唯一/领先/best/guarantee"
+  },
+  {
+   "level": "PASS",
+   "group": "F",
+   "check": "F7 no promise wording / exclamation marks",
+   "target": "18/18",
+   "msg": ""
+  },
+  {
+   "level": "PASS",
+   "group": "F",
+   "check": "F8 认证/担保 only in negated form",
+   "target": "18/18",
+   "msg": "all occurrences are 不认证 / no certification / no guarantee"
+  },
+  {
+   "level": "PASS",
+   "group": "F",
+   "check": "F9 facts match content/01_front.md fact sheet",
+   "target": "18/18",
+   "msg": "prices 1,800–3,000 / 3,200–4,500, 5 & 7–10 business days, 8–12 pages, 100% prepayment, phone/email/address, five commitments, seven steps, 24h reply"
+  },
+  {
+   "level": "PASS",
+   "group": "F",
+   "check": "F10 address wording clean",
+   "target": "18/18",
+   "msg": "no 建塔/建滔"
+  },
+  {
+   "level": "INFO",
+   "group": "F",
+   "check": "F11 footer card-code format",
+   "target": "C1 / 09 · NOV 2026 bottom-right",
+   "msg": "CARD-SPEC §1 asks 'JFC · CSCV FIELD CARDS · NOV 2026' + card code at the foot; the template puts the series line in the header and keeps 'C1 / 09 · NOV 2026' bottom-right — both elements present, documented design choice"
+  },
+  {
+   "level": "INFO",
+   "group": "F",
+   "check": "F12 unused quote_cn field",
+   "target": "C4",
+   "msg": "only the EN back renders the pull quote (CN front design has no quote)"
+  },
+  {
+   "level": "INFO",
+   "group": "F",
+   "check": "F13 claims outside the fact table",
+   "target": "C1 大湾区 SME / 精品国际咨询; C8 15 分钟·三样信息; C7 广东及周边省份",
+   "msg": "sourced from source/company_profile.txt, source/service_portfolio.txt and WORKBRIEF §4.2 B3 rather than the fact sheet; role owner should confirm before printing"
+  },
+  {
+   "level": "PASS",
+   "group": "G",
+   "check": "G1 data.json spec limits (CARD-SPEC §0/§1)",
+   "target": "9 cards",
+   "msg": "layout / 3 points / CN-EN length caps / exact footer / staff fields / photo map"
+  },
+  {
+   "level": "PASS",
+   "group": "G",
+   "check": "G2 CN length counting convention",
+   "target": "9 cards",
+   "msg": "all point lines ≤24 字"
+  },
+  {
+   "level": "PASS",
+   "group": "G",
+   "check": "G3 C9 no-publish note",
+   "target": "C9",
+   "msg": "方括号内容由本人填写并确认，不得原样发布。"
+  },
+  {
+   "level": "PASS",
+   "group": "H",
+   "check": "H1 trim/bleed sizes",
+   "target": "deliverables/cards/PRINT-SPEC.md",
+   "msg": ""
+  },
+  {
+   "level": "PASS",
+   "group": "H",
+   "check": "H2 18-page combined file",
+   "target": "deliverables/cards/PRINT-SPEC.md",
+   "msg": ""
+  },
+  {
+   "level": "PASS",
+   "group": "H",
+   "check": "H3 paper recommendation",
+   "target": "deliverables/cards/PRINT-SPEC.md",
+   "msg": ""
+  },
+  {
+   "level": "PASS",
+   "group": "H",
+   "check": "H4 RGB→CMYK note",
+   "target": "deliverables/cards/PRINT-SPEC.md",
+   "msg": ""
+  },
+  {
+   "level": "PASS",
+   "group": "H",
+   "check": "H5 A4 proof 96% 4-up",
+   "target": "deliverables/cards/PRINT-SPEC.md",
+   "msg": ""
+  },
+  {
+   "level": "PASS",
+   "group": "H",
+   "check": "H6 photo licence reference",
+   "target": "deliverables/cards/PRINT-SPEC.md",
+   "msg": ""
+  },
+  {
+   "level": "PASS",
+   "group": "H",
+   "check": "H7 page order C1 front/back …",
+   "target": "deliverables/cards/PRINT-SPEC.md",
+   "msg": ""
+  },
+  {
+   "level": "PASS",
+   "group": "H",
+   "check": "H8 PRINT-SPEC referenced files exist",
+   "target": "5 referenced deliverable files",
+   "msg": ""
+  },
+  {
+   "level": "PASS",
+   "group": "H",
+   "check": "H9 PRINT-SPEC page order matches combined PDF",
+   "target": "18 pages",
+   "msg": ""
+  },
+  {
+   "level": "PASS",
+   "group": "H",
+   "check": "H10 SOURCES.md licence records traceable",
+   "target": "5 used images (+alternates)",
+   "msg": "file / card / pixels / source URL / author / licence all recorded"
+  },
+  {
+   "level": "PASS",
+   "group": "H",
+   "check": "H11 SOURCES photo band width matches render",
+   "target": "111mm wide",
+   "msg": "height varies by layout family (measured 44mm on C1)"
+  },
+  {
+   "level": "PASS",
+   "group": "H",
+   "check": "H12 Lead PRINT-CHECK.txt consistent",
+   "target": "PRINT-CHECK.txt",
+   "msg": "PASS — sizes/pages/fonts/dpi/placeholders"
+  },
+  {
+   "level": "INFO",
+   "group": "H",
+   "check": "H12b Lead PRINT-CHECK photo dpi",
+   "target": "300dpi effective at 111×50mm",
+   "msg": "matches my independent measurement (300.1dpi)"
+  },
+  {
+   "level": "PASS",
+   "group": "H",
+   "check": "H13 render overflow report clean",
+   "target": "overflow-report.txt",
+   "msg": "OK — no overflow, no missing images"
+  },
+  {
+   "level": "PASS",
+   "group": "I",
+   "check": "I1 previews are 105×148mm @150dpi",
+   "target": "18/18",
+   "msg": "621×875px, 150dpi metadata"
+  },
+  {
+   "level": "PASS",
+   "group": "I",
+   "check": "I2 preview dpi metadata",
+   "target": "18/18",
+   "msg": "150dpi"
+  },
+  {
+   "level": "PASS",
+   "group": "I",
+   "check": "I3 previews match PDF renders",
+   "target": "18/18",
+   "msg": "trim crop of side PDF at 150dpi"
+  },
+  {
+   "level": "PASS",
+   "group": "I",
+   "check": "I4 contact sheets composition",
+   "target": "3 sheets",
+   "msg": "all_fronts/all_backs 3×3; all_cards_preview 3 rows × (front|back)"
+  },
+  {
+   "level": "INFO",
+   "group": "Z",
+   "check": "Z1 accepted-file evidence",
+   "target": "hashes + mtimes",
+   "msg": "cards/data.json sha256=7be272f61a05f648… mtime=11-25 12:40:56 | deliverables/cards/PRINT-SPEC.md sha256=56a14e4497ead376… mtime=11-25 12:45:03 | deliverables/cards/print/CSCV_FieldCards_v1_print.pdf sha256=dd886c28c623fb0b… mtime=11-25 12:49:59 | deliverables/cards/A4_office_proof.pdf sha256=d6898d2126ed8566… mtime=11-25 12:50:01"
+  },
+  {
+   "level": "INFO",
+   "group": "Z",
+   "check": "Z2 data.json sha256",
+   "target": "7be272f61a05f648e13fe092846f12cc4a937915f165ba0a364e571942cc982b",
+   "msg": ""
+  },
+  {
+   "level": "WARN",
+   "group": "Z",
+   "check": "Z3 files stable",
+   "target": "",
+   "msg": "a deliverable was modified 39s ago — confirm the render is final before sign-off"
+  }
+ ],
+ "data_json_sha256": "7be272f61a05f648e13fe092846f12cc4a937915f165ba0a364e571942cc982b"
+}

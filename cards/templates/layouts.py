@@ -35,7 +35,7 @@ VARIANTS = {
     "C6": ("staff", "", False),
     "C7": ("staff-panel", "", False),
     "C8": ("staff", "", False),
-    "C9": ("staff-panel", "", False),
+    "C9": ("seal", "", False),
 }
 
 QUOTES = {
@@ -97,6 +97,15 @@ def _title(text: str, lang: str) -> str:
                 return f"{esc(head + sep)}<br>{esc(tail)}"
     return esc(text)
 
+
+
+
+def _headline(text: str, lang: str, narrow: bool = False) -> str:
+    text = str(text or "")
+    if lang == "cn" and narrow and "，" in text:
+        head, tail = text.split("，", 1)
+        return f"{esc(head + '，')}<br>{esc(tail)}"
+    return esc(text)
 
 def _head(card: dict, ink: bool, compact: bool = False) -> str:
     logo = "logo_white.png" if ink else "logo_navy.png"
@@ -260,7 +269,7 @@ def _staff_body(card: dict, lang: str, narrow: bool = False) -> str:
 </div>
 {'' if narrow else f'<div class="bigmark">{esc(mono)}</div>'}
 {'' if narrow else '<div class="spine">JFC · CSCV · FIELD CARDS · NANSHA</div>'}
-<div class="staff-headline">{esc(card.get(f'headline_{lang}', ''))}</div>
+<div class="staff-headline">{_headline(card.get(f'headline_{lang}', ''), lang, narrow)}</div>
 {_quote(card, lang, 'staff-quote')}
 {skills_html}
 <div class="staff-bottom">
@@ -293,12 +302,45 @@ def staff_panel_html(card: dict, lang: str, orange: bool = False) -> str:
 
 # --------------------------------------------------------------------------- #
 
+
+
+def seal_html(card: dict, lang: str) -> str:
+    home = "" if lang == "cn" else ""
+    label = "负责范围 / SCOPE" if lang == "cn" else "SCOPE / 负责范围"
+    skills = card.get(f"skills_{lang}") or (SKILLS if lang == "cn" else SKILLS_EN).get(card.get("code", ""), "")
+    note = card.get(f"note_{lang}")
+    note_html = f'<div class="note">{esc(note)}</div>' if note else ""
+    mono = card.get("monogram") or "JFC"
+    return f"""<div class="inner">
+{_head(card, False)}
+<div class="seal"><div class="mono">{esc(mono)}</div></div>
+<div class="role-eyebrow">{esc(card.get(f'role_{lang}', ''))}</div>
+<div class="staff-name">{esc(card.get(f'name_{lang}', ''))}</div>
+<div class="staff-headline">{_headline(card.get(f'headline_{lang}', ''), lang, False)}</div>
+{_quote(card, lang, 'seal-quote')}
+<div class="seal-cols">
+  <div class="seal-col">
+    <div class="list-label">{label}</div>
+    <ol class="points">{_points(card, lang)}</ol>
+  </div>
+  <div class="seal-col">
+    <div class="skills-label">{"专长 / EXPERTISE" if lang == "cn" else "EXPERTISE / 专长"}</div>
+    <div class="skills-line">{esc(skills)}</div>
+  </div>
+</div>
+{note_html}
+{_foot(card, lang, card.get('edition', 'NOV 2026'))}
+</div>
+<div class="frame"></div>"""
+
 def build_html(card: dict, lang: str, edition: str = "NOV 2026") -> str:
     card = dict(card)
     card["edition"] = edition
     variant, height_cls, rule = VARIANTS.get(card.get("code", ""), ("band", "h-md", True))
     if variant == "staff":
         return staff_html(card, lang)
+    if variant == "seal":
+        return _shell(card, lang, f"card paper seal lang-{lang}", seal_html(card, lang))
     if variant == "staff-panel":
         return staff_panel_html(card, lang, orange=(card.get("code") == "C9"))
     if lang == "en":

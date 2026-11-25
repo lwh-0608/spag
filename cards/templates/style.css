@@ -634,3 +634,96 @@ ol.points .txt {
 .card.bleed.lang-cn ol.points { margin-top: auto; }
 .card.topband.lang-cn .foot { margin-top: 0; }
 .card.topband.lang-cn ol.points { margin-top: auto; }
+
+/* ============================================================
+   v3 (2026-11-25 12:47 feedback): bigger logo everywhere; C9 gets a
+   certificate/seal layout instead of the orange letter panel.
+   ============================================================ */
+
+.head img.logo { height: 9mm; }
+
+/* --- C9: certificate / seal staff card --- */
+.card.seal { background: #F4EFE5; }
+
+.card.seal .frame {
+  position: absolute;
+  inset: 7mm;
+  border: 0.45mm solid #C8963E;
+  pointer-events: none;
+}
+
+.card.seal .inner {
+  inset: 11mm 12mm 11mm 12mm;
+  text-align: center;
+}
+
+.card.seal .head { justify-content: space-between; }
+
+.card.seal .seal {
+  width: 24mm;
+  height: 24mm;
+  border: 0.55mm solid #E4572E;
+  border-radius: 50%;
+  margin: 5mm auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.card.seal .seal::after {
+  content: "";
+  position: absolute;
+  inset: 1.6mm;
+  border: 0.22mm solid rgba(228, 87, 46, 0.45);
+  border-radius: 50%;
+}
+
+.card.seal .seal .mono {
+  font-family: "Avenir Next Condensed", "Avenir Next", sans-serif;
+  font-weight: 600;
+  font-size: 14pt;
+  letter-spacing: 0.04em;
+  color: #E4572E;
+}
+
+.card.seal .role-eyebrow { margin-top: 4mm; text-align: center; font-size: 5pt; }
+.card.seal .staff-name { margin-top: 2mm; font-size: 17pt; text-align: center; }
+.card.seal .staff-headline {
+  margin: 3.6mm auto 0;
+  text-align: center;
+  border-left: none;
+  padding-left: 0;
+  font-size: 9.4pt;
+  line-height: 1.5;
+  max-width: 76mm;
+}
+
+.card.seal .seal-cols {
+  display: flex;
+  gap: 5mm;
+  margin-top: 5mm;
+  text-align: left;
+}
+.card.seal .seal-col { flex: 1; }
+.card.seal .seal-col .list-label,
+.card.seal .seal-col .skills-label { margin-top: 0; margin-bottom: 1.6mm; }
+.card.seal .seal-col ol.points { gap: 2mm; margin-top: 0; margin-bottom: 0; }
+.card.seal .seal-col ol.points .txt { font-size: 6.4pt; line-height: 1.4; }
+.card.seal .seal-col ol.points .num { font-size: 5.4pt; width: 5.2mm; }
+.card.seal .seal-col .skills-line { font-size: 5.2pt; line-height: 1.6; }
+.card.seal .note { margin-top: 3mm; text-align: center; }
+.card.seal .foot { margin-top: auto; text-align: left; }
+.card.seal .contact { font-size: 4.9pt; line-height: 1.45; }
+.card.seal .code { font-size: 3.2pt; }
+
+
+.card.seal .seal-quote {
+  margin: 3.2mm auto 0;
+  border-left: none;
+  padding-left: 0;
+  text-align: center;
+  font-size: 8.6pt;
+  max-width: 74mm;
+}
+.card.seal .seal-quote::before { display: none; }
