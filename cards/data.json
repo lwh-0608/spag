@@ -1,0 +1,278 @@
+{
+  "series": {
+    "title": "JFC · CSCV 现场卡片 / FIELD CARDS",
+    "edition": "NOV 2026"
+  },
+  "cards": [
+    {
+      "code": "C1",
+      "layout": "promo-paper",
+      "eyebrow_cn": "01 / 公司 · COMPANY",
+      "eyebrow_en": "01 / COMPANY",
+      "title_cn": "从南沙，连接世界",
+      "title_en": "Rooted in Nansha. Working across borders.",
+      "sub_cn": "注册于广州南沙的精品国际咨询公司",
+      "sub_en": "A boutique international consulting firm registered in Nansha, Guangzhou.",
+      "points": [
+        {
+          "num": "01",
+          "cn": "南沙注册的外商独资咨询公司",
+          "en": "A WFOE consulting firm registered in Nansha."
+        },
+        {
+          "num": "02",
+          "cn": "服务大湾区中小企业与专业人士",
+          "en": "Serving SMEs and professionals in the Greater Bay Area."
+        },
+        {
+          "num": "03",
+          "cn": "CSCV：付款前，到现场核实供应商",
+          "en": "CSCV: on-site supplier checks before you pay."
+        }
+      ],
+      "footer_cn": "JFC.Consulting@outlook.com · +86 189 2872 4769 · 广州南沙",
+      "footer_en": "JFC.Consulting@outlook.com · +86 189 2872 4769 · Nansha, Guangzhou",
+      "photo": "img1_city.jpg"
+    },
+    {
+      "code": "C2",
+      "layout": "promo-ink",
+      "eyebrow_cn": "02 / CSCV · 服务",
+      "eyebrow_en": "02 / CSCV · SERVICE",
+      "title_cn": "付款前，把「能不能生产」变成事实",
+      "title_en": "Before you pay, turn “can they produce?” into fact",
+      "sub_cn": "主体是否真实、能否生产、风险在哪",
+      "sub_en": "Is the entity real? Can it produce? Where is the risk?",
+      "points": [
+        {
+          "num": "01",
+          "cn": "A-Report：1,800–3,000 元/站",
+          "en": "A-Report: RMB 1,800–3,000 per site."
+        },
+        {
+          "num": "02",
+          "cn": "B-Report：3,200–4,500 元/站",
+          "en": "B-Report: RMB 3,200–4,500 per site."
+        },
+        {
+          "num": "03",
+          "cn": "A 5 个工作日；B 7–10 个工作日",
+          "en": "A: 5 business days. B: 7–10 business days."
+        }
+      ],
+      "footer_cn": "JFC.Consulting@outlook.com · +86 189 2872 4769 · 广州南沙",
+      "footer_en": "JFC.Consulting@outlook.com · +86 189 2872 4769 · Nansha, Guangzhou",
+      "photo": "img2_factory.jpg"
+    },
+    {
+      "code": "C3",
+      "layout": "promo-paper",
+      "eyebrow_cn": "03 / 流程 · PROCESS",
+      "eyebrow_en": "03 / PROCESS",
+      "title_cn": "七步核验，一份可审计的证据",
+      "title_en": "Seven steps, one auditable evidence file.",
+      "sub_cn": "每份报告 8–12 页，逐条列明未核验项和原因",
+      "sub_en": "An 8–12 page report that lists every gap and why.",
+      "points": [
+        {
+          "num": "01",
+          "cn": "委托与授权 → 范围与报价 → 100% 预付",
+          "en": "Engagement → scope and quote → 100% prepayment"
+        },
+        {
+          "num": "02",
+          "cn": "现场执行 → 证据回传",
+          "en": "Fieldwork → evidence upload"
+        },
+        {
+          "num": "03",
+          "cn": "质控签发 → 复购触发",
+          "en": "QA and sign-off → renewal trigger"
+        }
+      ],
+      "footer_cn": "JFC.Consulting@outlook.com · +86 189 2872 4769 · 广州南沙",
+      "footer_en": "JFC.Consulting@outlook.com · +86 189 2872 4769 · Nansha, Guangzhou",
+      "photo": "img3_inspection_v2.jpg"
+    },
+    {
+      "code": "C4",
+      "layout": "promo-paper",
+      "eyebrow_cn": "04 / SME · 业务",
+      "eyebrow_en": "04 / SME",
+      "title_cn": "订阅制咨询成果，不增加编制",
+      "title_en": "Subscription deliverables, no added headcount.",
+      "sub_cn": "调研、分析、文档与演示，按成果交付",
+      "sub_en": "Research, analysis, documents, and decks—delivered as finished work.",
+      "points": [
+        {
+          "num": "01",
+          "cn": "按月订阅，按成果验收",
+          "en": "Monthly subscription; you accept the deliverable."
+        },
+        {
+          "num": "02",
+          "cn": "调研、分析、文档、演示，按需订购",
+          "en": "Research, analysis, documents, decks—ordered as needed."
+        },
+        {
+          "num": "03",
+          "cn": "不增加编制，不涉及劳务派遣",
+          "en": "No added headcount and no labor dispatch."
+        }
+      ],
+      "quote_cn": "增设岗位是固定成本，业务量不是。",
+      "quote_en": "Hiring is a fixed cost. Volume is not.",
+      "footer_cn": "JFC.Consulting@outlook.com · +86 189 2872 4769 · 广州南沙",
+      "footer_en": "JFC.Consulting@outlook.com · +86 189 2872 4769 · Nansha, Guangzhou",
+      "photo": "img4_team.jpg"
+    },
+    {
+      "code": "C5",
+      "layout": "promo-ink",
+      "eyebrow_cn": "05 / 转介绍 · REFERRAL",
+      "eyebrow_en": "05 / REFERRAL",
+      "title_cn": "你的客户问：这家工厂靠谱吗？",
+      "title_en": "Your client asks: is this factory reliable?",
+      "sub_cn": "律所、保险、货代、商会：把 CSCV 放进尽职调查",
+      "sub_en": "For law firms, insurers, forwarders, and chambers: add CSCV to due diligence.",
+      "points": [
+        {
+          "num": "01",
+          "cn": "单边收费；不收被核验方费用、返点或礼品",
+          "en": "One-sided fee; no fee, rebate, or gift from the subject."
+        },
+        {
+          "num": "02",
+          "cn": "方法不披露；到访只给时间窗",
+          "en": "Method undisclosed; a visit window, not a date."
+        },
+        {
+          "num": "03",
+          "cn": "不认证、不撮合、不担保",
+          "en": "No certification, no matchmaking, no guarantee."
+        }
+      ],
+      "footer_cn": "JFC.Consulting@outlook.com · +86 189 2872 4769 · 广州南沙",
+      "footer_en": "JFC.Consulting@outlook.com · +86 189 2872 4769 · Nansha, Guangzhou",
+      "photo": "img5_port_v2.jpg"
+    },
+    {
+      "code": "C6",
+      "layout": "staff-ink",
+      "role_cn": "JFC 创始合伙人",
+      "role_en": "Founder and Managing Partner",
+      "name_cn": "Jonathan Paets",
+      "name_en": "Jonathan Paets",
+      "headline_cn": "在中国现场核验供应商，只向买方收费",
+      "headline_en": "On-site supplier verification in China, paid only by the buyer.",
+      "points": [
+        {
+          "num": "01",
+          "cn": "负责方案设计与签发",
+          "en": "Owns solution design and final sign-off."
+        },
+        {
+          "num": "02",
+          "cn": "主导工厂同意书谈判，取得现场权限",
+          "en": "Leads consent talks that turn cooperation into site access."
+        },
+        {
+          "num": "03",
+          "cn": "解释核验边界：哪些能核验、哪些不能",
+          "en": "Explains what verification can and cannot check."
+        }
+      ],
+      "footer_cn": "JFC.Consulting@outlook.com · +86 189 2872 4769 · 广州南沙",
+      "footer_en": "JFC.Consulting@outlook.com · +86 189 2872 4769 · Nansha, Guangzhou"
+    },
+    {
+      "code": "C7",
+      "layout": "staff-paper",
+      "role_cn": "JFC 核验主管",
+      "role_en": "Head of Verification",
+      "name_cn": "[姓名]",
+      "name_en": "[Name]",
+      "headline_cn": "广东与周边省份现场核验，证据而不是意见",
+      "headline_en": "On-site checks in Guangdong, evidence over opinions.",
+      "points": [
+        {
+          "num": "01",
+          "cn": "统一清单：主体、场地、产能、记录",
+          "en": "One checklist: entity, site, capacity, records."
+        },
+        {
+          "num": "02",
+          "cn": "带定位与时间戳的照片与访谈记录",
+          "en": "Geo-tagged, time-stamped photos and interview notes."
+        },
+        {
+          "num": "03",
+          "cn": "逐条写出未核验项与原因",
+          "en": "Writes down every unverified item and why."
+        }
+      ],
+      "footer_cn": "JFC.Consulting@outlook.com · +86 189 2872 4769 · 广州南沙",
+      "footer_en": "JFC.Consulting@outlook.com · +86 189 2872 4769 · Nansha, Guangzhou"
+    },
+    {
+      "code": "C8",
+      "layout": "staff-paper",
+      "role_cn": "JFC 客户开发负责人",
+      "role_en": "Client Development Lead",
+      "name_cn": "[姓名]",
+      "name_en": "[Name]",
+      "headline_cn": "在付款前，把供应商问题问清楚",
+      "headline_en": "Getting the supplier question settled before payment.",
+      "points": [
+        {
+          "num": "01",
+          "cn": "首次沟通 15 分钟，只要三样信息",
+          "en": "The first call takes 15 minutes and three items."
+        },
+        {
+          "num": "02",
+          "cn": "供应商名称、产品与订单金额",
+          "en": "Supplier name, product, and order value."
+        },
+        {
+          "num": "03",
+          "cn": "24 小时内回复可行性、报价与交付日期",
+          "en": "A reply within 24 hours: feasibility, price, delivery date."
+        }
+      ],
+      "footer_cn": "JFC.Consulting@outlook.com · +86 189 2872 4769 · 广州南沙",
+      "footer_en": "JFC.Consulting@outlook.com · +86 189 2872 4769 · Nansha, Guangzhou"
+    },
+    {
+      "code": "C9",
+      "layout": "staff-paper",
+      "role_cn": "JFC [职位]",
+      "role_en": "[Role], JFC",
+      "name_cn": "[姓名]",
+      "name_en": "[Name]",
+      "headline_cn": "中国供应商独立核验，证据可复核",
+      "headline_en": "Independent China supplier verification, evidence you can re-check.",
+      "points": [
+        {
+          "num": "01",
+          "cn": "负责 [具体职责：核验 / 客户 / 报告]",
+          "en": "I handle [fieldwork, client work, or reports]."
+        },
+        {
+          "num": "02",
+          "cn": "记录具体：哪天、几点、在哪、看到什么",
+          "en": "Notes say when, where, and what was seen."
+        },
+        {
+          "num": "03",
+          "cn": "判断标准：换一个人能否重新核验",
+          "en": "The test: could someone else re-check this?"
+        }
+      ],
+      "note_cn": "方括号内容由本人填写并确认，不得原样发布。",
+      "note_en": "Bracketed text must be filled in and confirmed by the individual; never publish as-is.",
+      "footer_cn": "JFC.Consulting@outlook.com · +86 189 2872 4769 · 广州南沙",
+      "footer_en": "JFC.Consulting@outlook.com · +86 189 2872 4769 · Nansha, Guangzhou"
+    }
+  ]
+}

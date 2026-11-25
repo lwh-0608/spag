@@ -1,0 +1,52 @@
+JFC · CSCV Field Cards — print check
+cards: 9 (C1, C2, C3, C4, C5, C6, C7, C8, C9)
+
+image resolutions:
+  C1_front.pdf p1: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  C1_front.pdf p1: image 1314×525 placed 111.3×44.4mm -> 300dpi
+  C1_back.pdf p1: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  C2_front.pdf p1: image 1314×1821 placed 111.3×154.2mm -> 300dpi
+  C2_front.pdf p1: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  C2_back.pdf p1: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  C3_front.pdf p1: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  C3_front.pdf p1: image 1314×618 placed 111.3×52.3mm -> 300dpi
+  C3_back.pdf p1: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  C4_front.pdf p1: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  C4_front.pdf p1: image 1314×428 placed 111.3×36.2mm -> 300dpi
+  C4_back.pdf p1: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  C5_front.pdf p1: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  C5_front.pdf p1: image 1314×522 placed 111.3×44.2mm -> 300dpi
+  C5_back.pdf p1: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  C6_front.pdf p1: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  C6_back.pdf p1: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  C7_front.pdf p1: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  C7_back.pdf p1: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  C8_front.pdf p1: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  C8_back.pdf p1: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  C9_front.pdf p1: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  C9_back.pdf p1: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  CSCV_FieldCards_v1_print.pdf p1: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  CSCV_FieldCards_v1_print.pdf p1: image 1314×525 placed 111.3×44.4mm -> 300dpi
+  CSCV_FieldCards_v1_print.pdf p2: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  CSCV_FieldCards_v1_print.pdf p3: image 1314×1821 placed 111.3×154.2mm -> 300dpi
+  CSCV_FieldCards_v1_print.pdf p3: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  CSCV_FieldCards_v1_print.pdf p4: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  CSCV_FieldCards_v1_print.pdf p5: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  CSCV_FieldCards_v1_print.pdf p5: image 1314×618 placed 111.3×52.3mm -> 300dpi
+  CSCV_FieldCards_v1_print.pdf p6: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  CSCV_FieldCards_v1_print.pdf p7: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  CSCV_FieldCards_v1_print.pdf p7: image 1314×428 placed 111.3×36.2mm -> 300dpi
+  CSCV_FieldCards_v1_print.pdf p8: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  CSCV_FieldCards_v1_print.pdf p9: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  CSCV_FieldCards_v1_print.pdf p9: image 1314×522 placed 111.3×44.2mm -> 300dpi
+  CSCV_FieldCards_v1_print.pdf p10: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  CSCV_FieldCards_v1_print.pdf p11: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  CSCV_FieldCards_v1_print.pdf p12: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  CSCV_FieldCards_v1_print.pdf p13: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  CSCV_FieldCards_v1_print.pdf p14: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  CSCV_FieldCards_v1_print.pdf p15: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  CSCV_FieldCards_v1_print.pdf p16: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  CSCV_FieldCards_v1_print.pdf p17: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+  CSCV_FieldCards_v1_print.pdf p18: image 1460×476 placed 19.0×6.1mm -> 1947dpi
+
+PASS — sizes, pages, embedded fonts, image dpi and placeholders all OK

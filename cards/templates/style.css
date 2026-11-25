@@ -1,0 +1,636 @@
+/* JFC · CSCV Field Cards — print card design system
+ * Page: trim 105×148mm + 3mm bleed = 111×154mm render box.
+ * Content safe area: 7mm inside trim = 10mm inside page.
+ */
+
+@page { size: 111mm 154mm; margin: 0; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 111mm;
+  height: 154mm;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body {
+  font-family: "PingFang SC", "Hiragino Sans GB", sans-serif;
+  font-weight: 400;
+}
+
+.card {
+  --bg: #F4EFE5;
+  position: relative;
+  width: 111mm;
+  height: 154mm;
+  overflow: hidden;
+  background: #F4EFE5;
+  color: #14201C;
+}
+
+.card.ink {
+  --bg: #0E1A17;
+  background: #0E1A17;
+  color: #F4EFE5;
+}
+
+/* subtle paper grain: two very low-contrast radial washes (kept flat for print) */
+.card.paper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(120mm 90mm at 88% 6%, rgba(200, 150, 62, 0.06), rgba(200, 150, 62, 0) 60%),
+    radial-gradient(110mm 80mm at 0% 100%, rgba(20, 32, 28, 0.05), rgba(20, 32, 28, 0) 55%);
+  pointer-events: none;
+}
+
+.inner {
+  position: absolute;
+  inset: 10mm 10mm 10mm 10mm;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- header ---------- */
+
+.head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 4mm;
+}
+
+.head img.logo {
+  height: 6.2mm;
+  width: auto;
+  display: block;
+}
+
+.series {
+  font-family: "Menlo", "SF Mono", monospace;
+  font-size: 3.6pt;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #6B665C;
+  text-align: right;
+  line-height: 1.5;
+  padding-top: 0.6mm;
+}
+
+.card.ink .series { color: #9AA69E; }
+
+/* ---------- eyebrow ---------- */
+
+.eyebrow {
+  margin-top: 7mm;
+  display: flex;
+  align-items: center;
+  gap: 2.2mm;
+  font-family: "Menlo", "SF Mono", monospace;
+  font-size: 5.6pt;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #E4572E;
+  line-height: 1;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 7mm;
+  height: 0.45mm;
+  background: #E4572E;
+  display: block;
+}
+
+/* ---------- title / subtitle ---------- */
+
+h1.title {
+  margin-top: 3.2mm;
+  font-size: 19pt;
+  line-height: 1.22;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  max-height: 2.5em;
+  text-wrap: balance;
+}
+
+.card.ink h1.title { color: #F7F2E8; }
+
+.sub {
+  margin-top: 2.6mm;
+  font-size: 7.6pt;
+  line-height: 1.55;
+  color: #55524A;
+  max-width: 88mm;
+}
+
+.card.ink .sub { color: #B9C2BA; }
+
+/* ---------- photo band (full bleed) ---------- */
+
+.photo {
+  position: relative;
+  width: 111mm;
+  margin-left: -10mm;
+  margin-right: -10mm;
+  height: 50mm;
+  margin-top: 3.6mm;
+  overflow: hidden;
+  flex: none;
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(1) contrast(1.06) brightness(0.96);
+}
+
+.photo .tint {
+  position: absolute;
+  inset: 0;
+  background: #16233F;
+  mix-blend-mode: multiply;
+  opacity: 0.16;
+}
+
+.card.ink .photo .tint {
+  background: #E4572E;
+  opacity: 0.22;
+}
+
+.photo .shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(14, 26, 23, 0) 55%, rgba(14, 26, 23, 0.45) 100%);
+}
+
+.card.ink .photo .shade {
+  background: linear-gradient(180deg, rgba(14, 26, 23, 0) 45%, rgba(14, 26, 23, 0.72) 100%);
+}
+
+/* ---------- points ---------- */
+
+ol.points {
+  list-style: none;
+  margin-top: 4.6mm;
+  margin-bottom: 2.2mm;
+  display: flex;
+  flex-direction: column;
+  gap: 3.1mm;
+}
+
+ol.points li {
+  display: flex;
+  gap: 2.6mm;
+  align-items: baseline;
+}
+
+ol.points .num {
+  font-family: "Menlo", "SF Mono", monospace;
+  font-size: 6.4pt;
+  letter-spacing: 0.06em;
+  color: #E4572E;
+  flex: none;
+  width: 7mm;
+}
+
+ol.points .txt {
+  font-size: 7.9pt;
+  line-height: 1.5;
+  color: #2A2E29;
+}
+
+.card.ink ol.points .txt { color: #E6E2D6; }
+
+.card.ink ol.points .num { color: #F2B544; }
+
+/* ---------- footer ---------- */
+
+.foot {
+  margin-top: 0;
+  border-top: 0.28mm solid rgba(20, 32, 28, 0.28);
+  padding-top: 2.6mm;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 4mm;
+}
+
+.card.ink .foot { border-top-color: rgba(244, 239, 229, 0.32); }
+
+.foot .contact {
+  font-size: 5.5pt;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  color: #3C3A33;
+}
+
+.card.ink .foot .contact { color: #C9CFC7; }
+
+.foot .code {
+  font-family: "Menlo", "SF Mono", monospace;
+  font-size: 3.5pt;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #8A857A;
+  text-align: right;
+  line-height: 1.5;
+}
+
+.card.ink .foot .code { color: #8C998F; }
+
+.note {
+  margin-top: 2.4mm;
+  font-size: 5.4pt;
+  line-height: 1.5;
+  color: #8A5A46;
+}
+.card.ink .note { color: #D8A08A; }
+
+/* ---------- staff layout ---------- */
+
+.staff-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 4mm;
+  margin-top: 6mm;
+}
+
+.staff-top .who { flex: 1; }
+
+.role-eyebrow {
+  font-family: "Menlo", "SF Mono", monospace;
+  font-size: 5.2pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #E4572E;
+  line-height: 1.4;
+}
+
+.staff-name {
+  margin-top: 2.6mm;
+  font-size: 18pt;
+  line-height: 1.18;
+  font-weight: 600;
+}
+
+.staff-name-en {
+  margin-top: 1.2mm;
+  font-family: "Menlo", "SF Mono", monospace;
+  font-size: 5.8pt;
+  letter-spacing: 0.05em;
+  color: #6B665C;
+}
+
+.card.ink .staff-name-en { color: #9AA69E; }
+
+.monogram {
+  width: 28mm;
+  height: 28mm;
+  flex: none;
+  border: 0.5mm solid #E4572E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Avenir Next Condensed", "Avenir Next", sans-serif;
+  font-weight: 600;
+  font-size: 19pt;
+  letter-spacing: 0.02em;
+  color: #E4572E;
+}
+
+.card.ink .monogram { border-color: #F2B544; color: #F2B544; }
+
+.staff-headline {
+  margin-top: 6mm;
+  font-size: 11.5pt;
+  line-height: 1.5;
+  font-weight: 500;
+  color: #1B2A24;
+  border-left: 0.7mm solid #C8963E;
+  padding-left: 3.2mm;
+}
+
+.card.ink .staff-headline { color: #F7F2E8; border-left-color: #E4572E; }
+
+.staff-bottom { margin-top: auto; }
+
+.staff-points { margin-bottom: 1.5mm; }
+
+.list-label {
+  font-family: "Menlo", "SF Mono", monospace;
+  font-size: 4.2pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8A857A;
+  margin-bottom: 2.6mm;
+}
+
+.card.ink .list-label { color: #7E8C81; }
+
+/* footer variant for staff: contact left, code right */
+
+
+/* vertical series spine (staff cards) */
+.spine {
+  position: absolute;
+  right: 1.2mm;
+  top: 58mm;
+  writing-mode: vertical-rl;
+  font-family: "Menlo", "SF Mono", monospace;
+  font-size: 3.4pt;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #9A958A;
+}
+
+.card.ink .spine { color: #6F7C72; }
+
+
+/* slim colour band replaces the photo on text-only (EN) sides */
+.ruleband {
+  width: 111mm;
+  margin-left: -10mm;
+  margin-right: -10mm;
+  height: 2.4mm;
+  margin-top: 6mm;
+  background: #C8963E;
+  flex: none;
+}
+
+.card.ink .ruleband { background: #E4572E; }
+
+
+/* pull quote — fills the text-only (EN) side and the staff cards */
+.quote {
+  margin-top: 7mm;
+  max-width: 84mm;
+  font-size: 10pt;
+  line-height: 1.62;
+  font-weight: 500;
+  color: #1B2A24;
+  position: relative;
+  padding-left: 4.6mm;
+}
+
+.quote::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.4mm;
+  width: 0.9mm;
+  height: calc(100% - 2mm);
+  background: #E4572E;
+}
+
+.card.ink .quote { color: #F2EEE2; }
+
+.staff-quote { margin-top: 6mm; }
+
+
+/* skills line on staff cards */
+.skills-label {
+  font-family: "Menlo", "SF Mono", monospace;
+  font-size: 4.2pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8A857A;
+  margin-top: 5.5mm;
+  margin-bottom: 1.8mm;
+}
+
+.card.ink .skills-label { color: #7E8C81; }
+
+.skills-line {
+  font-size: 5.9pt;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  color: #55524A;
+  max-width: 86mm;
+}
+
+.card.ink .skills-line { color: #B9C2BA; }
+
+
+/* oversized ghost monogram (staff cards): fills the lower field without adding copy */
+.bigmark {
+  position: absolute;
+  right: 6mm;
+  bottom: 34mm;
+  font-family: "Avenir Next Condensed", "Avenir Next", sans-serif;
+  font-weight: 600;
+  font-size: 58pt;
+  letter-spacing: 0.02em;
+  color: rgba(20, 32, 28, 0.055);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.card.ink .bigmark { color: rgba(244, 239, 229, 0.05); }
+
+
+/* EN sides: quote + points form one bottom block */
+.bottom-block { margin-top: auto; }
+
+
+/* consistent baselines across the CN promo fronts */
+.card.promo.lang-cn .foot { margin-top: auto; }
+
+
+/* ============================================================
+   v2 layout system (2026-11-25 design feedback):
+   photo edges fade into the content field; more layout variety.
+   ============================================================ */
+
+/* fade overlay on a full-bleed photo band, left edge dissolving into paper/ink */
+.photo .edge-fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+    var(--bg) 0%,
+    var(--bg) 9%,
+    rgba(244, 239, 229, 0.5) 24%,
+    transparent 41%);
+  pointer-events: none;
+}
+
+.card.ink .photo .edge-fade {
+  background: linear-gradient(90deg,
+    var(--bg) 0%,
+    var(--bg) 12%,
+    rgba(14, 26, 23, 0.6) 32%,
+    transparent 52%);
+}
+
+/* band height variants */
+.photo.h-sm { height: 36mm; }
+.photo.h-md { height: 44mm; }
+.photo.h-lg { height: 52mm; }
+
+/* ---------- full-bleed photo layout (C2 / C5) ---------- */
+
+.card.bleed .photo-full {
+  position: absolute;
+  inset: 0;
+}
+
+.card.bleed .photo-full img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.08) brightness(0.9);
+}
+
+.card.bleed .photo-full .tint {
+  position: absolute;
+  inset: 0;
+  background: #E4572E;
+  mix-blend-mode: multiply;
+  opacity: 0.18;
+}
+
+.card.bleed .photo-full .legi {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(14, 26, 23, 0.96) 0%, rgba(14, 26, 23, 0.82) 40%, rgba(14, 26, 23, 0.32) 72%, rgba(14, 26, 23, 0.18) 100%),
+    linear-gradient(0deg, rgba(14, 26, 23, 0.72) 0%, rgba(14, 26, 23, 0.1) 42%);
+}
+
+.card.bleed .inner { z-index: 2; }
+
+/* accent rules for hierarchy */
+.accent-rule {
+  width: 100%;
+  height: 0.5mm;
+  background: #C8963E;
+  margin: 2.2mm 0 0 0;
+}
+.card.ink .accent-rule { background: #E4572E; }
+
+/* ghost card code on the EN back */
+.ghost-code {
+  position: absolute;
+  right: 9mm;
+  bottom: 16mm;
+  font-family: "Menlo", "SF Mono", monospace;
+  font-size: 40pt;
+  letter-spacing: 0.06em;
+  color: rgba(20, 32, 28, 0.06);
+  line-height: 1;
+  pointer-events: none;
+}
+.card.ink .ghost-code { color: rgba(244, 239, 229, 0.055); }
+
+/* EN back: no photo — a slim gradient band keeps the series rhythm */
+.grad-band {
+  width: 111mm;
+  height: 2.6mm;
+  margin-left: -10mm;
+  margin-right: -10mm;
+  margin-top: 6mm;
+  background: linear-gradient(90deg, transparent 0%, #C8963E 22%, #E4572E 78%, transparent 100%);
+  opacity: 0.9;
+}
+
+/* ---------- staff panel variant (C7 / C9) ---------- */
+
+.card.staff-panel .panel {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 34mm;
+  background: #0E1A17;
+  color: #F4EFE5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card.staff-panel .panel.orange { background: #E4572E; color: #0E1A17; }
+
+.card.staff-panel .panel .mono {
+  font-family: "Avenir Next Condensed", "Avenir Next", sans-serif;
+  font-weight: 600;
+  font-size: 30pt;
+  letter-spacing: 0.03em;
+  writing-mode: vertical-rl;
+  color: #F2B544;
+}
+
+.card.staff-panel .panel.orange .mono { color: #0E1A17; }
+
+.card.staff-panel .panel .vlabel {
+  position: absolute;
+  bottom: 10mm;
+  left: 50%;
+  transform: translateX(-50%);
+  writing-mode: vertical-rl;
+  font-family: "Menlo", "SF Mono", monospace;
+  font-size: 3.4pt;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #8C998F;
+}
+
+.card.staff-panel .inner.panel-right {
+  left: 44mm;
+}
+
+.card.staff-panel .staff-top { margin-top: 4mm; }
+.card.staff-panel h1.title { min-height: 0; }
+
+/* compact type inside the staff-panel variant (57mm column) */
+.card.staff-panel .staff-name { font-size: 15pt; }
+.card.staff-panel .role-eyebrow { font-size: 4.8pt; }
+.card.staff-panel .staff-headline {
+  margin-top: 4.2mm;
+  font-size: 9.6pt;
+  line-height: 1.45;
+  padding-left: 2.6mm;
+}
+.card.staff-panel .quote { font-size: 8.4pt; line-height: 1.55; margin-top: 4.2mm; padding-left: 3.6mm; }
+.card.staff-panel .skills-label { margin-top: 4mm; margin-bottom: 1.4mm; font-size: 3.9pt; }
+.card.staff-panel .skills-line { font-size: 5.3pt; line-height: 1.7; }
+.card.staff-panel .list-label { font-size: 3.9pt; margin-bottom: 1.8mm; }
+.card.staff-panel ol.points { gap: 2.2mm; margin-top: 0; margin-bottom: 1.6mm; }
+.card.staff-panel ol.points .num { font-size: 5.6pt; width: 5.6mm; }
+.card.staff-panel ol.points .txt { font-size: 6.8pt; line-height: 1.42; }
+.card.staff-panel .foot .contact { font-size: 4.7pt; line-height: 1.45; }
+.card.staff-panel .foot .code { font-size: 3.1pt; }
+.card.staff-panel .note { font-size: 4.8pt; }
+.card.staff-panel .foot { padding-top: 2mm; }
+
+
+.card.bleed ol.points { margin-top: auto; }
+.card.bleed .foot { margin-top: 3mm; }
+
+
+.card.staff .staff-headline,
+.card.staff-panel .staff-headline,
+.card .quote,
+.card h1.title { text-wrap: balance; }
+
+
+.card.promo.back .quote { margin-top: 7mm; }
+
+
+/* top-band variant: photo sits directly under the header */
+.card.topband .eyebrow { margin-top: 5.5mm; }
+.card.topband ol.points { margin-top: 5mm; }
+
+
+.card.bleed .foot { margin-top: 0; }
+
+
+/* bleed / topband: no double auto margin between points and footer */
+.card.bleed.lang-cn .foot { margin-top: 0; }
+.card.bleed.lang-cn ol.points { margin-top: auto; }
+.card.topband.lang-cn .foot { margin-top: 0; }
+.card.topband.lang-cn ol.points { margin-top: auto; }
