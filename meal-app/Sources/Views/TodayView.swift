@@ -70,7 +70,13 @@ struct TodayView: View {
                 }
             }
             .sheet(item: $sheetTarget) { target in
-                LogMealView(mealType: target.mealType, existingEntry: target.entry)
+                LogMealView(mealType: target.mealType, existingEntry: target.entry,
+                            previewItems: target.previewItems)
+            }
+            .onReceive(NotificationCenter.default.publisher(for: .openLogMeal)) { note in
+                guard let raw = note.object as? String, let type = MealType(rawValue: raw) else { return }
+                let preview = (note.userInfo?["preview"] as? Bool) ?? false
+                sheetTarget = MealSheetTarget(mealType: type, entry: nil, previewItems: preview)
             }
         }
     }

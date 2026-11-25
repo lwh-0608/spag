@@ -25,14 +25,15 @@ struct FoodSeed: Codable {
 }
 
 enum FoodSeeder {
+    /// 按名称增量补齐内置食物库（老版本已有数据也会补上新增食物，不重复插入）
     static func seedIfNeeded(context: ModelContext) {
-        let descriptor = FetchDescriptor<FoodItem>()
-        let count = (try? context.fetchCount(descriptor)) ?? 0
-        guard count == 0 else { return }
         guard let url = Bundle.main.url(forResource: "foods", withExtension: "json"),
               let data = try? Data(contentsOf: url) else { return }
         guard let seeds = try? JSONDecoder().decode([FoodSeed].self, from: data) else { return }
-        for seed in seeds {
+        let existing = (try? context.fetch(FetchDescriptor<FoodItem>())) ?? []
+        let existingNames = Set(existing.map { $0.name })
+        var inserted = false
+        for seed in seeds where !existingNames.contains(seed.name) {
             context.insert(FoodItem(
                 name: seed.name,
                 category: seed.category,
@@ -46,8 +47,9 @@ enum FoodSeeder {
                 unitName: seed.unitName,
                 unitGrams: seed.unitGrams
             ))
+            inserted = true
         }
-        try? context.save()
+        if inserted { try? context.save() }
     }
 }
 

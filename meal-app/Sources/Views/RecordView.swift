@@ -92,7 +92,8 @@ struct RecordView: View {
                 }
             }
             .sheet(item: $sheetTarget) { target in
-                LogMealView(mealType: target.mealType, existingEntry: target.entry)
+                LogMealView(mealType: target.mealType, existingEntry: target.entry,
+                            previewItems: target.previewItems)
             }
         }
     }

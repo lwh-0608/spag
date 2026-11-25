@@ -103,6 +103,7 @@ struct MealItemSnapshot: Codable, Identifiable, Hashable {
     var foodName: String
     var grams: Double
     var unitLabel: String
+    var unitGrams: Double? = nil
     var pricingModeRaw: String
     var pricePer100: Double
     var price: Double
@@ -124,6 +125,7 @@ struct MealItemSnapshot: Codable, Identifiable, Hashable {
             foodName: food.name,
             grams: grams,
             unitLabel: "\(Int(grams))g",
+            unitGrams: food.unitGrams,
             pricingModeRaw: mode.rawValue,
             pricePer100: food.pricePer100,
             price: mode == .takeout ? 0 : food.pricePer100 * ratio,

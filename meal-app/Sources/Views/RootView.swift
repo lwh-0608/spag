@@ -44,6 +44,27 @@ struct RootView: View {
             }
         }
         .onOpenURL { url in
+            if url.host == "log" {
+                selection = 0
+                let type: MealType
+                switch url.path {
+                case "/lunch": type = .lunch
+                case "/dinner": type = .dinner
+                case "/snack": type = .snack
+                default: type = .breakfast
+                }
+                let preview = url.path == "/preview" || url.path == "/custom"
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    NotificationCenter.default.post(name: .openLogMeal, object: type.rawValue,
+                                                    userInfo: ["preview": preview])
+                }
+                if url.path == "/custom" {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
+                        NotificationCenter.default.post(name: .openCustomFood, object: nil)
+                    }
+                }
+                return
+            }
             if url.host == "avatar-customize" {
                 selection = 3
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
@@ -80,10 +101,13 @@ struct RootView: View {
 
 extension Notification.Name {
     static let openAvatarCustomize = Notification.Name("openAvatarCustomize")
+    static let openLogMeal = Notification.Name("openLogMeal")
+    static let openCustomFood = Notification.Name("openCustomFood")
 }
 
 struct MealSheetTarget: Identifiable {
     let id = UUID()
     let mealType: MealType
     let entry: MealEntry?
+    var previewItems: Bool = false
 }
