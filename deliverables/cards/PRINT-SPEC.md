@@ -26,6 +26,7 @@
 ## 2. 印刷规格
 
 - 成品尺寸：A6 竖版，105 × 148 mm。
+- 裁切线：`CSCV_FieldCards_v1_print_marks.pdf` 为 117×160mm 带四角裁切线版本（成品线 105×148mm）；无裁剪线版本见 `CSCV_FieldCards_v1_print.pdf`，页面即 111×154mm（成品+3mm 出血）。
 - 出血：每边 3 mm。单面文件尺寸：111 × 154 mm，背景与照片铺满到出血边。
 - 安全边：成品边向内 7 mm 内不放正文（文件边向内 10 mm）。
 - 分辨率：照片 ≥ 300 dpi；文字与线条为矢量。
@@ -41,6 +42,7 @@
 |---|---|
 | `deliverables/cards/print/C1_front.pdf` … `C9_back.pdf` | 单面印刷文件（111×154 mm，含 3 mm 出血） |
 | `deliverables/cards/print/CSCV_FieldCards_v1_print.pdf` | 整单文件：9 张卡 × 正反面，共 18 页，按 C1 正/背、C2 正/背…排序 |
+| `deliverables/cards/print/CSCV_FieldCards_v1_print_marks.pdf` | 带裁切线的整单文件：117×160mm 页面，内含 111×154mm 出血盒与 105×148mm 成品裁切线，适合直接送印 |
 | `deliverables/cards/A4_office_proof.pdf` | 办公室试印版（A4，96% 缩放，4 张/页），仅供校对，不用于正式印刷 |
 | `deliverables/cards/preview/*.png` | 每面 150 dpi 预览图 |
 | `deliverables/cards/preview/all_cards_preview.png` | 9 张卡正反面拼版总览 |
