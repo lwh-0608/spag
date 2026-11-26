@@ -453,7 +453,7 @@
         {
           "name": "bilingual",
           "ok": true,
-          "detail": "cjk=37 latin=183",
+          "detail": "cjk=37 latin=187",
           "level": "pass"
         },
         {
@@ -530,7 +530,7 @@
         {
           "name": "bilingual",
           "ok": true,
-          "detail": "cjk=31 latin=169",
+          "detail": "cjk=31 latin=173",
           "level": "pass"
         },
         {
@@ -607,7 +607,7 @@
         {
           "name": "bilingual",
           "ok": true,
-          "detail": "cjk=49 latin=221",
+          "detail": "cjk=49 latin=225",
           "level": "pass"
         },
         {
@@ -684,7 +684,7 @@
         {
           "name": "bilingual",
           "ok": true,
-          "detail": "cjk=37 latin=141",
+          "detail": "cjk=37 latin=145",
           "level": "pass"
         },
         {
@@ -761,7 +761,7 @@
         {
           "name": "bilingual",
           "ok": true,
-          "detail": "cjk=37 latin=157",
+          "detail": "cjk=37 latin=161",
           "level": "pass"
         },
         {

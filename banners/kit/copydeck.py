@@ -29,11 +29,11 @@ CSCV_COPY = {
     "kicker_cn": "CSCV · 中国供应链核验",
     "kicker_en": "CHINA SUPPLY CHAIN VERIFICATION",
     # line used on the official CSCV service card
-    "headline_cn": "付款之前，把「能不能生产」变成事实。",
-    "headline_en": "Before payment, turn “can they produce?” into a fact.",
+    "headline_cn": "采购之前，把「能不能生产」变成事实。",
+    "headline_en": "Before procurement, turn “can they produce?” into a fact.",
     # short line built from the service definition's own three questions
-    "short_cn": "付款之前，到现场核实主体、产能、风险。",
-    "short_en": "On-site verification before payment: entity, capacity, risk.",
+    "short_cn": "采购之前，到现场核实主体、产能、风险。",
+    "short_en": "On-site verification before procurement: entity, capacity, risk.",
     "three_cn": "主体 · 产能 · 风险",
     "three_en": "ENTITY · CAPACITY · RISK",
     "proof_cn": "只向买方收费",

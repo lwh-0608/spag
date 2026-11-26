@@ -40,8 +40,8 @@ IDENTITY = {
     },
     "cscv": {
         "name": "CSCV · 中国供应链核验",
-        "sub_cn": "付款之前，到现场核实主体、产能、风险。",
-        "sub_en": "On-site verification before payment: entity, capacity, risk.",
+        "sub_cn": "采购之前，到现场核实主体、产能、风险。",
+        "sub_en": "On-site verification before procurement: entity, capacity, risk.",
         "meta": "JAZZFRONT Consulting™ · CSCV · Nansha, Guangzhou",
         "tag": "Field dossier / 现场档案",
         "logo": "banners/kit/assets/logo-color.png",
