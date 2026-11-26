@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>CSCV · YouTube channel art · 2560×1440</title>
+<link rel="stylesheet" href="../../kit/css/base.css">
+<link rel="stylesheet" href="../../kit/css/cscv.css">
+<style>
+  /* 2560 × 1440. Only the centre band x507..2053 / y508..931 is guaranteed on
+     every device (TV 2560×1440, desktop 2560×423, mobile 1546×423). The band is
+     composed as a complete banner; the TV-only top/bottom carry quiet decoration
+     (outlined watermark, tick rules, barcode, registration marks). */
+  .art { width: 2560px; height: 1440px; }
+
+  .art .cscv-reg.tl { left: 40px; top: 40px; }
+  .art .cscv-reg.tr { right: 40px; top: 40px; }
+  .art .cscv-reg.bl { left: 40px; bottom: 40px; }
+  .art .cscv-reg.br { right: 40px; bottom: 40px; }
+
+  /* --- TV-only decoration ------------------------------------------------ */
+  .art .cscv-ghost {
+    position: absolute; left: 484px; top: 4px; margin: 0;
+    font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 900; font-size: 560px; line-height: .8; letter-spacing: -.05em;
+    color: transparent; -webkit-text-stroke: 3px rgba(10,13,16,.11);
+    white-space: nowrap; pointer-events: none;
+  }
+  .art .cscv-tvm-ticks {
+    position: absolute; left: 552px; width: 1858px; height: 8px;
+    border-bottom: 1px solid rgba(10,13,16,.28);
+    background-image: repeating-linear-gradient(90deg, rgba(10,13,16,.28) 0 1px, transparent 1px 14px);
+    background-size: 100% 5px; background-repeat: no-repeat; background-position: bottom left;
+  }
+  .art .cscv-tvm-barcode {
+    position: absolute; left: 552px; top: 1076px; width: 1500px; height: 40px;
+    background-image: repeating-linear-gradient(90deg, #0a0d10 0 1px, transparent 1px 3px, #0a0d10 3px 5px, transparent 5px 6px);
+    opacity: .16;
+  }
+  .art .cscv-tvm-ghost {
+    position: absolute; left: 552px; top: 1152px; margin: 0;
+    font-family: "JetBrains Mono", "SF Mono", Menlo, monospace;
+    font-weight: 500; font-size: 150px; line-height: 1; letter-spacing: .16em;
+    color: transparent; -webkit-text-stroke: 2px rgba(10,13,16,.09);
+    text-transform: uppercase; white-space: nowrap; pointer-events: none;
+  }
+
+  /* --- the guaranteed band, x507..2053 / y508..931 ------------------------- */
+  .art .cscv-logo { position: absolute; left: 560px; top: 538px; height: 62px; }
+
+  .art .cscv-kicker { position: absolute; left: 564px; top: 622px; font-size: 16px; }
+
+  .art .cscv-h1 { position: absolute; left: 552px; top: 654px; font-size: 80px; }
+  .art .cscv-h1-en { position: absolute; left: 564px; top: 856px; font-size: 40px; }
+
+  .art .cscv-stamp { position: absolute; right: 555px; top: 564px; font-size: 18px;
+    border-width: 2px; padding: .5em .8em; }
+  .art .cscv-serial { position: absolute; right: 555px; top: 664px; text-align: right; font-size: 16px; }
+  .art .cscv-barcode { position: absolute; right: 555px; top: 704px; width: 120px; height: 22px; color: #0a0d10; }
+  .art .cscv-three { position: absolute; right: 555px; top: 830px; text-align: right; font-size: 26px; font-weight: 500; color: #0a0d10; }
+  .art .cscv-three-en { position: absolute; right: 555px; top: 876px; text-align: right; font-size: 16px; }
+  .art .cscv-proof { position: absolute; right: 555px; top: 764px; text-align: right; font-size: 15px; }
+</style>
+</head>
+<body>
+<div class="art cscv">
+  <div class="cscv-ghost">CSCV</div>
+  <div class="cscv-tvm-ticks" style="top:474px"></div>
+  <div class="cscv-tvm-ticks" style="top:958px"></div>
+  <div class="cscv-tvm-barcode"></div>
+  <div class="cscv-tvm-ghost">Field Dossier</div>
+
+  <div class="cscv-grid"></div>
+  <span class="cscv-reg tl"></span><span class="cscv-reg tr"></span>
+  <span class="cscv-reg bl"></span><span class="cscv-reg br"></span>
+
+  <img class="cscv-logo" src="../../kit/assets/logo-color.png" alt="JAZZFRONT Consulting" data-critical>
+
+  <div class="cscv-kicker" data-critical>CSCV · 中国供应链核验 · CHINA SUPPLY CHAIN VERIFICATION</div>
+  <h1 class="cscv-h1" data-critical data-lang="zh">付款之前，把「能不能生产」<br>变成事实。</h1>
+  <p class="cscv-h1-en" data-critical data-lang="en">Before payment, turn “can they produce?” into a fact.</p>
+
+  <span class="cscv-stamp" data-critical>ON-SITE VERIFIED · 现场核验</span>
+  <div class="cscv-serial cscv-mono">CSCV / FIELD DOSSIER · NOV 2026</div>
+  <div class="cscv-barcode cscv-barcode"></div>
+  <div class="cscv-three" data-critical data-lang="zh">主体 · 产能 · 风险</div>
+  <div class="cscv-three-en cscv-mono">ENTITY · CAPACITY · RISK</div>
+  <div class="cscv-proof" data-critical><b>只向买方收费</b> · PAID ONLY BY THE BUYER</div>
+</div>
+</body>
+</html>

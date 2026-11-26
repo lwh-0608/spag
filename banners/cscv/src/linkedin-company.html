@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>CSCV · LinkedIn company page cover · 1512×256</title>
+<link rel="stylesheet" href="../../kit/css/base.css">
+<link rel="stylesheet" href="../../kit/css/cscv.css">
+<style>
+  /* 1512 × 256 ribbon. safe x24..1488 y24..232; page logo covers x30..150 y206..256.
+     Title block left (x56), evidence column right-aligned to x1456; nothing on the
+     left below y 206. */
+  .art { width: 1512px; height: 256px; }
+
+  .cscv-reg.tl { left: 26px; top: 26px; }
+  .cscv-reg.tr { right: 26px; top: 26px; }
+  .cscv-reg.bl { left: 26px; bottom: 26px; }
+  .cscv-reg.br { right: 26px; bottom: 26px; }
+
+  .cscv-logo { position: absolute; left: 56px; top: 38px; height: 44px; }
+
+  /* measurement rule closing the logo row — dossier header line */
+  .cscv-ticks { position: absolute; left: 56px; top: 88px; width: 674px; }
+
+  .cscv-kicker { position: absolute; left: 58px; top: 100px; }
+
+  .cscv-h1 { position: absolute; left: 54px; top: 118px; font-size: 37px; }
+  .cscv-h1-en { position: absolute; left: 58px; top: 167px; font-size: 22px; }
+
+  /* evidence column, right-aligned to 1456 */
+  .cscv-stamp { position: absolute; right: 56px; top: 44px; }
+  .cscv-serial { position: absolute; right: 56px; top: 98px; text-align: right; }
+  .cscv-barcode { position: absolute; right: 56px; top: 120px; color: #0a0d10; }
+  .cscv-proof { position: absolute; right: 56px; top: 190px; text-align: right; }
+  .cscv-meta { position: absolute; right: 56px; top: 212px; text-align: right; color: #5f666e; }
+</style>
+</head>
+<body>
+<div class="art cscv">
+  <div class="cscv-grid"></div>
+  <span class="cscv-reg tl"></span><span class="cscv-reg tr"></span>
+  <span class="cscv-reg bl"></span><span class="cscv-reg br"></span>
+
+  <img class="cscv-logo" src="../../kit/assets/logo-color.png" alt="JAZZFRONT Consulting" data-critical>
+
+  <div class="cscv-ticks"></div>
+  <div class="cscv-kicker" data-critical>CSCV · 中国供应链核验 · CHINA SUPPLY CHAIN VERIFICATION</div>
+  <h1 class="cscv-h1" data-critical data-lang="zh">付款之前，把「能不能生产」变成事实。</h1>
+  <p class="cscv-h1-en" data-critical data-lang="en">Before payment, turn “can they produce?” into a fact.</p>
+
+  <span class="cscv-stamp" data-critical>ON-SITE VERIFIED · 现场核验</span>
+  <div class="cscv-serial cscv-mono">CSCV / FIELD DOSSIER · NOV 2026</div>
+  <div class="cscv-barcode cscv-barcode"></div>
+  <div class="cscv-proof" data-critical><b>只向买方收费</b> · PAID ONLY BY THE BUYER</div>
+  <div class="cscv-meta cscv-mono">JAZZFRONT Consulting™ · CSCV · JFC.Consulting@outlook.com</div>
+</div>
+</body>
+</html>

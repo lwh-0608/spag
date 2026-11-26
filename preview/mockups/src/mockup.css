@@ -1,0 +1,45 @@
+/* Illustrative platform-UI mockup. Not a real platform screenshot; the chrome
+   is drawn generically so reviewers can judge how the banner sits in context. */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #e9eaec; }
+body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+
+.sheet { width: 2160px; padding: 36px 40px 32px; }
+.sheet-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 26px; }
+.sheet-title { font-size: 22px; font-weight: 700; color: #16181c; letter-spacing: -.01em; }
+.sheet-note { font-size: 12px; color: #6b7076; letter-spacing: .02em; }
+
+.pair { display: flex; gap: 40px; align-items: flex-start; }
+.col { width: 1000px; }
+.state { font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; margin: 0 0 12px 4px; }
+.state--before { color: #8a9097; }
+.state--after { color: #1f7a4d; }
+
+.card { width: 1000px; background: #fff; border: 1px solid #dfe1e5; border-radius: 10px; overflow: hidden; }
+
+.banner { position: relative; width: 1000px; overflow: hidden; background: #d9dcdf; }
+.banner img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.banner--empty {
+  background: linear-gradient(135deg, #eceef0 0%, #dfe2e5 55%, #e7e9ec 100%);
+  display: flex; align-items: center; justify-content: center;
+}
+.banner--empty span {
+  font-size: 15px; color: #9aa0a6; letter-spacing: .04em;
+  border: 1px dashed #b9bec4; padding: 8px 16px; border-radius: 4px;
+}
+
+.identity { position: relative; padding: 0 36px 30px; }
+.avatar {
+  width: 100px; height: 100px; border-radius: 50%; background: #0a295b;
+  border: 4px solid #fff; margin-top: -48px; position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.avatar img { width: 100%; height: 100%; object-fit: contain; background: #fff; }
+.avatar--square { border-radius: 14px; }
+.identity h1 { margin: 14px 0 4px; font-size: 26px; letter-spacing: -.01em; color: #16181c; }
+.identity .sub { font-size: 15px; color: #4d5257; margin: 0 0 3px; }
+.identity .meta { font-size: 13px; color: #7b8187; margin: 0; }
+.identity .tag { display: inline-block; margin-top: 12px; font-size: 12px; color: #4d5257; border: 1px solid #d5d8dc; border-radius: 999px; padding: 4px 12px; }
+
+.caption { margin: 26px 4px 0; font-size: 12px; color: #7b8187; line-height: 1.5; }
+.caption b { color: #4d5257; font-weight: 600; }

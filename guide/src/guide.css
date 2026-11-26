@@ -1,0 +1,104 @@
+/* JFC / CSCV social banner template kit — A4 brand guide (print PDF). */
+@font-face { font-family: "Archivo"; font-weight: 800; font-display: block;
+  src: url("../../banners/kit/assets/fonts/archivo-800-latin.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 400; font-display: block;
+  src: url("../../banners/kit/assets/fonts/inter-400-latin.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 600; font-display: block;
+  src: url("../../banners/kit/assets/fonts/inter-600-latin.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 400; font-display: block;
+  src: url("../../banners/kit/assets/fonts/jetbrains-mono-400-latin.woff2") format("woff2"); }
+
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+  color: #14213a; background: #e7eef9; -webkit-font-smoothing: antialiased;
+}
+.zh { font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
+.mono { font-family: "SF Mono", "JetBrains Mono", Menlo, monospace; }
+
+.page {
+  position: relative; width: 210mm; height: 297mm; overflow: hidden;
+  background: #f4f7fc; padding: 15mm 16mm 13mm; break-after: page;
+}
+.page:last-child { break-after: auto; }
+.page--dark { background: #0a295b; color: #e7f0fd; }
+
+/* cover */
+.cover { background: linear-gradient(152deg, #061a3b 0%, #0a295b 58%, #0d3370 100%); color: #e7f0fd; }
+.cover .leafwm { position: absolute; right: -70mm; top: -90mm; height: 300mm; opacity: .06; }
+.cover .top { display: flex; justify-content: space-between; align-items: flex-start; }
+.cover img.logo { height: 13mm; }
+.cover .tag { font-size: 7.5pt; letter-spacing: .22em; text-transform: uppercase; color: #9db4d8; }
+.cover h1 { margin: 34mm 0 4mm; font-family: "PingFang SC", sans-serif; font-weight: 600; font-size: 30pt; line-height: 1.22; letter-spacing: .01em; }
+.cover h1 .en { display: block; margin-top: 3mm; font-family: "Avenir Next", sans-serif; font-size: 14pt; font-weight: 500; color: #c7d8f0; letter-spacing: .01em; }
+.cover .lead { width: 118mm; font-size: 9pt; line-height: 1.75; color: #c7d8f0; }
+.cover .lead + .lead { margin-top: 2.2mm; }
+.cover .strip { position: absolute; left: 16mm; right: 16mm; bottom: 34mm; display: grid; gap: 4mm; }
+.cover .strip img { width: 100%; display: block; border: 1px solid rgba(231,240,253,.18); }
+.cover .foot { position: absolute; left: 16mm; right: 16mm; bottom: 13mm; display: flex; justify-content: space-between; font-size: 7pt; letter-spacing: .1em; color: #9db4d8; text-transform: uppercase; }
+
+/* generic page furniture */
+.kicker { font-family: "SF Mono", "JetBrains Mono", Menlo, monospace; font-size: 7.5pt; letter-spacing: .2em; text-transform: uppercase; color: #2e9d74; }
+h2 { margin: 2mm 0 1mm; font-family: "PingFang SC", sans-serif; font-size: 19pt; font-weight: 600; color: #0a295b; letter-spacing: .01em; }
+h2 .en { display: block; margin-top: 1.2mm; font-family: "Avenir Next", sans-serif; font-size: 10.5pt; font-weight: 500; color: #5b6b85; letter-spacing: .01em; }
+h3 { margin: 0 0 1.6mm; font-family: "PingFang SC", sans-serif; font-size: 10.5pt; font-weight: 600; color: #0a295b; }
+h3 .en { font-family: "Avenir Next", sans-serif; font-size: 8pt; font-weight: 500; color: #6b7a92; }
+p { margin: 0 0 2mm; font-size: 8.4pt; line-height: 1.66; color: #2a3a55; }
+p .en, .en { font-family: "Avenir Next", sans-serif; }
+p.en { font-size: 7.6pt; line-height: 1.55; color: #5b6b85; margin-top: -1mm; }
+.rule { height: 2.2mm; width: 22mm; background: #2e9d74; margin: 0 0 4mm; }
+.foot { position: absolute; left: 16mm; right: 16mm; bottom: 8mm; display: flex; justify-content: space-between; font-size: 6.8pt; color: #8291a8; letter-spacing: .12em; text-transform: uppercase; font-family: "SF Mono", "JetBrains Mono", Menlo, monospace; }
+
+/* tables */
+table { width: 100%; border-collapse: collapse; font-size: 7.4pt; }
+th { text-align: left; font-family: "SF Mono", "JetBrains Mono", Menlo, monospace; font-size: 6.6pt; letter-spacing: .1em; text-transform: uppercase; color: #5b6b85; border-bottom: 1px solid #b9c6dc; padding: 1.6mm 1.4mm; }
+td { padding: 1.7mm 1.4mm; border-bottom: 1px solid #d7e0ee; vertical-align: top; color: #2a3a55; }
+td code, .code { font-family: "SF Mono", "JetBrains Mono", Menlo, monospace; font-size: 6.8pt; color: #0a295b; }
+tr.hl td { background: #eaf1fc; }
+
+/* swatches */
+.swatches { display: flex; gap: 2.2mm; margin: 1.5mm 0 4mm; }
+.sw { flex: 1; }
+.sw .chip { height: 12mm; border: 1px solid rgba(10,41,91,.14); }
+.sw .lab { margin-top: 1.2mm; font-family: "SF Mono", "JetBrains Mono", Menlo, monospace; font-size: 5.9pt; color: #5b6b85; line-height: 1.45; }
+.sw .lab b { color: #14213a; font-weight: 600; }
+
+/* two columns */
+.cols { display: flex; gap: 7mm; }
+.cols > div { flex: 1; min-width: 0; }
+.card { background: #fff; border: 1px solid #d7e0ee; padding: 4.2mm 4.5mm; }
+.card--dark { background: #0a0d10; border-color: #0a0d10; color: #f1ede3; }
+.card--paper { background: #f1ede3; border-color: #d9d2c0; color: #0a0d10; }
+.card h4 { margin: 0 0 1.6mm; font-size: 8.6pt; font-weight: 600; color: inherit; font-family: "PingFang SC", sans-serif; }
+.card h4 .en { font-family: "Avenir Next", sans-serif; font-size: 7pt; font-weight: 500; opacity: .65; }
+.card ul { margin: 0; padding-left: 3.6mm; }
+.card li { font-size: 7.5pt; line-height: 1.62; margin-bottom: 1mm; color: inherit; }
+.card li .en { display: block; font-size: 6.9pt; opacity: .62; line-height: 1.45; }
+
+.banner { width: 100%; display: block; border: 1px solid #cdd9ea; }
+.caption { margin-top: 1.6mm; font-family: "SF Mono", "JetBrains Mono", Menlo, monospace; font-size: 6pt; letter-spacing: .08em; text-transform: uppercase; color: #7b8aa2; }
+.note { padding: 2.6mm 3.2mm; background: #eaf1fc; border-left: 2.2mm solid #2c63e0; font-size: 7.3pt; line-height: 1.6; color: #2a3a55; }
+.note b { color: #0a295b; }
+.specimen { font-family: "PingFang SC", sans-serif; }
+.specimen .big { font-size: 20pt; font-weight: 600; color: #0a295b; }
+.specimen .mid { font-family: "Avenir Next", sans-serif; font-size: 10pt; color: #4d6286; margin-top: 1mm; }
+.specimen .small { font-family: "SF Mono", Menlo, monospace; font-size: 6.4pt; letter-spacing: .14em; text-transform: uppercase; color: #7b8aa2; margin-top: 1.4mm; }
+
+.safezones { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm 5mm; }
+.safezones figure { margin: 0; }
+.safezones img { width: 100%; display: block; border: 1px solid #cdd9ea; }
+.safezones figcaption { margin-top: 1.2mm; font-size: 6.6pt; color: #5b6b85; line-height: 1.45; }
+.safezones figcaption b { color: #14213a; }
+
+.tree { font-family: "SF Mono", "JetBrains Mono", Menlo, monospace; font-size: 6.9pt; line-height: 1.62; color: #2a3a55; background: #fff; border: 1px solid #d7e0ee; padding: 3.4mm 4mm; white-space: pre; }
+.cmd { font-family: "SF Mono", Menlo, monospace; font-size: 6.8pt; line-height: 1.7; background: #0a295b; color: #dce8fb; padding: 3.2mm 4mm; white-space: pre-wrap; }
+.tick { display: flex; gap: 2.4mm; margin-bottom: 1.6mm; }
+.tick .mark { width: 3.4mm; height: 3.4mm; flex: 0 0 3.4mm; margin-top: .5mm; }
+.tick .yes { background: #2e9d74; }
+.tick .no { background: #ff4d00; }
+.tick p { margin: 0; font-size: 7.5pt; line-height: 1.55; }
+.tick p .en { display: block; font-size: 6.9pt; color: #6b7a92; }
+.badge { display: inline-block; font-family: "SF Mono", Menlo, monospace; font-size: 6.2pt; letter-spacing: .12em; text-transform: uppercase; padding: 1mm 2mm; border: 1px solid #2e9d74; color: #2e9d74; }
+.badge--orange { border-color: #ff4d00; color: #ff4d00; }

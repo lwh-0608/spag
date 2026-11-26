@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>CSCV · Facebook page cover · 820×360</title>
+<link rel="stylesheet" href="../../kit/css/base.css">
+<link rel="stylesheet" href="../../kit/css/cscv.css">
+<style>
+  /* 820 × 360. mobile crop shows the middle 640 × 312 (x90..730, y24..336);
+     the outer 90 px each side is decoration only. Profile photo covers x0..100 y270..360.
+     Everything that carries meaning sits inside x120..700 / y30..330. */
+  .art { width: 820px; height: 360px; }
+
+  .cscv-reg.tl { left: 22px; top: 22px; }
+  .cscv-reg.tr { right: 22px; top: 22px; }
+  .cscv-reg.bl { left: 22px; bottom: 22px; }
+  .cscv-reg.br { right: 22px; bottom: 22px; }
+
+  .cscv-logo { position: absolute; left: 120px; top: 40px; height: 38px; }
+
+  .cscv-kicker { position: absolute; left: 122px; top: 90px; }
+
+  .cscv-h1 { position: absolute; left: 116px; top: 114px; font-size: 38px; }
+  .cscv-h1-en { position: absolute; left: 122px; top: 214px; font-size: 22px; }
+
+  .cscv-ticks { position: absolute; left: 120px; top: 272px; width: 580px; }
+
+  .cscv-three { position: absolute; left: 122px; top: 288px; font-size: 16px; font-weight: 500; color: #0a0d10; }
+  .cscv-three-en { position: absolute; left: 122px; top: 311px; }
+
+  .art .cscv-stamp { position: absolute; right: 120px; top: 42px; font-size: 11px; padding: .5em .8em; }
+  .cscv-serial { position: absolute; right: 120px; top: 311px; text-align: right; }
+  .cscv-barcode { position: absolute; right: 120px; top: 96px; color: #0a0d10; }
+  .cscv-proof { position: absolute; right: 120px; top: 288px; text-align: right; }
+</style>
+</head>
+<body>
+<div class="art cscv">
+  <div class="cscv-grid"></div>
+  <span class="cscv-reg tl"></span><span class="cscv-reg tr"></span>
+  <span class="cscv-reg bl"></span><span class="cscv-reg br"></span>
+
+  <img class="cscv-logo" src="../../kit/assets/logo-color.png" alt="JAZZFRONT Consulting" data-critical>
+
+  <div class="cscv-kicker" data-critical>CSCV · 中国供应链核验 · CHINA SUPPLY CHAIN VERIFICATION</div>
+  <h1 class="cscv-h1" data-critical data-lang="zh">付款之前，把「能不能生产」<br>变成事实。</h1>
+  <p class="cscv-h1-en" data-critical data-lang="en">Before payment, turn “can they produce?”<br>into a fact.</p>
+  <div class="cscv-ticks"></div>
+  <div class="cscv-three" data-critical data-lang="zh">主体 · 产能 · 风险</div>
+  <div class="cscv-three-en cscv-mono">ENTITY · CAPACITY · RISK</div>
+
+  <span class="cscv-stamp" data-critical>ON-SITE VERIFIED · 现场核验</span>
+  <div class="cscv-serial cscv-mono">CSCV / FIELD DOSSIER · NOV 2026</div>
+  <div class="cscv-barcode cscv-barcode"></div>
+  <div class="cscv-proof" data-critical><b>只向买方收费</b> · PAID ONLY BY THE BUYER</div>
+</div>
+</body>
+</html>

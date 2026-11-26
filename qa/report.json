@@ -1,0 +1,782 @@
+{
+  "jfc": {
+    "linkedin-personal": {
+      "status": "pass",
+      "checks": [
+        {
+          "name": "png_size",
+          "ok": true,
+          "detail": "(1584, 396) vs (1584, 396)",
+          "level": "pass"
+        },
+        {
+          "name": "png_2x_size",
+          "ok": true,
+          "detail": "(3168, 792) vs (3168, 792)",
+          "level": "pass"
+        },
+        {
+          "name": "artboard",
+          "ok": true,
+          "detail": "artboards=1",
+          "level": "pass"
+        },
+        {
+          "name": "no_overflow",
+          "ok": true,
+          "detail": "scroll=1584x396",
+          "level": "pass"
+        },
+        {
+          "name": "critical_present",
+          "ok": true,
+          "detail": "8 critical elements",
+          "level": "pass"
+        },
+        {
+          "name": "inside_safe",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        },
+        {
+          "name": "outside_blocked",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        },
+        {
+          "name": "no_text_collision",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        },
+        {
+          "name": "fonts_loaded",
+          "ok": true,
+          "detail": "missing=[]; {'status': 'loaded', 'avenir': True, 'pingfang': True, 'archivo': False, 'inter': False, 'mono': True}",
+          "level": "pass"
+        },
+        {
+          "name": "bilingual",
+          "ok": true,
+          "detail": "cjk=49 latin=228",
+          "level": "pass"
+        },
+        {
+          "name": "lang_pairs",
+          "ok": true,
+          "detail": "langs=['en', 'zh']",
+          "level": "pass"
+        },
+        {
+          "name": "min_font",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        },
+        {
+          "name": "small_font_warn",
+          "ok": true,
+          "detail": "'BOUTIQUE INTERNATIONAL C' 10.0px; 'CHINA SUPPLY CHAIN VERIF' 10.0px",
+          "level": "pass"
+        }
+      ]
+    },
+    "linkedin-company": {
+      "status": "pass",
+      "checks": [
+        {
+          "name": "png_size",
+          "ok": true,
+          "detail": "(1512, 256) vs (1512, 256)",
+          "level": "pass"
+        },
+        {
+          "name": "png_2x_size",
+          "ok": true,
+          "detail": "(3024, 512) vs (3024, 512)",
+          "level": "pass"
+        },
+        {
+          "name": "artboard",
+          "ok": true,
+          "detail": "artboards=1",
+          "level": "pass"
+        },
+        {
+          "name": "no_overflow",
+          "ok": true,
+          "detail": "scroll=1512x256",
+          "level": "pass"
+        },
+        {
+          "name": "critical_present",
+          "ok": true,
+          "detail": "8 critical elements",
+          "level": "pass"
+        },
+        {
+          "name": "inside_safe",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        },
+        {
+          "name": "outside_blocked",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        },
+        {
+          "name": "no_text_collision",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        },
+        {
+          "name": "fonts_loaded",
+          "ok": true,
+          "detail": "missing=[]; {'status': 'loaded', 'avenir': True, 'pingfang': True, 'archivo': False, 'inter': False, 'mono': True}",
+          "level": "pass"
+        },
+        {
+          "name": "bilingual",
+          "ok": true,
+          "detail": "cjk=29 latin=151",
+          "level": "pass"
+        },
+        {
+          "name": "lang_pairs",
+          "ok": true,
+          "detail": "langs=['en', 'zh']",
+          "level": "pass"
+        },
+        {
+          "name": "min_font",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        }
+      ]
+    },
+    "x-header": {
+      "status": "pass",
+      "checks": [
+        {
+          "name": "png_size",
+          "ok": true,
+          "detail": "(1500, 500) vs (1500, 500)",
+          "level": "pass"
+        },
+        {
+          "name": "png_2x_size",
+          "ok": true,
+          "detail": "(3000, 1000) vs (3000, 1000)",
+          "level": "pass"
+        },
+        {
+          "name": "artboard",
+          "ok": true,
+          "detail": "artboards=1",
+          "level": "pass"
+        },
+        {
+          "name": "no_overflow",
+          "ok": true,
+          "detail": "scroll=1500x500",
+          "level": "pass"
+        },
+        {
+          "name": "critical_present",
+          "ok": true,
+          "detail": "10 critical elements",
+          "level": "pass"
+        },
+        {
+          "name": "inside_safe",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        },
+        {
+          "name": "outside_blocked",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        },
+        {
+          "name": "no_text_collision",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        },
+        {
+          "name": "fonts_loaded",
+          "ok": true,
+          "detail": "missing=[]; {'status': 'loaded', 'avenir': True, 'pingfang': True, 'archivo': False, 'inter': False, 'mono': True}",
+          "level": "pass"
+        },
+        {
+          "name": "bilingual",
+          "ok": true,
+          "detail": "cjk=49 latin=228",
+          "level": "pass"
+        },
+        {
+          "name": "lang_pairs",
+          "ok": true,
+          "detail": "langs=['en', 'zh']",
+          "level": "pass"
+        },
+        {
+          "name": "min_font",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        }
+      ]
+    },
+    "facebook-cover": {
+      "status": "pass",
+      "checks": [
+        {
+          "name": "png_size",
+          "ok": true,
+          "detail": "(820, 360) vs (820, 360)",
+          "level": "pass"
+        },
+        {
+          "name": "png_2x_size",
+          "ok": true,
+          "detail": "(1640, 720) vs (1640, 720)",
+          "level": "pass"
+        },
+        {
+          "name": "artboard",
+          "ok": true,
+          "detail": "artboards=1",
+          "level": "pass"
+        },
+        {
+          "name": "no_overflow",
+          "ok": true,
+          "detail": "scroll=820x360",
+          "level": "pass"
+        },
+        {
+          "name": "critical_present",
+          "ok": true,
+          "detail": "8 critical elements",
+          "level": "pass"
+        },
+        {
+          "name": "inside_safe",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        },
+        {
+          "name": "outside_blocked",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        },
+        {
+          "name": "no_text_collision",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        },
+        {
+          "name": "fonts_loaded",
+          "ok": true,
+          "detail": "missing=[]; {'status': 'loaded', 'avenir': True, 'pingfang': True, 'archivo': False, 'inter': False, 'mono': True}",
+          "level": "pass"
+        },
+        {
+          "name": "bilingual",
+          "ok": true,
+          "detail": "cjk=29 latin=151",
+          "level": "pass"
+        },
+        {
+          "name": "lang_pairs",
+          "ok": true,
+          "detail": "langs=['en', 'zh']",
+          "level": "pass"
+        },
+        {
+          "name": "min_font",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        }
+      ]
+    },
+    "youtube-channel": {
+      "status": "pass",
+      "checks": [
+        {
+          "name": "png_size",
+          "ok": true,
+          "detail": "(2560, 1440) vs (2560, 1440)",
+          "level": "pass"
+        },
+        {
+          "name": "png_2x_size",
+          "ok": true,
+          "detail": "(5120, 2880) vs (5120, 2880)",
+          "level": "pass"
+        },
+        {
+          "name": "artboard",
+          "ok": true,
+          "detail": "artboards=1",
+          "level": "pass"
+        },
+        {
+          "name": "no_overflow",
+          "ok": true,
+          "detail": "scroll=2560x1440",
+          "level": "pass"
+        },
+        {
+          "name": "critical_present",
+          "ok": true,
+          "detail": "8 critical elements",
+          "level": "pass"
+        },
+        {
+          "name": "inside_safe",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        },
+        {
+          "name": "outside_blocked",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        },
+        {
+          "name": "no_text_collision",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        },
+        {
+          "name": "fonts_loaded",
+          "ok": true,
+          "detail": "missing=[]; {'status': 'loaded', 'avenir': True, 'pingfang': True, 'archivo': False, 'inter': False, 'mono': True}",
+          "level": "pass"
+        },
+        {
+          "name": "bilingual",
+          "ok": true,
+          "detail": "cjk=29 latin=151",
+          "level": "pass"
+        },
+        {
+          "name": "lang_pairs",
+          "ok": true,
+          "detail": "langs=['en', 'zh']",
+          "level": "pass"
+        },
+        {
+          "name": "min_font",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        }
+      ]
+    }
+  },
+  "cscv": {
+    "linkedin-personal": {
+      "status": "pass",
+      "checks": [
+        {
+          "name": "png_size",
+          "ok": true,
+          "detail": "(1584, 396) vs (1584, 396)",
+          "level": "pass"
+        },
+        {
+          "name": "png_2x_size",
+          "ok": true,
+          "detail": "(3168, 792) vs (3168, 792)",
+          "level": "pass"
+        },
+        {
+          "name": "artboard",
+          "ok": true,
+          "detail": "artboards=1",
+          "level": "pass"
+        },
+        {
+          "name": "no_overflow",
+          "ok": true,
+          "detail": "scroll=1584x396",
+          "level": "pass"
+        },
+        {
+          "name": "critical_present",
+          "ok": true,
+          "detail": "7 critical elements",
+          "level": "pass"
+        },
+        {
+          "name": "inside_safe",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        },
+        {
+          "name": "outside_blocked",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        },
+        {
+          "name": "no_text_collision",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        },
+        {
+          "name": "fonts_loaded",
+          "ok": true,
+          "detail": "missing=[]; {'status': 'loaded', 'avenir': True, 'pingfang': True, 'archivo': True, 'inter': True, 'mono': True}",
+          "level": "pass"
+        },
+        {
+          "name": "bilingual",
+          "ok": true,
+          "detail": "cjk=37 latin=183",
+          "level": "pass"
+        },
+        {
+          "name": "lang_pairs",
+          "ok": true,
+          "detail": "langs=['en', 'zh']",
+          "level": "pass"
+        },
+        {
+          "name": "min_font",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        }
+      ]
+    },
+    "linkedin-company": {
+      "status": "pass",
+      "checks": [
+        {
+          "name": "png_size",
+          "ok": true,
+          "detail": "(1512, 256) vs (1512, 256)",
+          "level": "pass"
+        },
+        {
+          "name": "png_2x_size",
+          "ok": true,
+          "detail": "(3024, 512) vs (3024, 512)",
+          "level": "pass"
+        },
+        {
+          "name": "artboard",
+          "ok": true,
+          "detail": "artboards=1",
+          "level": "pass"
+        },
+        {
+          "name": "no_overflow",
+          "ok": true,
+          "detail": "scroll=1512x256",
+          "level": "pass"
+        },
+        {
+          "name": "critical_present",
+          "ok": true,
+          "detail": "6 critical elements",
+          "level": "pass"
+        },
+        {
+          "name": "inside_safe",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        },
+        {
+          "name": "outside_blocked",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        },
+        {
+          "name": "no_text_collision",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        },
+        {
+          "name": "fonts_loaded",
+          "ok": true,
+          "detail": "missing=[]; {'status': 'loaded', 'avenir': True, 'pingfang': True, 'archivo': True, 'inter': True, 'mono': True}",
+          "level": "pass"
+        },
+        {
+          "name": "bilingual",
+          "ok": true,
+          "detail": "cjk=31 latin=169",
+          "level": "pass"
+        },
+        {
+          "name": "lang_pairs",
+          "ok": true,
+          "detail": "langs=['en', 'zh']",
+          "level": "pass"
+        },
+        {
+          "name": "min_font",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        }
+      ]
+    },
+    "x-header": {
+      "status": "pass",
+      "checks": [
+        {
+          "name": "png_size",
+          "ok": true,
+          "detail": "(1500, 500) vs (1500, 500)",
+          "level": "pass"
+        },
+        {
+          "name": "png_2x_size",
+          "ok": true,
+          "detail": "(3000, 1000) vs (3000, 1000)",
+          "level": "pass"
+        },
+        {
+          "name": "artboard",
+          "ok": true,
+          "detail": "artboards=1",
+          "level": "pass"
+        },
+        {
+          "name": "no_overflow",
+          "ok": true,
+          "detail": "scroll=1500x500",
+          "level": "pass"
+        },
+        {
+          "name": "critical_present",
+          "ok": true,
+          "detail": "8 critical elements",
+          "level": "pass"
+        },
+        {
+          "name": "inside_safe",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        },
+        {
+          "name": "outside_blocked",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        },
+        {
+          "name": "no_text_collision",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        },
+        {
+          "name": "fonts_loaded",
+          "ok": true,
+          "detail": "missing=[]; {'status': 'loaded', 'avenir': True, 'pingfang': True, 'archivo': True, 'inter': True, 'mono': True}",
+          "level": "pass"
+        },
+        {
+          "name": "bilingual",
+          "ok": true,
+          "detail": "cjk=49 latin=221",
+          "level": "pass"
+        },
+        {
+          "name": "lang_pairs",
+          "ok": true,
+          "detail": "langs=['en', 'zh']",
+          "level": "pass"
+        },
+        {
+          "name": "min_font",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        }
+      ]
+    },
+    "facebook-cover": {
+      "status": "pass",
+      "checks": [
+        {
+          "name": "png_size",
+          "ok": true,
+          "detail": "(820, 360) vs (820, 360)",
+          "level": "pass"
+        },
+        {
+          "name": "png_2x_size",
+          "ok": true,
+          "detail": "(1640, 720) vs (1640, 720)",
+          "level": "pass"
+        },
+        {
+          "name": "artboard",
+          "ok": true,
+          "detail": "artboards=1",
+          "level": "pass"
+        },
+        {
+          "name": "no_overflow",
+          "ok": true,
+          "detail": "scroll=820x360",
+          "level": "pass"
+        },
+        {
+          "name": "critical_present",
+          "ok": true,
+          "detail": "7 critical elements",
+          "level": "pass"
+        },
+        {
+          "name": "inside_safe",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        },
+        {
+          "name": "outside_blocked",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        },
+        {
+          "name": "no_text_collision",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        },
+        {
+          "name": "fonts_loaded",
+          "ok": true,
+          "detail": "missing=[]; {'status': 'loaded', 'avenir': True, 'pingfang': True, 'archivo': True, 'inter': True, 'mono': True}",
+          "level": "pass"
+        },
+        {
+          "name": "bilingual",
+          "ok": true,
+          "detail": "cjk=37 latin=141",
+          "level": "pass"
+        },
+        {
+          "name": "lang_pairs",
+          "ok": true,
+          "detail": "langs=['en', 'zh']",
+          "level": "pass"
+        },
+        {
+          "name": "min_font",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        }
+      ]
+    },
+    "youtube-channel": {
+      "status": "pass",
+      "checks": [
+        {
+          "name": "png_size",
+          "ok": true,
+          "detail": "(2560, 1440) vs (2560, 1440)",
+          "level": "pass"
+        },
+        {
+          "name": "png_2x_size",
+          "ok": true,
+          "detail": "(5120, 2880) vs (5120, 2880)",
+          "level": "pass"
+        },
+        {
+          "name": "artboard",
+          "ok": true,
+          "detail": "artboards=1",
+          "level": "pass"
+        },
+        {
+          "name": "no_overflow",
+          "ok": true,
+          "detail": "scroll=2560x1440",
+          "level": "pass"
+        },
+        {
+          "name": "critical_present",
+          "ok": true,
+          "detail": "7 critical elements",
+          "level": "pass"
+        },
+        {
+          "name": "inside_safe",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        },
+        {
+          "name": "outside_blocked",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        },
+        {
+          "name": "no_text_collision",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        },
+        {
+          "name": "fonts_loaded",
+          "ok": true,
+          "detail": "missing=[]; {'status': 'loaded', 'avenir': True, 'pingfang': True, 'archivo': True, 'inter': True, 'mono': True}",
+          "level": "pass"
+        },
+        {
+          "name": "bilingual",
+          "ok": true,
+          "detail": "cjk=37 latin=157",
+          "level": "pass"
+        },
+        {
+          "name": "lang_pairs",
+          "ok": true,
+          "detail": "langs=['en', 'zh']",
+          "level": "pass"
+        },
+        {
+          "name": "min_font",
+          "ok": true,
+          "detail": "",
+          "level": "pass"
+        }
+      ]
+    }
+  }
+}
