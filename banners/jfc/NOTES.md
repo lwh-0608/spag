@@ -138,3 +138,17 @@ line is the stronger, differentiating line. meta_en dropped.
   intentionally empty (mobile crop and avatar area), which may read as generous space rather than a void.
 - No pricing, clients, certifications, guarantees or new claims were introduced; nothing outside
   `banners/jfc/` was modified; no git commands run.
+
+
+## Revision 2026-11-26 (v1.2) — sync to latest CSCV information
+
+The CSCV service line was updated by the latest approved CSCV card copy (Gordon revision,
+2026-11-25; official card set shipped 2026-11-26 with USD prices). JFC banners therefore
+carry the updated service line on all five formats:
+
+- `service_cn`: 中国供应链核验（CSCV）· 只为买方工作 → **中国供应链核验（CSCV）· 专为无法亲临现场的买家设计**
+- `service_en`: CHINA SUPPLY CHAIN VERIFICATION · PAID ONLY BY THE BUYER → **CHINA SUPPLY CHAIN VERIFICATION · FOR BUYERS WHO CANNOT BE ON SITE**
+
+Headline / positioning / contact / coordinates unchanged. Layouts re-rendered and checked
+(safe areas, no collisions, fonts, bilingual); the service line fits every format at its
+existing size.

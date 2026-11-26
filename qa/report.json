@@ -60,7 +60,7 @@
         {
           "name": "bilingual",
           "ok": true,
-          "detail": "cjk=49 latin=228",
+          "detail": "cjk=56 latin=236",
           "level": "pass"
         },
         {
@@ -143,7 +143,7 @@
         {
           "name": "bilingual",
           "ok": true,
-          "detail": "cjk=29 latin=151",
+          "detail": "cjk=36 latin=159",
           "level": "pass"
         },
         {
@@ -220,7 +220,7 @@
         {
           "name": "bilingual",
           "ok": true,
-          "detail": "cjk=49 latin=228",
+          "detail": "cjk=56 latin=236",
           "level": "pass"
         },
         {
@@ -297,7 +297,7 @@
         {
           "name": "bilingual",
           "ok": true,
-          "detail": "cjk=29 latin=151",
+          "detail": "cjk=36 latin=159",
           "level": "pass"
         },
         {
@@ -374,7 +374,7 @@
         {
           "name": "bilingual",
           "ok": true,
-          "detail": "cjk=29 latin=151",
+          "detail": "cjk=36 latin=159",
           "level": "pass"
         },
         {
@@ -453,7 +453,7 @@
         {
           "name": "bilingual",
           "ok": true,
-          "detail": "cjk=37 latin=187",
+          "detail": "cjk=42 latin=193",
           "level": "pass"
         },
         {
@@ -530,7 +530,7 @@
         {
           "name": "bilingual",
           "ok": true,
-          "detail": "cjk=31 latin=173",
+          "detail": "cjk=36 latin=179",
           "level": "pass"
         },
         {
@@ -607,7 +607,7 @@
         {
           "name": "bilingual",
           "ok": true,
-          "detail": "cjk=49 latin=225",
+          "detail": "cjk=57 latin=230",
           "level": "pass"
         },
         {
@@ -684,7 +684,7 @@
         {
           "name": "bilingual",
           "ok": true,
-          "detail": "cjk=37 latin=145",
+          "detail": "cjk=42 latin=151",
           "level": "pass"
         },
         {
@@ -761,7 +761,7 @@
         {
           "name": "bilingual",
           "ok": true,
-          "detail": "cjk=37 latin=161",
+          "detail": "cjk=42 latin=167",
           "level": "pass"
         },
         {

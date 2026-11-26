@@ -31,8 +31,8 @@ SHEET_W = 2160
 IDENTITY = {
     "jfc": {
         "name": "JAZZFRONT Consulting™",
-        "sub_cn": "中国供应链核验 · 只为买方工作",
-        "sub_en": "China Supply Chain Verification · Paid only by the buyer",
+        "sub_cn": "中国供应链核验 · 专为无法亲临现场的买家设计",
+        "sub_en": "China Supply Chain Verification · For buyers who cannot be on site.",
         "meta": "Nansha, Guangzhou, China · 广州南沙",
         "tag": "Boutique international consulting",
         "logo": "banners/kit/assets/logo-color.png",
@@ -40,8 +40,8 @@ IDENTITY = {
     },
     "cscv": {
         "name": "CSCV · 中国供应链核验",
-        "sub_cn": "采购之前，到现场核实主体、产能、风险。",
-        "sub_en": "On-site verification before procurement: entity, capacity, risk.",
+        "sub_cn": "专为无法亲临现场的买家设计。",
+        "sub_en": "For buyers who cannot be on site.",
         "meta": "JAZZFRONT Consulting™ · CSCV · Nansha, Guangzhou",
         "tag": "Field dossier / 现场档案",
         "logo": "banners/kit/assets/logo-color.png",
@@ -183,7 +183,7 @@ def contact_sheet():
 
     d.text((pad, 54), "JFC / CSCV", font=f_title, fill="#e7f0fd")
     d.text((pad, 122), "官方社媒背景横幅模板 · Social Banner Template Kit", font=f_title_cn, fill="#ffffff")
-    d.text((pad, 182), "5 formats × 2 brands · LinkedIn / X / Facebook / YouTube · November 2026 · v1.0",
+    d.text((pad, 182), "5 formats × 2 brands · LinkedIn / X / Facebook / YouTube · November 2026 · v1.2",
            font=f_sub, fill="#9db4d8")
 
     brand_names = {"jfc": ("JFC 公司品牌 · 机构蓝", "JFC company brand · Institutional Blue"),

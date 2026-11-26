@@ -166,3 +166,24 @@ min font 15 px inside the band.
    band by design (decorative watermark lettering, allowed to bleed). No data-critical
    content is outside the band.
 5. The `linkedin-personal` flagship was not touched; the five exports form one family.
+
+
+## Revision 2026-11-26 (v1.2) — sync to latest CSCV information
+
+Source: the latest approved CSCV card copy — Gordon's revised *CSCV Profile Card* DOCX
+(2026-11-25), shipped as the official CSCV card set on 2026-11-26 (prices converted to USD,
+15-year team / American founder claims, new service and evidence headlines). Banners do not
+carry prices; the positioning/claims were synced as follows:
+
+- `headline_cn`: 采购之前，把「能不能生产」变成事实。→ **采购之前您所需的事实，由我们亲临现场核验。**
+- `headline_en`: Before procurement, turn “can they produce?” into a fact. → **The facts you need before procurement, verified on site by us.**
+- `scope_cn` / `scope_en` (x-header evidence plate): 每份报告逐条列出未核验项 / EVERY REPORT LISTS WHAT COULD NOT BE VERIFIED → **每一项发现均有可审计的证据支撑 / EVERY FINDING BACKED BY AUDITABLE EVIDENCE**
+- `proof_cn`: 只向买方收费 → **只向买家收费** (English unchanged: PAID ONLY BY THE BUYER)
+- `short_cn` / `short_en` and the three-question line keep their approved wording; stamp,
+  serial, barcode and meta are unchanged.
+
+The latest card title still reads "付款前您所需的事实…"; on banners the wording follows
+Levi's banner-specific instruction (付款之前 → 采购之前), so the synced line reads
+"采购之前您所需的事实…". Layout re-composed where the longer lines required it
+(x-header headline sizes, facebook/youtube line breaks); all safe areas, collisions, fonts,
+bilingual pairing and minimum type size re-checked.

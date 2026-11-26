@@ -1,15 +1,23 @@
 # 交付说明 · JFC / CSCV 官方社媒背景横幅模板
 
-**Deliverables · Social banner template kit v1.0 · November 2026**
+**Deliverables · Social banner template kit v1.2 · November 2026**
 
 ## 1. 这是什么 / What this is
 
 一套可复用、可重新生成的官方社交平台背景横幅模板，覆盖两条品牌线：
 
 - **JFC 公司品牌 · 机构蓝（Institutional Blue）** — 沿用 JFC 公司简介与服务组合的官方视觉：官方 logo、navy `#0A295B`、冰蓝 `#E7F0FD`、官方 logo 蓝 `#2C63E0`、细绿信号线 `#2E9D74`；Avenir Next + PingFang SC。
-- **CSCV 视觉品牌 · 现场档案（Field Dossier）** — CSCV 服务线 2026 年 11 月的视觉系统：暖纸 `#F1EDE3`、墨黑 `#0A0D10`、信号橙 `#FF4D00`、核验绿 `#37E08A`；Archivo / Inter / JetBrains Mono + PingFang SC；定位十字、刻度线、证据章、条形码。
+- **CSCV 视觉品牌 · 现场档案（Field Dossier）** — CSCV 服务线 2026 年 11 月的视觉系统：暖纸 `#F1EDE3`、墨黑 `#0A0D10`、信号橙 `#FF4D00`、核验绿 `#37E08A`；Archivo / Inter / JetBrains Mono + PingFang SC；定位十字、刻度线、证据章、条形码。文案同步至 2026-11-26 最新批准的 CSCV 宣传卡信息（Gordon 修订版）：专为无法亲临现场的买家设计、每一项发现均有可审计的证据支撑、只向买家收费。
 
 每个品牌 5 个平台尺寸，共 **10 张成品 PNG**（1× 与 @2×），另附 HTML 源文件、品牌指南 PDF、平台 before/after 示意图、安全区叠加图与生成/校验脚本。
+
+## 版本记录 / Revision history
+
+| 版本 | 日期 | 变更 |
+|---|---|---|
+| v1.0 | 2026-11-26 | 首版：JFC 机构蓝 + CSCV 现场档案，5 个平台尺寸 × 2 品牌 |
+| v1.1 | 2026-11-26 | 按评审把 CSCV 文案「付款之前」改为「采购之前」（英文 before procurement） |
+| v1.2 | 2026-11-26 | 按 CSCV 最新信息（Gordon 修订版宣传卡，2026-11-25；USD 价格版正式卡 2026-11-26）同步横幅文案：标题、证据句、只向买家收费；JFC 服务行同步为「专为无法亲临现场的买家设计」 |
 
 ## 2. 文件清单 / Files
 
@@ -73,6 +81,6 @@ $PY guide/build_guide.py            # 指南 PDF
 ## 7. 来源与口径 / Sources
 
 - JFC 官方 logo（彩色 / 白色透明底）与公司简介、服务组合的 brand 层。
-- CSCV Service Definition v2（2026 年 11 月）与既有 CSCV 对外文案（`JFC.Consulting@outlook.com`、只向买方收费、主体/产能/风险等）。
+- CSCV Service Definition v2（2026 年 11 月）与 **2026-11-26 最新批准的 CSCV 宣传卡文案**（Gordon 修订版 DOCX，2026-11-25；正式版宣传卡以 USD 价格发布）：专为无法亲临现场的买家设计、每一项发现均有可审计的证据支撑、只向买家收费、五条铁律、15 年供应链团队 / 美国创始人等。横幅不展示价格；价格口径见宣传卡。
 - CSCV 现场档案设计系统：`bizmodel-redesign-8d2bab8a14d8/design/README.md`（2026-11-25）。
 - 平台尺寸：LinkedIn Help、Sprout Social、Buffer、Snappa、SocialBee（2026-11 核对，链接在 `platform_specs.py`）。
