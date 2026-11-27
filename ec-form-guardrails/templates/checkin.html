@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<title>JFC 英语角 · 签到与反馈</title>
+<style>
+  :root{
+    /* JFC 品牌：白色主体 + 金蓝为副色（对齐 jfc_doc_template 白底页眉 + 海军蓝 + 金线） */
+    --paper:#FFFFFF; --paper-deep:#F6F7F9; --card:#FFFFFF;
+    --ink:#264183; --ink-soft:#6E7684;
+    --navy:#264183;
+    --gold:#C8963E;
+    --seal:#264183; --seal-dim:rgba(38,65,131,.09);
+    --line:rgba(38,65,131,.14);
+    --ok:#1E9E6A; --bad:#C0392B;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    border-top:6px solid var(--gold);          /* 金线压顶，与二维码桌卡呼应 */
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",Arial,sans-serif;
+    -webkit-font-smoothing:antialiased; font-size:16px; line-height:1.5;
+  }
+  .wrap{max-width:560px; margin:0 auto; padding:28px 20px 56px;}
+  .brand{font-size:13px; letter-spacing:.18em; text-transform:uppercase; color:var(--seal); font-weight:700;}
+  /* JFC logo 自带白底；页面改为白底主体后无需承载牌，图案直接浮在白页上 */
+  .logo-plate{display:inline-block; margin-bottom:20px; line-height:0;}
+  .logo-plate img{display:block; width:150px; height:auto;}
+  h1{font-size:30px; font-weight:800; margin:8px 0 4px; letter-spacing:-.02em;}
+  .sub{color:var(--ink-soft); font-size:14px; margin:0 0 26px;}
+
+  /* ── 一码两页：签到 / 反馈 切换 ────────────────────────────── */
+  .tabs{display:flex; gap:6px; background:var(--paper-deep); border:1px solid var(--line);
+    border-radius:14px; padding:5px; margin:0 0 26px;}
+  .tabs [role="tab"]{
+    flex:1; padding:11px 10px; border:0; border-radius:10px; background:transparent;
+    font-family:inherit; font-size:15px; font-weight:700; color:var(--ink-soft);
+    cursor:pointer; letter-spacing:.02em; line-height:1.25;
+  }
+  .tabs [role="tab"] .en{display:block; font-size:10px; font-weight:500;
+    letter-spacing:.16em; text-transform:uppercase; opacity:.72; margin-top:2px;}
+  .tabs [role="tab"][aria-selected="true"]{background:var(--navy); color:#fff;}
+  .tabs [role="tab"][aria-selected="true"] .en{opacity:.85;}
+
+  .field{margin-bottom:20px;}
+  .field > span{display:block; font-size:13px; font-weight:600; color:var(--ink-soft); margin-bottom:8px; letter-spacing:.02em;}
+  .field > span i{color:var(--seal); font-style:normal;}
+  input[type=text]{
+    width:100%; padding:14px 16px; font-size:17px; font-family:inherit;
+    background:var(--paper-deep); color:var(--ink);
+    border:1px solid var(--line); border-radius:12px; outline:none;
+  }
+  input[type=text]:focus{border-color:var(--seal); background:#fff; box-shadow:0 0 0 3px var(--seal-dim);}
+  .chips{display:flex; flex-wrap:wrap; gap:8px;}
+  .chip{
+    padding:11px 15px; border-radius:999px; border:1px solid var(--line);
+    background:var(--paper-deep); color:var(--ink-soft);
+    font-size:14px; font-family:inherit; font-weight:500; cursor:pointer;
+  }
+  .chip[aria-pressed="true"]{background:var(--seal-dim); border-color:var(--seal); color:var(--seal); font-weight:600;}
+  button.primary{
+    width:100%; margin-top:8px; padding:17px; border:0; border-radius:14px;
+    background:var(--navy); color:#fff; font-size:17px; font-weight:800;
+    font-family:inherit; cursor:pointer; letter-spacing:.02em;
+  }
+  button.primary:disabled{opacity:.5;}
+  .msg{margin-top:14px; font-size:14px; min-height:20px;}
+  .msg.bad{color:var(--bad);}
+  /* 提交成功 */
+  .done{text-align:center; padding:44px 0;}
+  .done .tick{
+    width:76px; height:76px; margin:0 auto 20px; border-radius:50%;
+    background:var(--seal-dim); color:var(--seal);
+    display:flex; align-items:center; justify-content:center; font-size:40px;
+  }
+  .done h2{font-size:24px; margin:0 0 8px;}
+  .done p{color:var(--ink-soft); margin:0;}
+  .done-actions{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:24px;}
+  .done .again{
+    padding:12px 22px; font-size:14px; font-family:inherit;
+    cursor:pointer; background:transparent; color:var(--seal);
+    border:1px solid var(--seal); border-radius:999px;
+  }
+  .done .again:hover{background:var(--seal-dim);}
+
+  /* ── 反馈问卷（题目照搬腾讯问卷现行版，样式沿用签到页）───────── */
+  .q{margin-bottom:24px;}
+  .q > .label{display:block; font-size:15px; font-weight:600; margin-bottom:10px;}
+  .q > .label .no{color:var(--gold); font-weight:800; margin-right:6px;}
+  .q > .label .req{color:var(--bad); font-style:normal; margin-left:3px;}
+  .q > .label .hint{display:inline; margin-left:6px; font-size:12px; font-weight:400; color:var(--ink-soft);}
+  .q > .label .en{display:block; margin-top:5px; font-size:12px; font-weight:400; color:var(--ink-soft);}
+  .note{font-size:13px; color:var(--ink-soft); background:var(--paper-deep);
+    border-left:3px solid var(--gold); padding:11px 14px; margin:-8px 0 24px;
+    border-radius:0 10px 10px 0; line-height:1.65;}
+  textarea{
+    width:100%; padding:13px 15px; font-size:16px; font-family:inherit;
+    background:var(--paper-deep); color:var(--ink); border:1px solid var(--line);
+    border-radius:12px; outline:none; resize:vertical; min-height:88px; line-height:1.5;
+  }
+  textarea:focus{border-color:var(--seal); background:#fff; box-shadow:0 0 0 3px var(--seal-dim);}
+  .rating{display:flex; gap:8px;}
+  .rating button{
+    flex:1; min-height:52px; border-radius:12px; border:1px solid var(--line);
+    background:var(--paper-deep); color:var(--ink-soft); font-family:inherit;
+    font-size:17px; font-weight:700; cursor:pointer;
+  }
+  .rating button[aria-pressed="true"]{background:var(--seal); border-color:var(--seal); color:#fff;}
+  .scale{display:flex; justify-content:space-between; color:var(--ink-soft); font-size:12px; margin-top:6px;}
+
+  footer{margin-top:44px; padding-top:20px; border-top:1px solid var(--line); text-align:center;}
+  footer a{display:inline-block; padding:14px 16px; color:var(--ink-soft); font-size:13px; text-decoration:none;}
+  footer a:hover{color:var(--seal);}
+
+  /* ── 管理端 ─────────────────────────────────────────────── */
+  .stat-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin:18px 0 22px;}
+  .stat{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px;}
+  .stat b{display:block; font-size:26px; font-weight:800; letter-spacing:-.02em;}
+  .stat small{color:var(--ink-soft); font-size:12px;}
+  .bars{margin:0 0 22px;}
+  .bar-row{display:flex; align-items:center; gap:10px; margin-bottom:7px; font-size:13px;}
+  .bar-row .lbl{flex:0 0 40%; color:var(--ink-soft);}
+  .bar-row .track{flex:1; height:8px; background:var(--paper-deep); border-radius:99px; overflow:hidden;}
+  .bar-row .fill{display:block; height:100%; background:var(--seal); border-radius:99px;}
+  .bar-row .num{flex:0 0 28px; text-align:right; font-variant-numeric:tabular-nums;}
+  table{width:100%; border-collapse:collapse; font-size:13px;}
+  th,td{text-align:left; padding:9px 8px; border-bottom:1px solid var(--line);}
+  th{color:var(--ink-soft); font-weight:600; font-size:12px;}
+  td.name{font-weight:600;}
+  .row-actions{display:flex; gap:8px; margin:16px 0;}
+  .row-actions button{
+    flex:1; padding:12px; border-radius:10px; border:1px solid var(--line);
+    background:var(--paper-deep); color:var(--ink); font-family:inherit; font-size:14px; cursor:pointer;
+  }
+  .row-actions button:hover{border-color:var(--seal); color:var(--seal);}
+  .empty{color:var(--ink-soft); font-size:14px; padding:20px 0;}
+  h3{font-size:15px; margin:24px 0 10px; color:var(--ink-soft); font-weight:600;}
+  .del{background:none; border:0; color:var(--ink-soft); cursor:pointer; font-size:12px; padding:14px 8px; white-space:nowrap;}
+  .del:hover{color:var(--bad);}
+  th:last-child, td:last-child{width:52px; white-space:nowrap; text-align:right;}
+  /* 管理端：签到统计 / 反馈统计 二级切换 */
+  .admin-tabs{display:flex; gap:6px; margin:16px 0 4px; padding:5px;
+    background:var(--paper-deep); border:1px solid var(--line); border-radius:12px;}
+  .admin-tabs button{
+    flex:1; padding:10px 8px; border:0; border-radius:9px; background:transparent;
+    color:var(--ink-soft); font-family:inherit; font-size:14px; font-weight:600; cursor:pointer;
+  }
+  .admin-tabs button[aria-pressed="true"]{background:var(--seal-dim); color:var(--seal);}
+  .qitem{border:1px solid var(--line); border-radius:12px; padding:12px 14px; margin-bottom:10px; font-size:14px;}
+  .qitem .k{color:var(--ink-soft); font-size:12px; margin-bottom:4px;}
+  .qitem b{font-weight:600;}
+  /* 现场签到台：字要大，站着两米外也该看清有没有签进去 */
+  .desk-field{margin-bottom:13px;}
+  .desk-field > span{display:block; font-size:12px; font-weight:600; color:var(--ink-soft);
+    margin-bottom:5px; letter-spacing:.03em;}
+  .desk-field > span i{color:var(--seal); font-style:normal;}
+  .desk-input{
+    width:100%; padding:15px 16px; font-size:22px; font-weight:700; font-family:inherit;
+    background:var(--paper-deep); color:var(--ink);
+    border:2px solid var(--line); border-radius:12px; outline:none;
+  }
+  .desk-input:focus{border-color:var(--seal); background:#fff; box-shadow:0 0 0 3px var(--seal-dim);}
+  .desk-input.company{font-size:18px; font-weight:600;}
+  .desk-input.contact{font-size:18px; font-weight:500;}
+  /* 客人表单的字段说明 */
+  .field .hint{display:block; margin-top:7px; font-size:12px; font-style:normal;
+    color:var(--ink-soft); line-height:1.45;}
+  /* 未通过校验：整栏 / 整题淡红底，现场一眼看出哪一项没填对 */
+  .field.bad input[type=text]{border-color:var(--bad); background:#FFF7F5;}
+  .q.invalid{background:#FBEDEB; border-radius:12px; padding:12px 12px 14px; margin:0 -12px 24px;}
+  .q.invalid > .label, .q.invalid > .label .en{color:var(--bad);}
+  .q > em.hint{display:block; margin-top:7px; font-size:12px; font-style:normal;
+    color:var(--ink-soft); line-height:1.45;}
+  .desk-flash{margin-top:16px; font-size:21px; font-weight:700; min-height:30px; line-height:1.35;}
+  .desk-flash.ok{color:var(--ok);}
+  .desk-flash.bad{color:var(--bad);}
+  .desk-count{color:var(--ink-soft); font-size:13px; margin-top:20px; letter-spacing:.04em;}
+  .desk-list{list-style:none; padding:0; margin:6px 0 0;}
+  .desk-list li{padding:10px 0; border-bottom:1px solid var(--line); font-size:16px;}
+  .desk-list li b{font-weight:700;}
+  .desk-list li span{color:var(--ink-soft); font-size:12px; margin-left:10px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header id="page-head">
+    {% include "_ec_logo.html" %}
+    <div class="brand">JFC English Corner</div>
+  </header>
+
+  <!-- ── 一个二维码进来：签到 / 反馈 两个部分，可切换 ─────────────
+       2026-11-24 起，反馈问卷（腾讯问卷现行版 6 题）并入签到页：
+       原来签到、反馈各一个二维码，现场摆两张卡、扫两次；
+       现在一张码进来，先签到，再切到反馈填完，数据和统计各自独立。 -->
+  <nav class="tabs" id="tabs" role="tablist" aria-label="签到与反馈">
+    <button type="button" role="tab" id="tab-checkin" data-tab="checkin"
+            aria-selected="true" aria-controls="checkin-view">
+      签到<span class="en">Check-in</span>
+    </button>
+    <button type="button" role="tab" id="tab-feedback" data-tab="feedback"
+            aria-selected="false" aria-controls="feedback-view">
+      反馈<span class="en">Feedback</span>
+    </button>
+  </nav>
+
+  <!-- ── 签到 ─────────────────────────────────────────────── -->
+  <section id="checkin-view" role="tabpanel" aria-labelledby="tab-checkin">
+    <h1>活动签到</h1>
+    <p class="sub">{{ session }} · 扫码签到，约 10 秒</p>
+
+    <form id="form" autocomplete="off">
+      <!-- 2026-11 第二版：四项必填 —— 姓名 / 公司 / 身份 / 联系方式。
+           2026-11-27 加固：必填之外，占位/敷衍值（「12」「N/A」「无」「test」、
+           纯数字标点、零宽字符）也一律打回，前后端同一套口径。
+           首次参加仍由服务端按历史记录判定，不在表单里问。 -->
+      <label class="field">
+        <span>姓名 <i>*</i></span>
+        <input type="text" id="name" name="name" placeholder="你的全名" maxlength="40" autocomplete="name">
+      </label>
+
+      <label class="field">
+        <span>公司 / 机构 <i>*</i></span>
+        <input type="text" id="company" name="company" placeholder="公司或机构全称" maxlength="80" autocomplete="organization">
+      </label>
+
+      <div class="field">
+        <span>你的身份 <i>*</i></span>
+        <div class="chips" data-group="role">
+          {% for r in roles if r in ('企业主 / 创始人', '经理 / 主管', '其他') %}<button type="button" class="chip" data-value="{{ r }}">{{ r }}</button>{% endfor %}
+        </div>
+      </div>
+
+      <label class="field">
+        <span>微信或手机号 <i>*</i></span>
+        <input type="text" id="wechat" name="wechat" placeholder="手机 11 位，或微信 ID" maxlength="60" autocomplete="tel">
+        <em class="hint">用于接收下次活动通知。微信 ID 为 6 至 20 位、字母开头。</em>
+      </label>
+
+      <button type="submit" class="primary" id="submit">签 到</button>
+      <div class="msg" id="msg"></div>
+    </form>
+
+    <footer><a href="#" class="admin-link" data-admin="checkin">管理端 · 查看统计</a></footer>
+  </section>
+
+  <!-- ── 签到成功 ─────────────────────────────────────────── -->
+  <section id="done-view" class="done" hidden>
+    <div class="tick">✓</div>
+    <h2 id="done-name">签到成功</h2>
+    <p>欢迎参加 JFC 英语角，祝你练得开心 ☕</p>
+    <div class="done-actions">
+      <!-- 现场常见：两人（甚至一家人）共用一部手机。没有这个入口，第二位扫码只会看到
+           「已签到」，表单根本不出现 —— 人就静默丢了。纸面时代不存在这个问题。 -->
+      <button type="button" id="again" class="again">再签一位（这部手机）</button>
+      <button type="button" id="go-feedback" class="again">顺便填一张反馈 →</button>
+    </div>
+  </section>
+
+  <!-- ── 反馈（题目照搬《JFC 商业英语角｜活动反馈问卷》腾讯问卷 2026-11 版）── -->
+  <section id="feedback-view" role="tabpanel" aria-labelledby="tab-feedback" hidden>
+    <h1>活动反馈</h1>
+    <p class="sub">{{ session }} · 约 2 分钟，帮助我们做得更好</p>
+    <p class="note">感谢你来参加本次 JFC 商业英语角！麻烦花 2 分钟填写反馈，帮助我们持续优化主题、形式和内容，打造更贴合商务场景的练习空间。所有内容仅用于活动改进，信息保密。</p>
+
+    <form id="fb-form" autocomplete="off">
+      <div class="q" data-q="satisfaction">
+        <span class="label"><span class="no">1</span>本次活动整体满意度？<i class="req">*</i>
+          <span class="en">Overall satisfaction</span></span>
+        <div class="rating" data-group="satisfaction" role="group" aria-label="整体满意度 1 到 5">
+          {% for n in range(1, 6) %}<button type="button" data-value="{{ n }}">{{ n }}</button>{% endfor %}
+        </div>
+        <div class="scale"><span>很不满意</span><span>非常满意</span></div>
+      </div>
+
+      <div class="q" data-q="enjoyed">
+        <span class="label"><span class="no">2</span>你最喜欢本次活动哪个部分？<i class="req">*</i><span class="hint">可多选</span>
+          <span class="en">What did you enjoy most? (Multiple)</span></span>
+        <div class="chips" data-group="enjoyed" data-mode="multi">
+          {% for s in enjoyed %}<button type="button" class="chip" data-value="{{ s }}">{{ s }}</button>{% endfor %}
+        </div>
+      </div>
+
+      <div class="q" data-q="helpfulness">
+        <span class="label"><span class="no">3</span>本次活动对你的商务英语帮助程度？<i class="req">*</i>
+          <span class="en">How helpful is this session for your business English?</span></span>
+        <div class="chips" data-group="helpfulness" data-mode="single">
+          {% for s in helpfulness %}<button type="button" class="chip" data-value="{{ s }}">{{ s }}</button>{% endfor %}
+        </div>
+      </div>
+
+      <div class="q" data-q="topics">
+        <span class="label"><span class="no">4</span>你希望后续多安排哪类商务主题？<i class="req">*</i><span class="hint">可多选</span>
+          <span class="en">Which topics do you want more? (Multiple)</span></span>
+        <div class="chips" data-group="topics" data-mode="multi">
+          {% for s in topics %}<button type="button" class="chip" data-value="{{ s }}">{{ s }}</button>{% endfor %}
+        </div>
+      </div>
+
+      <div class="q" data-q="nickname">
+        <span class="label"><span class="no">5</span>（可选）昵称（方便我们记住你，可不填）<span class="hint">选填</span>
+          <span class="en">Nickname (Optional)</span></span>
+        <input type="text" id="nickname" placeholder="昵称" maxlength="40" autocomplete="nickname">
+      </div>
+
+      <div class="q" data-q="comments">
+        <span class="label"><span class="no">6</span>其他建议、期待或者想法，欢迎留言<i class="req">*</i>
+          <span class="en">Any other suggestions or comments?</span></span>
+        <textarea id="comments" placeholder="欢迎留言" maxlength="1000"></textarea>
+        <em class="hint">请写具体建议或期待；只填「无」「没有」这类占位会被要求重填。</em>
+      </div>
+
+      <button type="submit" class="primary" id="fb-submit">提 交</button>
+      <div class="msg" id="fb-msg"></div>
+    </form>
+
+    <footer><a href="#" class="admin-link" data-admin="feedback">管理端 · 查看统计</a></footer>
+  </section>
+
+  <!-- ── 反馈成功 ─────────────────────────────────────────── -->
+  <section id="fb-done-view" class="done" hidden>
+    <div class="tick">✓</div>
+    <h2>感谢你的反馈</h2>
+    <p>你的意见会直接用在下一场英语角的安排上 ☕</p>
+    <div class="done-actions">
+      <!-- 与签到页同理：两人共用一部手机时，第二位不该只看到「感谢你的反馈」。 -->
+      <button type="button" id="fb-again" class="again">再填一份（这部手机）</button>
+      <button type="button" id="go-checkin" class="again">回到签到</button>
+    </div>
+  </section>
+
+  <!-- ── 现场签到台（?desk=1）───────────────────────────────
+       给工作人员用的。笔记本开 http://localhost:8888/checkin?desk=1，
+       输姓名按回车即入库：不走公网、不用客人掏手机，隧道断没断都能签。
+       错峰到场也不怕——来一个录一个，不依赖门口那一刻。 -->
+  <section id="desk-view" hidden>
+    <div class="brand">JFC English Corner · Front Desk</div>
+    <h1>现场签到台</h1>
+    <p class="sub">{{ session }} · 四项填完按回车，约 10 秒一位</p>
+
+    <div class="desk-field">
+      <span>姓名 <i>*</i></span>
+      <input class="desk-input" id="desk-name" type="text" placeholder="全名" autocomplete="off" autocapitalize="off">
+    </div>
+    <div class="desk-field">
+      <span>公司 / 机构 <i>*</i></span>
+      <input class="desk-input company" id="desk-company" type="text" placeholder="公司或机构全称" autocomplete="off" autocapitalize="off">
+    </div>
+    <div class="desk-field">
+      <span>身份 <i>*</i></span>
+      <div class="chips" data-group="role">
+        {% for r in roles if r in ('企业主 / 创始人', '经理 / 主管', '其他') %}<button type="button" class="chip" data-value="{{ r }}">{{ r }}</button>{% endfor %}
+      </div>
+    </div>
+    <div class="desk-field">
+      <span>微信或手机号 <i>*</i></span>
+      <input class="desk-input contact" id="desk-wechat" type="text" placeholder="手机 11 位，或微信 ID" autocomplete="off" autocapitalize="off">
+    </div>
+
+    <div class="desk-flash" id="desk-flash"></div>
+    <div class="desk-count" id="desk-count"></div>
+    <ol class="desk-list" id="desk-list"></ol>
+
+    <footer><a href="/checkin">客人自助页（签到 + 反馈）→</a></footer>
+  </section>
+
+  <!-- ── 管理端（签到统计 / 反馈统计）───────────────────────── -->
+  <section id="admin-view" hidden>
+    <div class="brand">Admin</div>
+    <h1>统计</h1>
+    <p class="sub" id="admin-sub">{{ session }}</p>
+
+    <div class="admin-tabs" role="tablist" aria-label="统计切换">
+      <button type="button" id="admin-tab-checkin" aria-pressed="true">签到统计</button>
+      <button type="button" id="admin-tab-feedback" aria-pressed="false">反馈统计</button>
+    </div>
+
+    <div class="row-actions">
+      <button id="refresh">刷新</button>
+      <button id="export">导出 CSV</button>
+      <button id="logout">退出</button>
+    </div>
+
+    <div id="admin-checkin">
+      <div id="stats"></div>
+      <div id="records"></div>
+    </div>
+    <div id="admin-feedback" hidden>
+      <div id="fb-stats"></div>
+      <div id="fb-records"></div>
+    </div>
+    <div class="msg bad" id="admin-msg"></div>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  const SESSION = {{ session|tojson }};
+  const DEFAULT_TAB = {{ default_tab|tojson }};
+  const DESK = new URLSearchParams(location.search).get('desk') === '1';
+
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, c =>
+    ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+  const STORE_KEY = 'ec-checkin-' + SESSION;
+  const QUEUE_KEY = 'ec-checkin-queue';              // 提交失败时暂存，联网后自动补传
+  const DESK_LOG_KEY = 'ec-desk-log-' + SESSION;     // 签到台本机已录名单（刷新不丢）
+  const FB_STORE_KEY = 'ec-feedback-' + SESSION;     // 反馈是否已提交（同场次）
+  const TOKEN_KEY = 'checkin-token';                 // 签到与反馈共用同一个管理口令
+
+  // ── 当前状态：签到 / 反馈各自记住「这台手机本场是否已完成」──
+  const done = {
+    checkin: !!localStorage.getItem(STORE_KEY),
+    feedback: !!localStorage.getItem(FB_STORE_KEY),
+  };
+  let currentTab = 'checkin';
+  let adminTab = 'checkin';
+
+  function renderTab(){
+    const checkinDone = done.checkin, fbDone = done.feedback;
+    $('checkin-view').hidden  = !(currentTab === 'checkin' && !checkinDone);
+    $('done-view').hidden     = !(currentTab === 'checkin' && checkinDone);
+    $('feedback-view').hidden = !(currentTab === 'feedback' && !fbDone);
+    $('fb-done-view').hidden  = !(currentTab === 'feedback' && fbDone);
+    document.querySelectorAll('#tabs [role="tab"]').forEach(b =>
+      b.setAttribute('aria-selected', b.dataset.tab === currentTab ? 'true' : 'false'));
+  }
+
+  function showTab(name){
+    if (DESK) return;
+    currentTab = name;
+    $('page-head').hidden = false;
+    $('tabs').hidden = false;
+    $('desk-view').hidden = true;
+    $('admin-view').hidden = true;
+    renderTab();
+    history.replaceState(null, '', '#' + name);
+    window.scrollTo(0, 0);
+  }
+
+  document.querySelectorAll('#tabs [role="tab"]').forEach(b =>
+    b.addEventListener('click', () => showTab(b.dataset.tab)));
+
+  // ── 签到表单 ──────────────────────────────────────────────
+  const form = $('form'), msg = $('msg');
+  const state = { role: '', source: '', first_time: '' };
+
+  // 与服务端 checkin.py 同一套口径，前端先拦一次。护栏分两层：
+  //  1) 必填项不能空；
+  //  2) 填了也必须像真的 —— 「无」「N/A」「test」、纯数字/标点、单个字符反复、
+  //     零宽字符这些占位值一律打回，避免必填被「敷衍填写」绕过。
+  const RE_PHONE = /^1[3-9]\d{9}$/;
+  const RE_WECHAT = /^[A-Za-z][-_A-Za-z0-9]{5,19}$/;
+  const INVISIBLE_RE = /[\u00ad\u061c\u180e\u200b-\u200f\u202a-\u202e\u2060-\u2064\ufeff]/g;
+  const JUNK_VALUES = new Set(['无','没有','暂无','未知','不知道','不清楚','保密','其他','略','匿名','无名','佚名','同上','无公司','暂无公司','无业','待定','na','none','null','nil','test','testing','abc','aaa','aaaa','asdf','qwer','123','1234','1','x','xx','xxx']);
+  const FAKE_CONTACTS = new Set(['abcdef','abcdefg','qwerty','asdfgh','zxcvbn','qazwsx','abc123','13800138000','12345678901']);
+
+  function junkKey(value){
+    return String(value == null ? '' : value).replace(INVISIBLE_RE, '').trim()
+      .replace(/[\s\-_/·.,，。、;；:：!！?？'"“”‘’()（）\[\]【】]+/g, '').toLowerCase();
+  }
+
+  // 是否有字母/汉字 —— 纯数字、纯标点都不是可核实的信息
+  function hasLetter(value){
+    return /[A-Za-z\u00c0-\u024f\u0370-\u03ff\u0400-\u04ff\u4e00-\u9fff\u3040-\u30ff\uac00-\ud7af]/.test(value);
+  }
+
+  function looksFakeText(value, minLen){
+    const s = String(value == null ? '' : value).replace(INVISIBLE_RE, '').trim();
+    if (s.length < (minLen || 2)) return true;
+    if (new Set(s).size === 1) return true;       // aaa / 111 / 。。。
+    if (!hasLetter(s)) return true;               // 纯数字或标点
+    const key = junkKey(s);
+    return !key || JUNK_VALUES.has(key);          // 无 / N/A / test / 保密 …
+  }
+
+  function contactOk(raw){
+    const s = (raw || '').trim();
+    return RE_PHONE.test(s.replace(/[\s-]/g, '')) || RE_WECHAT.test(s);
+  }
+
+  function contactLooksFake(raw){
+    const s = (raw || '').trim();
+    const digits = s.replace(/[\s-]/g, '');
+    const c = RE_PHONE.test(digits) ? digits : s;
+    if (!c) return true;
+    const low = c.toLowerCase();
+    if (new Set(low).size === 1) return true;     // aaaaaa / 11111111111
+    if (FAKE_CONTACTS.has(low) || JUNK_VALUES.has(junkKey(low))) return true;
+    if (/test|fake|dummy|example/.test(low)) return true;
+    if (RE_PHONE.test(c) && new Set(c.slice(1)).size === 1) return true;
+    return false;
+  }
+
+  // 四项必填，客人页与签到台共用。通过返回 null；
+  // 否则返回 { id, msg }，id 为 null 表示只需提示、不用聚焦。
+  function checkEntry(v, ids){
+    if (!v.name || looksFakeText(v.name, 2))
+      return { id: ids.name, msg: '请填写真实姓名：至少 2 个字，不要填「N/A」「无」「test」这类占位' };
+    if (!v.company || looksFakeText(v.company, 2))
+      return { id: ids.company, msg: '公司 / 机构请填全称，不要填「无」「暂无」「N/A」这类占位' };
+    if (!v.role)
+      return { id: null, msg: '请选择身份' };
+    if (!v.wechat || !v.wechat.trim())
+      return { id: ids.wechat, msg: '请填写微信或手机号' };
+    if (!contactOk(v.wechat))
+      return { id: ids.wechat, msg: '联系方式格式不对：手机 11 位；微信 ID 6 至 20 位、字母开头' };
+    if (contactLooksFake(v.wechat))
+      return { id: ids.wechat, msg: '联系方式像占位值，请填真实手机号或微信号' };
+    return null;
+  }
+
+  // 选择项（每组单选）。签到页与签到台各有一组 role，彼此独立。
+  // 必须限定范围：反馈问卷也用 .chips，全局绑定会让两套 state 互相抢按钮。
+  document.querySelectorAll('#checkin-view .chips, #desk-view .chips').forEach(group => {
+    const key = group.dataset.group;
+    group.querySelectorAll('.chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const on = chip.getAttribute('aria-pressed') === 'true';
+        group.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed','false'));
+        if (!on) { chip.setAttribute('aria-pressed','true'); state[key] = chip.dataset.value; }
+        else { state[key] = ''; }
+        const field = group.closest('.field');
+        if (field) field.classList.remove('bad');
+      });
+    });
+  });
+
+  // 重新输入即清掉红框，避免「改完了却还红着」
+  ['name', 'company', 'wechat'].forEach(id => {
+    $(id).addEventListener('input', () => {
+      const field = $(id).closest('.field');
+      if (field) field.classList.remove('bad');
+    });
+  });
+
+  // 已签到过就直接显示成功页（同一场次）。签到台模式跳过。
+  if (done.checkin) $('done-name').textContent = localStorage.getItem(STORE_KEY) + '，签到成功';
+
+  // ── 断网队列 ──────────────────────────────────────────────
+  // 提交失败 = 网络到不了服务器，不是数据错了。存本机，联网后自动补传。
+  // 页面本身打不开的话这条救不了 —— 那条路靠签到台代签（?desk=1）。
+  function queueAdd(payload){
+    let q = [];
+    try { q = JSON.parse(localStorage.getItem(QUEUE_KEY) || '[]'); } catch(e){ q = []; }
+    if (!Array.isArray(q)) q = [];
+    q.push(payload);
+    localStorage.setItem(QUEUE_KEY, JSON.stringify(q));
+    return q.length;
+  }
+
+  async function flushQueue(){
+    let q = [];
+    try { q = JSON.parse(localStorage.getItem(QUEUE_KEY) || '[]'); } catch(e){ return; }
+    if (!Array.isArray(q) || !q.length) return;
+    const left = [];
+    for (const p of q){
+      try {
+        const r = await fetch('/api/checkin', {
+          method: 'POST', headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(p)
+        });
+        // 4xx 是数据本身不合法，重传也过不了；5xx 与网络错误才留在队里
+        if (r.status >= 500) left.push(p);
+      } catch (e) { left.push(p); }
+    }
+    localStorage.setItem(QUEUE_KEY, JSON.stringify(left));
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const payload = Object.assign({
+      session: SESSION,
+      name: $('name').value.trim(),
+      company: $('company').value.trim(),
+      wechat: $('wechat').value.trim()
+    }, state);
+
+    const bad = checkEntry(payload, { name: 'name', company: 'company', wechat: 'wechat' });
+    document.querySelectorAll('#checkin-view .field.bad')
+            .forEach(f => f.classList.remove('bad'));
+    if (bad) {
+      msg.className = 'msg bad';
+      msg.textContent = bad.msg;
+      if (bad.id) {
+        $(bad.id).closest('.field').classList.add('bad');
+        $(bad.id).focus();
+      } else {
+        const group = document.querySelector('#checkin-view .chips[data-group="role"]');
+        if (group) group.closest('.field').classList.add('bad');
+      }
+      return;
+    }
+
+    $('submit').disabled = true;
+    msg.className = 'msg'; msg.textContent = '提交中…';
+
+    let resp = null;
+    try { resp = await fetch('/api/checkin', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(payload)
+    }); } catch (e) { resp = null; }        // 网络层直接失败
+
+    if (!resp || resp.status >= 500) {
+      const n = queueAdd(payload);
+      msg.className = 'msg bad';
+      msg.textContent = '网络不通，已存本机（待补传 ' + n + ' 条）。也可以直接到签到台登记。';
+      $('submit').disabled = false;
+      return;
+    }
+
+    const data = await resp.json().catch(() => ({}));
+    if (!resp.ok || !data.ok) {
+      msg.className = 'msg bad';
+      msg.textContent = '签到失败：' + (data.error || ('HTTP ' + resp.status)) + '（可让工作人员手动登记）';
+      $('submit').disabled = false;
+      return;
+    }
+
+    localStorage.setItem(STORE_KEY, payload.name);
+    done.checkin = true;
+    $('done-name').textContent = payload.name + '，签到成功';
+    renderTab();
+    window.scrollTo(0, 0);
+  });
+
+  // 同一部手机再签一位：清掉本机记录 → 回到空表单。
+  // 必须把 state 与 chip 的 aria-pressed 一起复位，否则上一位的选择会跟着带过去。
+  $('again').addEventListener('click', () => {
+    localStorage.removeItem(STORE_KEY);
+    done.checkin = false;
+    form.reset();
+    Object.keys(state).forEach(k => { state[k] = ''; });
+    document.querySelectorAll('#checkin-view .chip[aria-pressed="true"]')
+            .forEach(c => c.setAttribute('aria-pressed', 'false'));
+    msg.className = 'msg'; msg.textContent = '';
+    $('submit').disabled = false;
+    renderTab();
+    window.scrollTo(0, 0);
+    $('name').focus();
+  });
+
+  $('go-feedback').addEventListener('click', () => showTab('feedback'));
+  $('go-checkin').addEventListener('click', () => showTab('checkin'));
+
+  // ── 反馈问卷（6 题，题目照搬腾讯问卷现行版）──────────────
+  const fbForm = $('fb-form'), fbMsg = $('fb-msg');
+  const fbState = { satisfaction: '', enjoyed: [], helpfulness: '', topics: [] };
+
+  // 与 feedback.py 同一套护栏：必填之外，占位/敷衍的答案也算没答。
+  const JUNK_COMMENTS = new Set(['无','没有','暂无','无建议','没有建议','暂无建议','无意见','没有意见','没什么','没啥','不知道','不清楚','略','同上','无想法','没想法','暂无想法','不用','否','无异议','na','none','null','nil','test','testing','ok','okay','123','1234','1','asdf','qwer']);
+
+  function commentLooksFake(value){
+    const s = String(value == null ? '' : value).replace(INVISIBLE_RE, '').trim();
+    if (s.length < 2) return true;
+    if (new Set(s).size === 1) return true;     // 。。。 / 哈哈哈 / 111
+    if (/^\d+$/.test(s)) return true;
+    if (!/[A-Za-z0-9\u00c0-\u024f\u0370-\u03ff\u0400-\u04ff\u4e00-\u9fff\u3040-\u30ff\uac00-\ud7af]/.test(s)) return true;
+    const key = junkKey(s);
+    return !key || JUNK_COMMENTS.has(key);
+  }
+
+  // 选好/改好某一题，就把它整题的红色标记清掉
+  function clearQuestionInvalid(node){
+    const q = node && node.closest ? node.closest('.q') : null;
+    if (q) q.classList.remove('invalid');
+  }
+
+  document.querySelectorAll('#fb-form .chips').forEach(group => {
+    const key = group.dataset.group, multi = group.dataset.mode === 'multi';
+    group.querySelectorAll('.chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const on = chip.getAttribute('aria-pressed') === 'true';
+        if (multi) {
+          chip.setAttribute('aria-pressed', on ? 'false' : 'true');
+          const v = chip.dataset.value;
+          fbState[key] = on ? fbState[key].filter(x => x !== v) : fbState[key].concat(v);
+        } else {
+          group.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed','false'));
+          chip.setAttribute('aria-pressed', on ? 'false' : 'true');
+          fbState[key] = on ? '' : chip.dataset.value;
+        }
+        clearQuestionInvalid(chip);
+      });
+    });
+  });
+
+  document.querySelectorAll('#fb-form .rating').forEach(group => {
+    group.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        group.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed','false'));
+        btn.setAttribute('aria-pressed','true');
+        fbState[group.dataset.group] = btn.dataset.value;
+        clearQuestionInvalid(btn);
+      });
+    });
+  });
+
+  // 每题答案仍缺/仍无效的记下 key 与显示名，提交时标红+定位到第一处。
+  const FB_LABELS = {
+    satisfaction: '整体满意度', enjoyed: '喜欢的部分', helpfulness: '帮助程度',
+    topics: '后续想多安排的主题', comments: '其他建议'
+  };
+
+  function fbMissing(){
+    const miss = [];
+    if (!fbState.satisfaction) miss.push('satisfaction');
+    if (!fbState.enjoyed.length) miss.push('enjoyed');
+    if (!fbState.helpfulness) miss.push('helpfulness');
+    if (!fbState.topics.length) miss.push('topics');
+    const comments = $('comments').value.trim();
+    if (!comments || commentLooksFake(comments)) miss.push('comments');
+    return miss;
+  }
+
+  $('comments').addEventListener('input', () => {
+    if (!commentLooksFake($('comments').value)) clearQuestionInvalid($('comments'));
+  });
+
+  fbForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const missing = fbMissing();
+    document.querySelectorAll('#fb-form .q.invalid').forEach(q => q.classList.remove('invalid'));
+    if (missing.length) {
+      missing.forEach(key => {
+        const q = document.querySelector('#fb-form .q[data-q="' + key + '"]');
+        if (q) q.classList.add('invalid');
+      });
+      const commentsJunk = missing.indexOf('comments') >= 0 && $('comments').value.trim();
+      fbMsg.className = 'msg bad';
+      fbMsg.textContent = '请完成：' + missing.map(k => FB_LABELS[k]).join('、') +
+        (commentsJunk ? '（只填「无」这类占位不算完成）' : '');
+      const first = document.querySelector('#fb-form .q.invalid');
+      if (first) first.scrollIntoView({behavior: 'smooth', block: 'center'});
+      return;
+    }
+    const payload = {
+      session: SESSION,
+      satisfaction: fbState.satisfaction,
+      enjoyed: fbState.enjoyed,
+      helpfulness: fbState.helpfulness,
+      topics: fbState.topics,
+      nickname: $('nickname').value.trim(),
+      comments: $('comments').value.trim()
+    };
+    $('fb-submit').disabled = true;
+    fbMsg.className = 'msg'; fbMsg.textContent = '提交中…';
+    try {
+      const resp = await fetch('/api/ec-feedback', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(payload)
+      });
+      const data = await resp.json().catch(() => ({}));
+      if (!resp.ok || !data.ok) throw new Error(data.error || ('HTTP ' + resp.status));
+      localStorage.setItem(FB_STORE_KEY, '1');
+      done.feedback = true;
+      renderTab();
+      window.scrollTo(0, 0);
+    } catch (err) {
+      fbMsg.className = 'msg bad';
+      fbMsg.textContent = '提交失败：' + err.message;
+      $('fb-submit').disabled = false;
+    }
+  });
+
+  // 同一部手机再填一份：清掉本机记录 → 回到空问卷。
+  // 多选是数组、评分是按钮组，不能像签到页那样一刀切置空串。
+  $('fb-again').addEventListener('click', () => {
+    localStorage.removeItem(FB_STORE_KEY);
+    done.feedback = false;
+    fbForm.reset();
+    Object.keys(fbState).forEach(k => {
+      fbState[k] = Array.isArray(fbState[k]) ? [] : '';
+    });
+    document.querySelectorAll('#fb-form .chip[aria-pressed="true"], #fb-form .rating button[aria-pressed="true"]')
+            .forEach(b => b.setAttribute('aria-pressed', 'false'));
+    document.querySelectorAll('#fb-form .q.invalid').forEach(q => q.classList.remove('invalid'));
+    fbMsg.className = 'msg'; fbMsg.textContent = '';
+    $('fb-submit').disabled = false;
+    renderTab();
+    window.scrollTo(0, 0);
+  });
+
+  // ── 管理端 ──────────────────────────────────────────────
+  function token(){ return localStorage.getItem(TOKEN_KEY) || ''; }
+  function headers(){ return token() ? {'X-Checkin-Token': token()} : {}; }
+
+  function askToken(){
+    const t = prompt('请输入管理端口令：');
+    if (t === null) return false;
+    localStorage.setItem(TOKEN_KEY, t.trim());
+    return true;
+  }
+
+  function bar(label, count, total){
+    const pct = total ? Math.round(count / total * 100) : 0;
+    return `<div class="bar-row"><span class="lbl">${esc(label)}</span>
+      <span class="track"><span class="fill" style="width:${pct}%"></span></span>
+      <span class="num">${count}</span></div>`;
+  }
+
+  function bars(map, total, emptyText){
+    const rows = Object.entries(map || {}).filter(([,v]) => v > 0)
+      .sort((a, b) => b[1] - a[1]).map(([k,v]) => bar(k, v, total)).join('');
+    return rows || `<div class="empty">${emptyText || '暂无'}</div>`;
+  }
+
+  function openAdmin(tab){
+    $('page-head').hidden = false;
+    $('tabs').hidden = true;
+    $('checkin-view').hidden = true;
+    $('done-view').hidden = true;
+    $('feedback-view').hidden = true;
+    $('fb-done-view').hidden = true;
+    $('desk-view').hidden = true;
+    $('admin-view').hidden = false;
+    history.replaceState(null, '', '#admin');
+    selectAdminTab(tab || 'checkin');
+    window.scrollTo(0, 0);
+  }
+
+  function selectAdminTab(tab){
+    adminTab = tab;
+    $('admin-tab-checkin').setAttribute('aria-pressed', tab === 'checkin' ? 'true' : 'false');
+    $('admin-tab-feedback').setAttribute('aria-pressed', tab === 'feedback' ? 'true' : 'false');
+    $('admin-checkin').hidden = tab !== 'checkin';
+    $('admin-feedback').hidden = tab !== 'feedback';
+    $('admin-msg').textContent = '';
+    if (tab === 'checkin') loadCheckinAdmin(); else loadFeedbackAdmin();
+  }
+
+  document.querySelectorAll('.admin-link').forEach(a =>
+    a.addEventListener('click', (e) => { e.preventDefault(); openAdmin(a.dataset.admin); }));
+  $('admin-tab-checkin').addEventListener('click', () => selectAdminTab('checkin'));
+  $('admin-tab-feedback').addEventListener('click', () => selectAdminTab('feedback'));
+
+  async function loadCheckinAdmin(){
+    const resp = await fetch('/api/checkin/list', {headers: headers()});
+    if (resp.status === 401) {
+      $('admin-msg').textContent = '需要访问口令（token）。';
+      if (!askToken()) { history.replaceState(null, '', '#checkin'); return showTab('checkin'); }
+      return loadCheckinAdmin();
+    }
+    const data = await resp.json();
+    const s = data.stats || {};
+    const total = s.total || 0;
+
+    $('stats').innerHTML = `
+      <div class="stat-grid">
+        <div class="stat"><b>${total}</b><small>已签到</small></div>
+        <div class="stat"><b>${s.first_time||0}</b><small>首次参加</small></div>
+        <div class="stat"><b>${s.contacts||0}</b><small>留了微信</small></div>
+        <div class="stat"><b>${s.companies||0}</b><small>公司数</small></div>
+      </div>
+      <h3>渠道来源</h3><div class="bars">${bars(s.by_source, total)}</div>
+      <h3>身份构成</h3><div class="bars">${bars(s.by_role, total)}</div>`;
+
+    const rows = (data.records||[]).slice().reverse();
+    $('records').innerHTML = rows.length ? `
+      <h3>签到名单（最新在前）</h3>
+      <table><thead><tr><th>姓名</th><th>公司</th><th>身份</th><th>来源</th><th></th></tr></thead>
+      <tbody>${rows.map(r => `<tr>
+        <td class="name">${esc(r.name)}</td>
+        <td>${esc(r.company||'—')}</td>
+        <td>${esc(r.role||'—')}</td>
+        <td>${esc(r.source||'—')}</td>
+        <td><button class="del" data-id="${r.id}">删除</button></td>
+      </tr>`).join('')}</tbody></table>` : '<div class="empty">还没有人签到。</div>';
+
+    $('records').querySelectorAll('.del').forEach(b => {
+      b.addEventListener('click', async () => {
+        if (!confirm('删除这条签到记录？')) return;
+        await fetch('/api/checkin/' + b.dataset.id, {method:'DELETE', headers: headers()});
+        loadCheckinAdmin();
+      });
+    });
+  }
+
+  async function loadFeedbackAdmin(){
+    const resp = await fetch('/api/ec-feedback/list', {headers: headers()});
+    if (resp.status === 401) {
+      $('admin-msg').textContent = '需要访问口令（token）。';
+      if (!askToken()) { history.replaceState(null, '', '#checkin'); return showTab('checkin'); }
+      return loadFeedbackAdmin();
+    }
+    const data = await resp.json();
+    const s = data.stats || {};
+    const total = s.total || 0;
+
+    $('fb-stats').innerHTML = `
+      <div class="stat-grid">
+        <div class="stat"><b>${total}</b><small>收到反馈</small></div>
+        <div class="stat"><b>${s.satisfaction_avg == null ? '—' : s.satisfaction_avg}</b><small>平均满意度 / 5</small></div>
+        <div class="stat"><b>${s.comments_count||0}</b><small>留了建议</small></div>
+        <div class="stat"><b>${s.nickname_count||0}</b><small>留了昵称</small></div>
+      </div>
+      <h3>整体满意度分布</h3><div class="bars">${
+        bars(Object.fromEntries(['1','2','3','4','5'].map(n => [n + ' 分', (s.by_satisfaction||{})[n] || 0])), total)}</div>
+      <h3>帮助程度</h3><div class="bars">${bars(s.by_helpfulness, total)}</div>
+      <h3>喜欢的部分</h3><div class="bars">${bars(s.by_enjoyed, total)}</div>
+      <h3>想多安排的主题</h3><div class="bars">${bars(s.by_topics, total)}</div>`;
+
+    const rows = (data.records||[]).slice().reverse();
+    $('fb-records').innerHTML = rows.length ? `<h3>反馈明细（最新在前）</h3>` + rows.map(r => `
+      <div class="qitem">
+        <div class="k">${esc(r.ts)} · 满意度 ${esc(r.satisfaction||'—')} / 5 · ${esc(r.helpfulness||'未填帮助程度')}${r.nickname ? ' · ' + esc(r.nickname) : ''}</div>
+        ${(r.enjoyed||[]).length ? `<div><b>喜欢：</b>${esc((r.enjoyed||[]).join('、'))}</div>` : ''}
+        ${(r.topics||[]).length ? `<div><b>想多安排：</b>${esc((r.topics||[]).join('、'))}</div>` : ''}
+        ${r.comments ? `<div><b>建议：</b>${esc(r.comments)}</div>` : ''}
+        <div style="text-align:right"><button class="del" data-id="${r.id}">删除</button></div>
+      </div>`).join('') : '<div class="empty">还没有人提交反馈。</div>';
+
+    $('fb-records').querySelectorAll('.del').forEach(b => {
+      b.addEventListener('click', async () => {
+        if (!confirm('删除这条反馈？')) return;
+        await fetch('/api/ec-feedback/' + b.dataset.id, {method:'DELETE', headers: headers()});
+        loadFeedbackAdmin();
+      });
+    });
+  }
+
+  $('refresh').addEventListener('click', () => selectAdminTab(adminTab));
+
+  async function exportCsv(){
+    const url = adminTab === 'checkin' ? '/api/checkin/export' : '/api/ec-feedback/export';
+    const resp = await fetch(url, {headers: headers()});
+    if (!resp.ok) { $('admin-msg').textContent = '导出失败（' + resp.status + '）'; return; }
+    const blob = await resp.blob();
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = (adminTab === 'checkin' ? 'EC_checkin_' : 'EC_feedback_') + SESSION + '.csv';
+    a.click(); URL.revokeObjectURL(a.href);
+  }
+  $('export').addEventListener('click', exportCsv);
+
+  $('logout').addEventListener('click', () => {
+    localStorage.removeItem(TOKEN_KEY);
+    history.replaceState(null, '', '#' + currentTab);
+    $('admin-view').hidden = true;
+    $('tabs').hidden = false;
+    showTab(currentTab);
+  });
+
+  // ── 现场签到台（?desk=1）─────────────────────────────────
+  // 只加前端、不加后端路由：走同一个 /api/checkin，app.py 一行不动。
+  function deskLog(){
+    try {
+      const l = JSON.parse(localStorage.getItem(DESK_LOG_KEY) || '[]');
+      return Array.isArray(l) ? l : [];
+    } catch(e){ return []; }
+  }
+
+  function renderDesk(){
+    const l = deskLog();
+    $('desk-count').textContent = l.length ? '本机已录 ' + l.length + ' 位' : '还没有录入';
+    $('desk-list').innerHTML = l.slice(-40).reverse().map(x =>
+      '<li><b>' + esc(x.name) + '</b>　' + esc(x.company || '') +
+      (x.wechat ? '　' + esc(x.wechat) : '') +
+      '<span>' + esc(x.t) + '</span></li>').join('');
+  }
+
+  function deskRemember(p){
+    const l = deskLog(), d = new Date();
+    const hh = ('0' + d.getHours()).slice(-2), mm = ('0' + d.getMinutes()).slice(-2);
+    l.push({ name: p.name, company: p.company, role: p.role, wechat: p.wechat, t: hh + ':' + mm });
+    localStorage.setItem(DESK_LOG_KEY, JSON.stringify(l));
+    renderDesk();
+  }
+
+  async function deskSubmit(){
+    const flash = $('desk-flash');
+    const payload = Object.assign({
+      session: SESSION,
+      name: $('desk-name').value.trim(),
+      company: $('desk-company').value.trim(),
+      wechat: $('desk-wechat').value.trim()
+    }, state);
+
+    const bad = checkEntry(payload, { name: 'desk-name', company: 'desk-company', wechat: 'desk-wechat' });
+    if (bad) {
+      flash.className = 'desk-flash bad';
+      flash.textContent = '✗ ' + bad.msg;
+      if (bad.id) $(bad.id).focus();
+      return;
+    }
+
+    flash.className = 'desk-flash'; flash.textContent = '提交中…';
+
+    let resp = null;
+    try { resp = await fetch('/api/checkin', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(payload)
+    }); } catch (e) { resp = null; }
+
+    if (!resp) {
+      // 本机 Flask 都连不上 = 后端没起。暂存，别让队伍卡在门口。
+      queueAdd(payload);
+      flash.className = 'desk-flash ok';
+      flash.textContent = '✓ ' + payload.name + ' 已暂存（后台未连上），稍后自动补传';
+    } else if (!resp.ok) {
+      const d = await resp.json().catch(() => ({}));
+      flash.className = 'desk-flash bad';
+      flash.textContent = '✗ ' + (d.error || ('HTTP ' + resp.status));
+      return;                              // 留住输入，改完再按回车
+    } else {
+      const d = await resp.json().catch(() => ({}));
+      const dup = d.record && d.record.duplicate;
+      flash.className = 'desk-flash ok';
+      flash.textContent = dup
+        ? '✓ ' + payload.name + ' 已在册（本场重复，未重复计数）'
+        : '✓ ' + payload.name + ' · ' + payload.company + ' 已签到';
+    }
+
+    deskRemember(payload);
+    ['desk-name', 'desk-company', 'desk-wechat'].forEach(id => { $(id).value = ''; });
+    Object.keys(state).forEach(k => { state[k] = ''; });
+    document.querySelectorAll('#desk-view .chip[aria-pressed="true"]')
+            .forEach(c => c.setAttribute('aria-pressed', 'false'));
+    $('desk-name').focus();
+  }
+
+  function openDesk(){
+    $('page-head').hidden = true;
+    $('tabs').hidden = true;
+    $('checkin-view').hidden = true;
+    $('done-view').hidden = true;
+    $('feedback-view').hidden = true;
+    $('fb-done-view').hidden = true;
+    $('admin-view').hidden = true;
+    $('desk-view').hidden = false;
+    renderDesk();
+    $('desk-name').focus();
+  }
+
+  ['desk-name','desk-company','desk-wechat'].forEach(id => {
+    $(id).addEventListener('keydown', (e) => {
+      if (e.key === 'Enter'){ e.preventDefault(); deskSubmit(); }
+    });
+  });
+
+  window.addEventListener('online', flushQueue);
+  flushQueue();                            // 页面一打开就把上次没传上去的补掉
+
+  // ── 初始视图路由 ──────────────────────────────────────────
+  // #admin  → 管理端（向后兼容原来签到页的入口）
+  // #feedback → 反馈；其余按服务端给的默认标签（/ec-feedback 默认反馈）
+  if (DESK) {
+    openDesk();
+  } else if (location.hash === '#admin') {
+    renderTab();
+    openAdmin('checkin');
+  } else if (location.hash === '#feedback') {
+    showTab('feedback');
+  } else {
+    showTab(DEFAULT_TAB === 'feedback' ? 'feedback' : 'checkin');
+    if (DEFAULT_TAB !== 'feedback') history.replaceState(null, '', '#checkin');
+  }
+})();
+</script>
+</body>
+</html>
