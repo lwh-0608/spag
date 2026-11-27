@@ -1,0 +1,33 @@
+diff --git "a/JFC_\346\226\207\346\241\243\351\207\215\346\216\222\347\211\210/contents/02_waiting_list.py" "b/JFC_\346\226\207\346\241\243\351\207\215\346\216\222\347\211\210/contents/02_waiting_list.py"
+index bb78cf0..693bfaa 100644
+--- "a/JFC_\346\226\207\346\241\243\351\207\215\346\216\222\347\211\210/contents/02_waiting_list.py"
++++ "b/JFC_\346\226\207\346\241\243\351\207\215\346\216\222\347\211\210/contents/02_waiting_list.py"
+@@ -12,6 +12,10 @@ v5（2026-11-18）：签署页末尾加「JFC 经办员工 UUID」内部登记
+ v6（2026-11-19）：底部登记栏由「JFC 经办员工 UUID」改为「JFC 参考编码」填写栏
+ ——编码只标识文件归属，不再指向经办员工；UUID 的「36 位字符」规格随之取消，
+ 填写区改走模版矢量横线（sig），与上方签署栏同一形制。
++
++v7（2026-11-26）：底部填写栏名称由「JFC 参考编码」统一为「JFC 推荐代码
++（JFC Referral Code）」（owner 飞书 2026-11-26 口径）。仅改名称；填写区形制、
++留白与 v6 相同，页数不变（4 页）。
+ """
+ TITLE_CN = "JFC 创始合伙人上线前预留与等候名单"
+ TITLE_EN = "Founding Partner Pre-Launch Reservation & Waiting List"
+@@ -57,7 +61,8 @@ EXTRA_ALLOWED = ("文件 File 客户 Client 服务提供商 Provider 预留与
+                  "Program 签署本文件不产生任何付款义务 Signing creates no payment obligation 签署 Signatures "
+                  "创始合伙人专属权益 Founding Partner Benefits Run "
+                  # v6：底部改「JFC 参考编码」填写栏（源件无此栏，属版式新增）
+-                 "JFC 参考编码 Reference Code")
++                 # v7：名称统一为「JFC 推荐代码」；填写区形制不变
++                 "JFC 推荐代码 Referral Code")
+ 
+ CONTENT = [
+     {"t": "p",
+@@ -163,5 +168,6 @@ CONTENT = [
+     # 编码只标识文件归属，不再指向具体经办员工；「36 位字符」是 UUID 的专属
+     # 规格，随之取消。填写区改走模版矢量线（sig：中上英下 + 全宽横线），
+     # 与上方签署栏同一形制；整块比原表格矮约 4mm，4 页压得下。
+-    {"t": "sig", "cn": "JFC 参考编码", "en": "JFC Reference Code", "gap": 11.0},
++    # v7：名称统一为「JFC 推荐代码（JFC Referral Code）」，形制/留白不变。
++    {"t": "sig", "cn": "JFC 推荐代码", "en": "JFC Referral Code", "gap": 11.0},
+ ]

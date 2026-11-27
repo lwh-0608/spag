@@ -1,0 +1,33 @@
+== pdftotext -layout v6 -> v7 (expect only the bottom field label)
+--- -	2026-11-26 12:25:37
++++ /dev/fd/63	2026-11-26 12:25:37
+@@ -181,8 +181,8 @@
+ 
+ 
+ 
+- JFC 参考编码
+-   JFC Reference Code
++ JFC 推荐代码
++   JFC Referral Code
+ 
+ 
+ 
+
+== pdftotext -layout v5 -> v7 (v5 is the revision attached in the request)
+--- -	2026-11-26 12:25:37
++++ /dev/fd/63	2026-11-26 12:25:37
+@@ -181,12 +181,8 @@
+ 
+ 
+ 
+- 内部登记                                                                              填写内容 36 位字符
+- Internal Registration                                                             Entry (36 characters)
+-
+-
+- JFC 经办员工 UUID
+- JFC Handling Employee UUID
++ JFC 推荐代码
++   JFC Referral Code
+ 
+ 
+ 

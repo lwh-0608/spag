@@ -1,0 +1,13 @@
+Rendered at 150 dpi (1241x1754 px per A4 page), pdftoppm.
+
+== v6 (canonical before) vs v7 (after): per-page pixel difference
+page 1: size=(1241, 1754) differing_region=None
+page 2: size=(1241, 1754) differing_region=None
+page 3: size=(1241, 1754) differing_region=None
+page 4: size=(1241, 1754) differing_region=(164, 1460, 299, 1511)
+
+== v5 (revision attached in the request) vs v7 (after): per-page pixel difference
+page 1: size=(1241, 1754) differing_region=None
+page 2: size=(1241, 1754) differing_region=None
+page 3: size=(1241, 1754) differing_region=None
+page 4: size=(1241, 1754) differing_region=(93, 1455, 1147, 1625)

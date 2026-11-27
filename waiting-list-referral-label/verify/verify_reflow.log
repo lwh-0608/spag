@@ -1,0 +1,14 @@
+### verify: python3 verify_reflow.py contents/02_waiting_list.py
+  · 产出名按源件：JFC Waiting List Contract 中文 v1.pdf（内容层 OUT_NAME='JFC 创始合伙人预留与等候名单协议（中英对照）.pdf' 已按新标准忽略）
+
+检查: JFC Waiting List Contract 中文 v1.pdf
+  ✓ [字体] 合规: ['arialunicodems']
+  ✓ [几何] A4 · 4 页
+  ✓ [内容守恒] 源 1247 token 全部命中
+  ✓ [反自造] 原文侧无未声明内容（源已双语）；显式声明 ['agreement', 'benefits', 'client', 'code', 'creates', 'file', 'founding', 'jfc', 'list', 'no', 'obligation', 'partner', 'payment', 'program', 'provider', 'referral', 'reservation', 'run', 'signatures', 'signing', 'waiting', '不', '与', '专', '义', '产', '人', '付', '代', '件', '任', '伙', '何', '供', '候', '划', '创', '务', '协', '单', '合', '名', '商', '始', '客', '属', '户', '推', '提', '文', '服', '本', '权', '款', '生', '留', '益', '码', '等', '签', '署', '荐', '计', '议', '预']
+  ✓ [双语] 21 个正文档块全部中英成对；封面权益卡 3 项成对
+  ✓ [越界] 764 词全部落在版心内
+  ✓ [重叠] 无文本互相压盖
+  ✓ [区域] 正文词全部落在页眉带之下、下边距之上
+  ✓ [孤行] 无单字成行
+  结果: PASS

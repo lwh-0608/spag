@@ -1,0 +1,7 @@
+### python3 -m pytest test_jfc_text.py -q
+.............                                                            [100%]
+13 passed in 0.03s
+### --check
+  content_02_waiting_list: 29 块 {'p': 10, 'h2': 6, 'item': 4, 'h1': 1, 'sig': 7, 'blank': 1}
+  ✓ 中英成对
+  ✓ 封面权益卡 3 项中英成对

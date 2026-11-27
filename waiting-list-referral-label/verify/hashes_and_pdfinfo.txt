@@ -1,0 +1,29 @@
+== md5
+MD5 (out/baseline/JFC SME Waiting List 创始合伙人预留与等候名单协议（中英对照）v5.pdf) = a698ad5770d5892feeb2705b0d3c54c0
+MD5 (out/baseline/JFC SME Waiting List 创始合伙人预留与等候名单协议（中英对照）v6.pdf) = a845456271cb299426499501ea41d6ea
+MD5 (out/JFC SME Waiting List 创始合伙人预留与等候名单协议（中英对照）v7.pdf) = 18fe951f57c570cb691253b5c1e25947
+
+== sha256
+62b3ba40d3046ea4bf6928164fd112f7e9546f9137fdd9d4ad0e89a7394ac83a  out/baseline/JFC SME Waiting List 创始合伙人预留与等候名单协议（中英对照）v5.pdf
+fe446f07b3e4f1f5dd23724f22d82d4673c9b5ca8788a1bfec0a4ccf07a56be0  out/baseline/JFC SME Waiting List 创始合伙人预留与等候名单协议（中英对照）v6.pdf
+daeea5c65bb5b472fafa6575c294e1ed0a42aa740f93a1aac8da4676f5df1e3f  out/JFC SME Waiting List 创始合伙人预留与等候名单协议（中英对照）v7.pdf
+
+== pdfinfo (v7)
+Title:           JFC 创始合伙人上线前预留与等候名单 / Founding Partner Pre-Launch Reservation & Waiting List
+Author:          JAZZFRONT CONSULTING (JFC)
+Creator:         JFC contract renderer
+CreationDate:    Mon Oct 26 00:00:00 2026 CST
+Custom Metadata: no
+Metadata Stream: no
+Tagged:          no
+UserProperties:  no
+Suspects:        no
+Form:            none
+JavaScript:      no
+Pages:           4
+Encrypted:       no
+Page size:       595.28 x 841.89 pts (A4)
+Page rot:        0
+File size:       331287 bytes
+Optimized:       no
+PDF version:     1.3
