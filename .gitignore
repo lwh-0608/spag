@@ -1,0 +1,11 @@
+cards/render/tmp/
+cards/render/trimmed/
+__pycache__/
+
+# card sources: third-party print photos stay out of git (sources/licences documented in SOURCES.md)
+assets/cards/images/*.jpg
+deliverables/cards/preview/*.png
+!deliverables/cards/preview/all_cards_preview.png
+deliverables/cards/A4_office_proof.pdf
+deliverables/cards/print/C*_front.pdf
+deliverables/cards/print/C*_back.pdf
