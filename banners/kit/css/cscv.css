@@ -1,0 +1,114 @@
+/* CSCV — FIELD DOSSIER
+   The November 2026 CSCV visual brand: warm paper, ink, signal orange,
+   verification green, registration marks, stamps, Archivo / Inter / JetBrains
+   Mono. Mirrors banners/kit/tokens.py (CSCV). */
+
+.cscv {
+  position: relative;
+  overflow: hidden;
+  background: #f1ede3;
+  color: #0a0d10;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+}
+
+.cscv.cscv--ink { background: #0a0d10; color: #f1ede3; }
+
+/* faint construction grid + paper grain */
+.cscv .cscv-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    repeating-linear-gradient(90deg, rgba(10,13,16,.05) 0 1px, transparent 1px 72px),
+    repeating-linear-gradient(0deg,  rgba(10,13,16,.04) 0 1px, transparent 1px 72px);
+  -webkit-mask-image: radial-gradient(130% 100% at 78% 8%, #000 0%, transparent 78%);
+          mask-image: radial-gradient(130% 100% at 78% 8%, #000 0%, transparent 78%);
+}
+.cscv--ink .cscv-grid {
+  background-image:
+    repeating-linear-gradient(90deg, rgba(241,237,227,.06) 0 1px, transparent 1px 72px),
+    repeating-linear-gradient(0deg,  rgba(241,237,227,.05) 0 1px, transparent 1px 72px);
+}
+
+/* registration crosshairs */
+.cscv .cscv-reg { position: absolute; width: 14px; height: 14px; color: #ff4d00; pointer-events: none; }
+.cscv .cscv-reg::before, .cscv .cscv-reg::after { content: ""; position: absolute; background: currentColor; }
+.cscv .cscv-reg::before { left: 0; right: 0; top: 6px; height: 1px; }
+.cscv .cscv-reg::after { top: 0; bottom: 0; left: 6px; width: 1px; }
+
+.cscv .cscv-logo { height: 40px; width: auto; }
+
+.cscv .cscv-kicker {
+  font-family: "JetBrains Mono", "SF Mono", Menlo, monospace;
+  font-size: 11px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase;
+  color: #ff4d00; white-space: nowrap;
+}
+.cscv .cscv-kicker--muted { color: #7e838b; }
+
+.cscv .cscv-h1 {
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-weight: 600; color: #0a0d10; letter-spacing: .01em; line-height: 1.18;
+  white-space: nowrap;
+}
+.cscv--ink .cscv-h1 { color: #f1ede3; }
+
+.cscv .cscv-h1-en {
+  font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 800; letter-spacing: -.022em; line-height: 1.04; color: #0a0d10;
+  white-space: nowrap;
+}
+.cscv--ink .cscv-h1-en { color: #f1ede3; }
+
+.cscv .cscv-sub {
+  font-size: 21px; font-weight: 500; color: #0a0d10; letter-spacing: .01em; white-space: nowrap;
+}
+.cscv .cscv-sub--cn {
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-weight: 500;
+}
+.cscv--ink .cscv-sub { color: #f1ede3; }
+
+.cscv .cscv-mono {
+  font-family: "JetBrains Mono", "SF Mono", Menlo, monospace;
+  font-weight: 400; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase;
+  color: #7e838b; white-space: nowrap;
+}
+.cscv--ink .cscv-mono { color: #9aa0a7; }
+
+.cscv .cscv-proof {
+  font-family: "JetBrains Mono", "SF Mono", Menlo, monospace;
+  font-size: 11px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase;
+  color: #0a0d10; white-space: nowrap;
+}
+.cscv .cscv-proof b { color: #ff4d00; }
+.cscv--ink .cscv-proof { color: #f1ede3; }
+
+/* tick rule — hairline with measurement ticks */
+.cscv .cscv-ticks {
+  height: 8px; border-bottom: 1px solid rgba(10,13,16,.32);
+  background-image: repeating-linear-gradient(90deg, rgba(10,13,16,.32) 0 1px, transparent 1px 12px);
+  background-size: 100% 5px; background-repeat: no-repeat; background-position: bottom left;
+}
+.cscv--ink .cscv-ticks {
+  border-bottom-color: rgba(241,237,227,.4);
+  background-image: repeating-linear-gradient(90deg, rgba(241,237,227,.4) 0 1px, transparent 1px 12px);
+}
+.cscv .cscv-rule { height: 1px; background: rgba(10,13,16,.32); }
+.cscv--ink .cscv-rule { background: rgba(241,237,227,.4); }
+
+/* rotated evidence stamp */
+.cscv .cscv-stamp {
+  display: inline-block; border: 1.5px solid #ff4d00; color: #ff4d00;
+  font-family: "JetBrains Mono", "SF Mono", Menlo, monospace;
+  font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+  padding: .55em .85em; line-height: 1; transform: rotate(-7deg); white-space: nowrap;
+}
+.cscv .cscv-stamp--solid { background: #ff4d00; color: #0a0d10; }
+
+/* barcode block */
+.cscv .cscv-barcode {
+  height: 18px; width: 96px;
+  background-image: repeating-linear-gradient(90deg, currentColor 0 1px, transparent 1px 3px, currentColor 3px 5px, transparent 5px 6px);
+  opacity: .75;
+}
+
+.cscv .cscv-verify { color: #1f7a4d; }
+.cscv .cscv-acid { color: #a4c940; }

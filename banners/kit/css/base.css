@@ -1,0 +1,28 @@
+/* Shared base for every banner artboard.
+   Fonts are vendored (SIL Open Font License) so the kit renders identically
+   on any machine with Chromium. JFC's Avenir Next is a macOS system font; the
+   stack falls back to Helvetica / Arial elsewhere. */
+@font-face { font-family: "Archivo"; font-weight: 700; font-style: normal; font-display: block;
+  src: url("../assets/fonts/archivo-700-latin.woff2") format("woff2"); }
+@font-face { font-family: "Archivo"; font-weight: 800; font-style: normal; font-display: block;
+  src: url("../assets/fonts/archivo-800-latin.woff2") format("woff2"); }
+@font-face { font-family: "Archivo"; font-weight: 900; font-style: normal; font-display: block;
+  src: url("../assets/fonts/archivo-900-latin.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 400; font-style: normal; font-display: block;
+  src: url("../assets/fonts/inter-400-latin.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 500; font-style: normal; font-display: block;
+  src: url("../assets/fonts/inter-500-latin.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 600; font-style: normal; font-display: block;
+  src: url("../assets/fonts/inter-600-latin.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 400; font-style: normal; font-display: block;
+  src: url("../assets/fonts/jetbrains-mono-400-latin.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 500; font-style: normal; font-display: block;
+  src: url("../assets/fonts/jetbrains-mono-500-latin.woff2") format("woff2"); }
+
+* { box-sizing: border-box; }
+h1, h2, h3, h4, h5, h6, p, figure, blockquote { margin: 0; padding: 0; }
+html, body { margin: 0; padding: 0; background: #000; }
+body { -webkit-font-smoothing: antialiased; text-rendering: geometricPrecision; }
+.art { position: relative; overflow: hidden; }
+.art img { display: block; }
+.abs { position: absolute; }

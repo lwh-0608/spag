@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>JFC · Facebook page cover · 820×360</title>
+<link rel="stylesheet" href="../../kit/css/base.css">
+<link rel="stylesheet" href="../../kit/css/jfc.css">
+<style>
+  .art { width: 820px; height: 360px; }
+
+  /* inset hairline frame — decoration only (mobile crop trims it) */
+  .fb-frame { position: absolute; left: 14px; top: 14px; right: 14px; bottom: 14px;
+    border: 1px solid rgba(231,240,253,.13); pointer-events: none; }
+
+  /* white leaf silhouette, bled from the top-right corner */
+  .jfc .fb-leaf { right: -130px; top: -200px; height: 540px; opacity: .10; }
+
+  .jfc .fb-logo { position: absolute; left: 114px; top: 46px; height: 40px; }
+
+  /* one green signal rule, introducing the service line */
+  .fb-rule { position: absolute; left: 116px; top: 228px; width: 40px; height: 3px; background: #2e9d74; }
+
+  .jfc .fb-kicker { position: absolute; left: 116px; top: 100px; font-size: 12px; }
+
+  .jfc .fb-h1 { position: absolute; left: 110px; top: 122px; font-size: 34px; }
+
+  .jfc .fb-h1-en { position: absolute; left: 116px; top: 168px; font-size: 17px; }
+
+  .jfc .fb-contact { position: absolute; right: 114px; top: 46px; text-align: right; font-size: 14px; }
+
+  .jfc .fb-meta { position: absolute; right: 114px; top: 72px; text-align: right; font-size: 12px; }
+
+  .jfc .fb-service { position: absolute; left: 116px; top: 242px; font-size: 13px; }
+
+  .jfc .fb-service-en { position: absolute; left: 116px; top: 266px; font-size: 11px; }
+</style>
+</head>
+<body>
+<div class="art jfc">
+  <div class="jfc-grid"></div>
+  <div class="fb-frame"></div>
+  <div class="jfc-leaf fb-leaf"><img src="../../kit/assets/leaf-white.png" alt=""></div>
+
+  <img class="jfc-logo fb-logo" src="../../kit/assets/logo-white.png" alt="JAZZFRONT Consulting" data-critical>
+
+  <div class="jfc-kicker fb-kicker" data-critical>JAZZFRONT CONSULTING™ · GUANGZHOU NANSHA, CHINA</div>
+  <h1 class="jfc-h1 fb-h1" data-critical data-lang="zh">让跨境合作，从确认开始。</h1>
+  <p class="jfc-h1-en fb-h1-en" data-critical data-lang="en">Cross-border work starts with confirmation.</p>
+
+  <div class="fb-rule"></div>
+  <p class="jfc-service fb-service" data-critical data-lang="zh">中国供应链核验（CSCV）· 专为无法亲临现场的买家设计</p>
+  <p class="jfc-pos-en fb-service-en" data-critical data-lang="en">CHINA SUPPLY CHAIN VERIFICATION · FOR BUYERS WHO CANNOT BE ON SITE</p>
+
+  <div class="jfc-contact fb-contact" data-critical>JFC.Consulting@outlook.com</div>
+  <div class="jfc-meta fb-meta" data-critical>中国广州南沙 · 22.80°N 113.53°E</div>
+</div>
+</body>
+</html>

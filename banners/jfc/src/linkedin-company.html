@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>JFC · LinkedIn company page cover · 1512×256</title>
+<link rel="stylesheet" href="../../kit/css/base.css">
+<link rel="stylesheet" href="../../kit/css/jfc.css">
+<style>
+  .art { width: 1512px; height: 256px; }
+
+  /* inset hairline frame — decoration only, may sit outside the safe rect */
+  .lc-frame { position: absolute; left: 14px; top: 14px; right: 14px; bottom: 14px;
+    border: 1px solid rgba(231,240,253,.13); pointer-events: none; }
+
+  /* white leaf silhouette, bled from the top-right corner */
+  .jfc .lc-leaf { right: -180px; top: -300px; height: 780px; opacity: .095; }
+
+  .jfc .lc-logo { position: absolute; left: 56px; top: 32px; height: 44px; }
+
+  /* one green signal rule, between the logo and the text block */
+  .lc-rule { position: absolute; left: 58px; top: 86px; width: 40px; height: 3px; background: #2e9d74; }
+
+  .jfc .lc-kicker { position: absolute; left: 58px; top: 96px; font-size: 11px; }
+
+  .jfc .lc-h1 { position: absolute; left: 52px; top: 120px; font-size: 38px; }
+
+  .jfc .lc-h1-en { position: absolute; left: 58px; top: 170px; font-size: 17px; }
+
+  .jfc .lc-contact { position: absolute; right: 56px; top: 44px; text-align: right; font-size: 15px; }
+
+  .jfc .lc-meta { position: absolute; right: 56px; top: 72px; text-align: right; }
+
+  .jfc .lc-service { position: absolute; right: 56px; top: 168px; text-align: right; font-size: 11.5px; }
+
+  .jfc .lc-service-en { position: absolute; right: 56px; top: 192px; text-align: right; font-size: 11px; }
+</style>
+</head>
+<body>
+<div class="art jfc">
+  <div class="jfc-grid"></div>
+  <div class="lc-frame"></div>
+  <div class="jfc-leaf lc-leaf"><img src="../../kit/assets/leaf-white.png" alt=""></div>
+
+  <img class="jfc-logo lc-logo" src="../../kit/assets/logo-white.png" alt="JAZZFRONT Consulting" data-critical>
+
+  <div class="lc-rule"></div>
+  <div class="jfc-kicker lc-kicker" data-critical>JAZZFRONT CONSULTING™ · GUANGZHOU NANSHA, CHINA</div>
+  <h1 class="jfc-h1 lc-h1" data-critical data-lang="zh">让跨境合作，从确认开始。</h1>
+  <p class="jfc-h1-en lc-h1-en" data-critical data-lang="en">Cross-border work starts with confirmation.</p>
+
+  <div class="jfc-contact lc-contact" data-critical>JFC.Consulting@outlook.com</div>
+  <div class="jfc-meta lc-meta" data-critical>中国广州南沙 · 22.80°N 113.53°E</div>
+  <p class="jfc-service lc-service" data-critical data-lang="zh">中国供应链核验（CSCV）· 专为无法亲临现场的买家设计</p>
+  <p class="jfc-pos-en lc-service-en" data-critical data-lang="en">CHINA SUPPLY CHAIN VERIFICATION · FOR BUYERS WHO CANNOT BE ON SITE</p>
+</div>
+</body>
+</html>

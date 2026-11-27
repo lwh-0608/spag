@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>JFC · YouTube channel art · 2560×1440</title>
+<link rel="stylesheet" href="../../kit/css/base.css">
+<link rel="stylesheet" href="../../kit/css/jfc.css">
+<style>
+  .art { width: 2560px; height: 1440px; }
+
+  /* TV-only inset hairline frame — decoration; the safe band sits inside it */
+  .yt-frame { position: absolute; left: 120px; top: 120px; right: 120px; bottom: 120px;
+    border: 1px solid rgba(231,240,253,.12); pointer-events: none; }
+
+  /* white leaf silhouette, bled from the top-right corner, entirely in TV-only space */
+  .jfc .yt-leaf { right: -260px; top: -760px; height: 1200px; opacity: .10; }
+
+  /* ---- everything below lives inside the 1546×423 safe band (507,508,1546,423) ---- */
+
+  .jfc .yt-logo { position: absolute; left: 552px; top: 552px; height: 56px; }
+
+  /* one green signal rule */
+  .yt-rule { position: absolute; left: 556px; top: 830px; width: 72px; height: 4px; background: #2e9d74; }
+
+  .jfc .yt-kicker { position: absolute; left: 554px; top: 622px; font-size: 18px; }
+
+  .jfc .yt-h1 { position: absolute; left: 548px; top: 655px; font-size: 112px; }
+
+  .jfc .yt-h1-en { position: absolute; left: 554px; top: 787px; font-size: 28px; }
+
+  .jfc .yt-service { position: absolute; left: 556px; top: 842px; font-size: 18px; }
+
+  .jfc .yt-service-en { position: absolute; left: 556px; top: 872px; font-size: 13px; }
+
+  .jfc .yt-contact { position: absolute; right: 556px; top: 552px; text-align: right; font-size: 22px; }
+
+  .jfc .yt-meta { position: absolute; right: 556px; top: 872px; text-align: right; font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="art jfc">
+  <div class="jfc-grid"></div>
+  <div class="yt-frame"></div>
+  <div class="jfc-leaf yt-leaf"><img src="../../kit/assets/leaf-white.png" alt=""></div>
+
+  <img class="jfc-logo yt-logo" src="../../kit/assets/logo-white.png" alt="JAZZFRONT Consulting" data-critical>
+
+  <div class="jfc-kicker yt-kicker" data-critical>JAZZFRONT CONSULTING™ · GUANGZHOU NANSHA, CHINA</div>
+  <h1 class="jfc-h1 yt-h1" data-critical data-lang="zh">让跨境合作，从确认开始。</h1>
+  <p class="jfc-h1-en yt-h1-en" data-critical data-lang="en">Cross-border work starts with confirmation.</p>
+
+  <div class="yt-rule"></div>
+  <p class="jfc-service yt-service" data-critical data-lang="zh">中国供应链核验（CSCV）· 专为无法亲临现场的买家设计</p>
+  <p class="jfc-pos-en yt-service-en" data-critical data-lang="en">CHINA SUPPLY CHAIN VERIFICATION · FOR BUYERS WHO CANNOT BE ON SITE</p>
+
+  <div class="jfc-contact yt-contact" data-critical>JFC.Consulting@outlook.com</div>
+  <div class="jfc-meta yt-meta" data-critical>中国广州南沙 · 22.80°N 113.53°E</div>
+</div>
+</body>
+</html>

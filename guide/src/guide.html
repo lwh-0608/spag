@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>JFC / CSCV · 官方社媒背景横幅模板 / Social Banner Template Kit</title>
+<link rel="stylesheet" href="guide.css">
+</head>
+<body>
+
+<!-- ============================== 01 cover ============================== -->
+<section class="page cover">
+  <div class="top">
+    <img class="logo" src="../../banners/kit/assets/logo-white.png" alt="JAZZFRONT Consulting">
+    <div class="tag">Brand templates · 品牌图版模板</div>
+  </div>
+  <h1 class="zh">JFC / CSCV<br>官方社媒背景横幅模板
+    <span class="en">Official social banner template kit</span>
+  </h1>
+  <p class="lead zh">一套可直接上传的品牌模板：JFC 公司品牌与 CSCV 视觉品牌，覆盖领英（个人主页与公司主页）、X、Facebook、YouTube 五种横幅尺寸。每个尺寸都按平台安全区校验，附可编辑的 HTML 源文件与重新生成脚本。</p>
+  <p class="lead en">A ready-to-upload brand kit: the JFC company brand and the CSCV visual brand across five banner formats — LinkedIn (personal profile and company page), X, Facebook and YouTube. Every format is checked against its platform safe area, with editable HTML sources and a regeneration script.</p>
+  <div class="strip">
+    <img src="../../banners/jfc/png/linkedin-personal.png" alt="JFC banner">
+    <img src="../../banners/cscv/png/linkedin-personal.png" alt="CSCV banner">
+  </div>
+  <div class="foot"><span>JAZZFRONT Consulting™ · 广州南沙 / Nansha, Guangzhou</span><span>Version 1.2 · November 2026</span></div>
+</section>
+
+<!-- ============================== 02 overview ============================== -->
+<section class="page">
+  <div class="kicker">01 — Overview / 总览</div>
+  <h2 class="zh">这套模板是什么<span class="en">What this kit is</span></h2>
+  <div class="rule"></div>
+  <p class="zh">社媒主页的横幅是品牌最常被看到的版面。本套模板把 JFC 的两条品牌线固化为可复用的图版：<b>JFC 公司品牌（机构蓝）</b>用于公司层面的主页与个人主页，<b>CSCV 视觉品牌（现场档案）</b>用于供应链核验服务。每个品牌 5 个平台尺寸，共 10 张成品 PNG，另附 HTML 源文件、品牌规范与生成/校验脚本。</p>
+  <p class="en">A social profile banner is the most-seen brand surface a company owns. This kit turns JFC’s two brand lines into reusable templates: <b>JFC company brand (Institutional Blue)</b> for company-level and personal profiles, and <b>CSCV visual brand (Field Dossier)</b> for the supply chain verification service. Five platform formats per brand, ten finished PNGs, plus HTML sources, brand rules and build/QA scripts.</p>
+
+  <h3 class="zh" style="margin-top:6mm">五种平台尺寸<span class="en">Five platform formats</span></h3>
+  <table>
+    <thead><tr><th style="width:24%">格式 Format</th><th style="width:20%">平台 Platform</th><th style="width:16%">画布 Canvas</th><th style="width:40%">要点 Note</th></tr></thead>
+    <tbody>
+      <tr><td><code>linkedin-personal</code></td><td>领英 LinkedIn · 个人主页</td><td>1584×396</td><td>头像覆盖左下角；内容避开该区域</td></tr>
+      <tr><td><code>linkedin-company</code></td><td>领英 LinkedIn · 公司主页</td><td>1512×256</td><td>官方推荐尺寸；内容居中，避免贴边</td></tr>
+      <tr><td><code>x-header</code></td><td>X（Twitter）· 页头</td><td>1500×500</td><td>头像在左下；顶/底可能轻微裁切</td></tr>
+      <tr><td><code>facebook-cover</code></td><td>Facebook · 主页封面</td><td>820×360</td><td>桌面显示 820×312，手机显示 640×360</td></tr>
+      <tr><td><code>youtube-channel</code></td><td>YouTube · 频道封面</td><td>2560×1440</td><td>所有设备安全区 1546×423，居中</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="zh" style="margin-top:6mm">上传方式<span class="en">How to upload</span></h3>
+  <p class="zh">每张成品都在 <code>banners/&lt;品牌&gt;/png/</code>。上传 1× 的 PNG 即可；若平台接受更大图片，可改用同目录的 <code>@2x</code> 版本（更清晰）。不要自行裁切或拉伸——所有构图已按安全区设计。模板只使用品牌色、官方 logo 与冻结文案，不含价格、客户名或未经核实的数字。</p>
+  <p class="en">Finished files live in <code>banners/&lt;brand&gt;/png/</code>. Upload the 1× PNG; where a platform accepts larger images, use the matching <code>@2x</code> file for sharpness. Do not crop or stretch the artwork — every layout is built to its safe area. The templates use brand colours, the official logo and approved copy only; no prices, client names or unverified numbers.</p>
+
+  <div class="note zh" style="margin-top:5mm"><b>每张横幅按尺寸取舍文案。</b>在保证可读性的前提下，较小的版式会省略二级文案（如四服务定位仅出现在个人主页与 X 版），品牌主张与 CSCV 服务线在每个版式都保留。详见 <code>banners/*/NOTES.md</code>。<br><span class="en"><b>Copy is trimmed per format.</b> To protect legibility, smaller formats omit secondary lines (for example the four-service positioning appears only on the personal profile and X formats) while the brand claim and the CSCV service line remain in every format. Per-format record: <code>banners/*/NOTES.md</code>.</span></div>
+
+  <div class="note zh" style="margin-top:4mm"><b>两条品牌线，不要混用。</b>公司层面的主页与个人主页用 JFC 机构蓝；讲核验服务的内容用 CSCV 现场档案。两套系统的 logo 使用规则不同，见后两页。<br><span class="en"><b>Two brand lines — do not mix.</b> Company and personal profiles use JFC Institutional Blue; verification-service surfaces use CSCV Field Dossier. The two systems use the logo differently — see the next two pages.</span></div>
+  <div class="foot"><span>JFC · CSCV Social Banner Kit</span><span>02 / 07</span></div>
+</section>
+
+<!-- ============================== 03 brand A ============================== -->
+<section class="page">
+  <div class="kicker">02 — Brand A / 品牌 A</div>
+  <h2 class="zh">JFC 公司品牌 · 机构蓝<span class="en">JFC company brand · Institutional Blue</span></h2>
+  <div class="rule"></div>
+  <p class="zh">沿用 JFC 公司简介与服务组合的官方视觉：深海军蓝底、冰蓝文字、官方 logo 蓝，一条细绿信号线。字体为 Avenir Next（西文）与 PingFang SC（中文），气质克制、机构化，适合公司主页与对外正式形象。</p>
+  <p class="en">Follows the official look of the JFC company profile and service portfolio: deep navy field, ice-blue type, official logo blue, a single thin green signal rule. Type is Avenir Next (Latin) and PingFang SC (Chinese). Restrained and institutional — for company pages and formal corporate surfaces.</p>
+
+  <div class="swatches">
+    <div class="sw"><div class="chip" style="background:#0a295b"></div><div class="lab"><b>Navy</b><br>#0A295B</div></div>
+    <div class="sw"><div class="chip" style="background:#061a3b"></div><div class="lab"><b>Navy deep</b><br>#061A3B</div></div>
+    <div class="sw"><div class="chip" style="background:#e7f0fd"></div><div class="lab"><b>Ice</b><br>#E7F0FD</div></div>
+    <div class="sw"><div class="chip" style="background:#2c63e0"></div><div class="lab"><b>Logo blue</b><br>#2C63E0</div></div>
+    <div class="sw"><div class="chip" style="background:#2e9d74"></div><div class="lab"><b>Signal green</b><br>#2E9D74</div></div>
+  </div>
+
+  <div class="cols" style="margin-top:2mm">
+    <div>
+      <img class="banner" src="../../banners/jfc/png/linkedin-personal.png" alt="JFC LinkedIn personal banner">
+      <div class="caption">LinkedIn personal · 1584×396</div>
+    </div>
+    <div style="flex:0 0 62mm">
+      <h3 class="zh">构成规则<span class="en">Rules</span></h3>
+      <div class="tick"><div class="mark yes"></div><p class="zh">官方白色 logo 置于 navy 底；彩色 logo 只用于浅色背景。<span class="en">Official white lockup on navy; colour lockup on light grounds only.</span></p></div>
+      <div class="tick"><div class="mark yes"></div><p class="zh">中文标题为主，英文标题紧随其下成对出现。<span class="en">Chinese headline leads; the English headline sits below as a pair.</span></p></div>
+      <div class="tick"><div class="mark yes"></div><p class="zh">绿色只作一条细信号线，≤1 处。<span class="en">Green appears only as one thin signal rule.</span></p></div>
+      <div class="tick"><div class="mark no"></div><p class="zh">不重绘、不拉伸、不旋转 logo；不改品牌色。<span class="en">Never redraw, stretch, rotate or recolour the logo.</span></p></div>
+      <div class="tick"><div class="mark no"></div><p class="zh">不加价格、客户名、奖项或未经证实的数字。<span class="en">No prices, client names, awards or unverified numbers.</span></p></div>
+    </div>
+  </div>
+
+  <div class="note zh" style="margin-top:5mm"><b>排版：</b>标题保持单行；左侧留 70px 以上页边；左下角是头像区域，不要放重要内容。<br><span class="en"><b>Layout:</b> keep the headline on one line, at least a 70 px left margin; the bottom-left corner is the avatar zone — never put essential content there.</span></div>
+  <div class="foot"><span>JFC · CSCV Social Banner Kit</span><span>03 / 07</span></div>
+</section>
+
+<!-- ============================== 04 brand B ============================== -->
+<section class="page">
+  <div class="kicker">03 — Brand B / 品牌 B</div>
+  <h2 class="zh">CSCV 视觉品牌 · 现场档案<span class="en">CSCV visual brand · Field Dossier</span></h2>
+  <div class="rule"></div>
+  <p class="zh">CSCV 是 JFC 的中国供应链核验服务线。2026 年 11 月起，CSCV 采用「现场档案」视觉系统：暖纸色底、墨黑文字、信号橙、核验绿，配定位十字标记、刻度线、证据章与条形码。它应当像一份现场核验档案的封面，而不是广告。</p>
+  <p class="en">CSCV is JFC’s China Supply Chain Verification service line. Since November 2026 it uses the Field Dossier system: warm paper, ink type, signal orange, verification green, with registration crosshairs, tick rules, an evidence stamp and barcode. It should read like the cover of an on-site verification dossier, not an advertisement.</p>
+
+  <div class="swatches">
+    <div class="sw"><div class="chip" style="background:#f1ede3"></div><div class="lab"><b>Paper</b><br>#F1EDE3</div></div>
+    <div class="sw"><div class="chip" style="background:#0a0d10"></div><div class="lab"><b>Ink</b><br>#0A0D10</div></div>
+    <div class="sw"><div class="chip" style="background:#ff4d00"></div><div class="lab"><b>Signal orange</b><br>#FF4D00</div></div>
+    <div class="sw"><div class="chip" style="background:#37e08a"></div><div class="lab"><b>Verify</b><br>#37E08A</div></div>
+    <div class="sw"><div class="chip" style="background:#f1ede3;border-color:#7e838b"></div><div class="lab"><b>Muted / line</b><br>#7E838B</div></div>
+  </div>
+
+  <div class="cols" style="margin-top:2mm">
+    <div>
+      <img class="banner" src="../../banners/cscv/png/linkedin-personal.png" alt="CSCV LinkedIn personal banner">
+      <div class="caption">LinkedIn personal · 1584×396</div>
+    </div>
+    <div style="flex:0 0 62mm">
+      <h3 class="zh">构成规则<span class="en">Rules</span></h3>
+      <div class="tick"><div class="mark yes"></div><p class="zh">中文在前、英文紧随，成对出现；西文用 Archivo 800 / Inter。<span class="en">Chinese first, English paired below; Archivo 800 / Inter for Latin.</span></p></div>
+      <div class="tick"><div class="mark yes"></div><p class="zh">橙色是信号色：以少量点缀为主（不超过 15%），只用于 kicker、印章或一处强调；纸色横幅保持克制。<span class="en">Orange is a signal, kept under 15 % — kicker, stamp or one emphasis; paper covers stay restrained.</span></p></div>
+      <div class="tick"><div class="mark yes"></div><p class="zh">十字标记、刻度线、条形码为固定构件，可出血，但不压字。<span class="en">Crosshairs, tick rules and barcode are fixed components; they may bleed but never sit on text.</span></p></div>
+      <div class="tick"><div class="mark no"></div><p class="zh">不用蓝、纯白、渐变、圆角卡片或投影。<span class="en">No blue, pure white, gradients, rounded cards or shadows.</span></p></div>
+      <div class="tick"><div class="mark no"></div><p class="zh">不写价格、认证、保证或“领先/最佳”；73% 等数字不上横幅。<span class="en">No prices, certification, guarantees or “leading/best”; no statistics such as 73 % on a banner.</span></p></div>
+    </div>
+  </div>
+
+  <div class="note zh" style="margin-top:5mm"><b>文案口径：</b>使用 CSCV 服务定义 v2 的事实与 2026-11-26 最新批准的宣传卡文案（Gordon 修订版）：宣传重点为「专为无法亲临现场的买家设计」「每一项发现均有可审计的证据支撑」「只向买家收费」。价格（USD）与报价不上横幅。「只向买家收费」是固定句，不要改写。<br><span class="en"><b>Copy:</b> facts from the CSCV Service Definition v2 plus the latest approved card copy (Gordon revision, 2026-11-26): “for buyers who cannot be on site”, “every finding backed by auditable evidence”, “paid only by the buyer”. Prices (USD) do not appear on banners; “Paid only by the buyer” is fixed wording.</span></div>
+  <div class="foot"><span>JFC · CSCV Social Banner Kit</span><span>04 / 07</span></div>
+</section>
+
+<!-- ============================== 05 safe areas ============================== -->
+<section class="page">
+  <div class="kicker">04 — Formats / 尺寸与安全区</div>
+  <h2 class="zh">五种尺寸与安全区<span class="en">Five formats and their safe areas</span></h2>
+  <div class="rule"></div>
+  <p class="zh">绿色虚线为必须可见的安全区（最窄屏幕/裁切下仍完整）；红色斜纹为平台头像或公司 logo 覆盖的区域。所有文字与 logo 都在安全区内、且避开红色区域；网格、十字标记、印章等装饰可以出血。</p>
+  <p class="en">The green dashed rectangle is the must-stay-visible safe area (it survives the narrowest screen/crop); red hatching marks where the platform avatar or page logo overlays the banner. All text and the logo sit inside the safe area and outside the red zones; grids, crosshairs and stamps may bleed.</p>
+  <div class="safezones" style="margin-top:2mm">
+    <figure><img src="../../preview/safe-zones/jfc-linkedin-personal-safe.png" alt="LinkedIn personal safe area"><figcaption><b>linkedin-personal</b> · 1584×396 · JFC</figcaption></figure>
+    <figure><img src="../../preview/safe-zones/cscv-linkedin-personal-safe.png" alt="LinkedIn personal safe area CSCV"><figcaption><b>linkedin-personal</b> · 1584×396 · CSCV</figcaption></figure>
+    <figure><img src="../../preview/safe-zones/jfc-linkedin-company-safe.png" alt="LinkedIn company safe area"><figcaption><b>linkedin-company</b> · 1512×256 · JFC</figcaption></figure>
+    <figure><img src="../../preview/safe-zones/cscv-x-header-safe.png" alt="X header safe area"><figcaption><b>x-header</b> · 1500×500 · CSCV</figcaption></figure>
+    <figure><img src="../../preview/safe-zones/jfc-facebook-cover-safe.png" alt="Facebook safe area"><figcaption><b>facebook-cover</b> · 820×360 · JFC</figcaption></figure>
+    <figure><img src="../../preview/safe-zones/cscv-youtube-channel-safe.png" alt="YouTube safe area"><figcaption><b>youtube-channel</b> · 2560×1440 · CSCV</figcaption></figure>
+  </div>
+  <div class="foot"><span>JFC · CSCV Social Banner Kit</span><span>05 / 07</span></div>
+</section>
+
+<!-- ============================== 06 files ============================== -->
+<section class="page">
+  <div class="kicker">05 — Files / 文件与再生成</div>
+  <h2 class="zh">文件结构、修改与重新生成<span class="en">Files, edits and regeneration</span></h2>
+  <div class="rule"></div>
+  <div class="cols">
+    <div style="flex:0 0 96mm">
+      <div class="tree">banners/
+  kit/                # shared system (do not fork)
+    tokens.py         # brand colours + type
+    copydeck.py       # approved bilingual copy
+    platform_specs.py # canvas + safe areas
+    css/              # base.css, jfc.css, cscv.css
+    assets/           # official logo, leaf, OFL fonts
+    tools/            # render.py, build.py, preview.py
+  jfc/
+    src/*.html        # editable artboards (1584×396 …)
+    png/*.png         # ready to upload (+ @2x)
+    NOTES.md
+  cscv/
+    src/*.html        # editable artboards
+    png/*.png         # ready to upload (+ @2x)
+    NOTES.md
+preview/
+  contact-sheet.png
+  mockups/*.png       # before / after, platform UI
+  safe-zones/*.png    # green safe area + red blocked
+guide/                # this PDF + source
+qa/                   # build/QA report</div>
+    </div>
+    <div>
+      <h3 class="zh">改文案<span class="en">Change the copy</span></h3>
+      <p class="zh">先在 <code>banners/kit/copydeck.py</code> 里改批准文案（那是唯一的文案记录），再改对应 HTML 中的文字，最后重新生成。不要只改 PNG。</p>
+      <p class="en">Edit the approved line in <code>banners/kit/copydeck.py</code> first (that is the copy record), then the matching text in the HTML, then regenerate. Never edit only the PNG.</p>
+      <p class="zh" style="margin-top:3mm">每个画板都是独立 HTML，按精确画布尺寸绝对定位；渲染器用无头 Chromium 以 2× 输出再降采样到上传尺寸，@2x 文件保留在 1× 旁边。</p>
+      <p class="en">Each banner is a standalone HTML artboard with absolute positions at the exact canvas size; the renderer uses headless Chromium at 2× and downsamples to the upload size, keeping the @2x file beside it.</p>
+    </div>
+  </div>
+
+  <h3 class="zh" style="margin-top:5mm">重新生成<span class="en">Rebuild</span></h3>
+  <div class="cmd">PY=/Library/Frameworks/Python.framework/Versions/3.13/bin/python3
+$PY banners/kit/tools/build.py      # render all + QA + safe zones
+$PY banners/kit/tools/preview.py    # mockups + contact sheet
+$PY guide/build_guide.py            # this PDF
+$PY banners/kit/tools/build.py --qa-only</div>
+
+  <h3 class="zh" style="margin-top:6mm">字体与素材授权<span class="en">Fonts and asset licences</span></h3>
+  <table>
+    <thead><tr><th style="width:26%">素材 Asset</th><th style="width:32%">来源 Source</th><th>说明 Note</th></tr></thead>
+    <tbody>
+      <tr><td>Archivo / Inter / JetBrains Mono</td><td>SIL Open Font License 1.1</td><td>已随模板内嵌 woff2，可随模板分发</td></tr>
+      <tr><td>PingFang SC / Avenir Next</td><td>macOS 系统字体</td><td>不随模板分发；在 Windows 上回退到 Microsoft YaHei / Arial</td></tr>
+      <tr><td>JFC 官方 logo</td><td>JFC 提供</td><td>仅用于 JFC/CSCV 官方物料，不重绘、不改色</td></tr>
+      <tr><td>图片 Photography</td><td>本套模板不使用照片</td><td>纯文字 + 图形，避免版权与裁切问题</td></tr>
+    </tbody>
+  </table>
+  <div class="foot"><span>JFC · CSCV Social Banner Kit</span><span>06 / 07</span></div>
+</section>
+
+<!-- ============================== 07 use & acceptance ============================== -->
+<section class="page">
+  <div class="kicker">06 — Use / 使用与验收</div>
+  <h2 class="zh">上线前检查清单<span class="en">Pre-publish checklist</span></h2>
+  <div class="rule"></div>
+  <div class="cols">
+    <div class="card">
+      <h4 class="zh">做<span class="en">Do</span></h4>
+      <ul class="zh">
+        <li>按平台选文件：领英公司主页用 1512×256，个人主页用 1584×396。<span class="en">Pick the right file per platform.</span></li>
+        <li>上传后在实际设备上预览一次（桌面 + 手机）。<span class="en">Preview on desktop and mobile after upload.</span></li>
+        <li>保持中文在上、英文在下；两版内容对等。<span class="en">Chinese first, English paired; equal meaning.</span></li>
+        <li>替换文案时保持句式与长度，先改 copydeck 再改 HTML。<span class="en">Keep line lengths; edit copydeck before HTML.</span></li>
+        <li>两套品牌线各自成套使用，不混排。<span class="en">Keep each brand set internally consistent.</span></li>
+      </ul>
+    </div>
+    <div class="card card--paper">
+      <h4 class="zh">不做<span class="en">Don't</span></h4>
+      <ul class="zh">
+        <li>不拉伸、裁切或重新压缩 PNG。<span class="en">No stretch, crop or re-compression.</span></li>
+        <li>不把文字放进安全区外的边缘或头像区。<span class="en">No text outside the safe area or in the avatar zone.</span></li>
+        <li>不在横幅上写价格、承诺、认证或客户名。<span class="en">No prices, promises, certifications or client names.</span></li>
+        <li>不把 JFC 蓝用进 CSCV 现场档案，或反之。<span class="en">Do not mix JFC blue into CSCV Field Dossier, or vice versa.</span></li>
+        <li>不新增未经核实的数据或案例。<span class="en">No new unverified numbers or cases.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="zh" style="margin-top:6mm">验收记录<span class="en">Verification</span></h3>
+  <p class="zh">10 张横幅全部按平台画布尺寸导出，并通过自动检查：画布尺寸精确、单画板无溢出、关键内容位于安全区内且避开平台 UI 遮挡、无文字碰撞、所需字体已加载、中英双语成对、最小字号达标。逐张视觉复核（含安全区叠加图与平台界面示意图）。完整结果见 <code>qa/report.md</code> 与 <code>qa/report.json</code>。</p>
+  <p class="en">All ten banners are exported at the exact platform canvas and pass automated checks: exact dimensions, one artboard with no overflow, critical content inside the safe area and outside platform-UI blocks, no text collisions, required fonts loaded, bilingual pairing, minimum type size. Each was also reviewed visually with the safe-zone overlay and the platform mockup. Full results: <code>qa/report.md</code> and <code>qa/report.json</code>.</p>
+
+  <div class="cols" style="margin-top:4mm">
+    <div style="flex:0 0 78mm">
+      <h3 class="zh">已知边界<span class="en">Limitations</span></h3>
+      <ul class="zh" style="font-size:7.6pt;line-height:1.65;padding-left:4mm;margin:0">
+        <li>平台会调整版式；上传前如平台改版，请重新核对尺寸与安全区。</li>
+        <li>本版未包含微信朋友圈 / 公众号等中国平台尺寸，可按同一系统扩展。</li>
+        <li>预览中的平台界面为示意，非真实截图。</li>
+        <li>文案需业务与合规最终确认后方可发布。</li>
+      </ul>
+    </div>
+    <div>
+      <img class="banner" src="../../preview/contact-sheet.png" alt="contact sheet">
+      <div class="caption">Contact sheet · all formats, both brands</div>
+    </div>
+  </div>
+  <div class="foot"><span>JAZZFRONT Consulting™ · CSCV</span><span>07 / 07</span></div>
+</section>
+
+</body>
+</html>
