@@ -1,0 +1,297 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA521AC2C24E6770844692F9 /* Avatar/AvatarSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADB9F6276B920CCF17E5BB7 /* Avatar/AvatarSceneView.swift */; };
+		AA6845D3D43D423D6DCC49FC /* CostCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD87232DF8929AA414C42E0 /* CostCalculator.swift */; };
+		AAB7CA5A20C04951B8D993EB /* HealthKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA95759AD381DDA1502BD374 /* HealthKitService.swift */; };
+		AA03B72864E19BC067F33D8F /* MealValueApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA267C870C803BA12CC1954B /* MealValueApp.swift */; };
+		AAC28E3B592A560C32484F49 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78FD430803560F137BDECE /* Models.swift */; };
+		AAEC59570540AC75C6EC4792 /* NutritionCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6DD0965B9AA75A38903C51 /* NutritionCalculator.swift */; };
+		AAAEF8539F9A4C42E5FC57EB /* SeedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF81C3224F29BE7F0B0967 /* SeedData.swift */; };
+		AAA74D0AEC5B22145C18B557 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA435F48F77A26D5E9323945 /* Theme.swift */; };
+		AAF3248D2ED053AAC19B5923 /* Views/AvatarPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB0CF302F8FD511FF2ABD88 /* Views/AvatarPageView.swift */; };
+		AA942EE9B0E705DF77839103 /* Views/LogMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA68D99AF84963F29DD197CE /* Views/LogMealView.swift */; };
+		AA3516EF48C3D376A0B1D9C0 /* Views/ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7C73E53CCAE4050385BFB /* Views/ProfileView.swift */; };
+		AAA0BE6907506A6E72D2CE52 /* Views/RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9BD2658CEA46ECE3E32386 /* Views/RecordView.swift */; };
+		AA75F8D2ED7A38E29AA4EA55 /* Views/ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAB8A13561E0B04DF1C5BC3 /* Views/ReportView.swift */; };
+		AACAF63E89F3BB11CDD7D5E7 /* Views/RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD1F033A6480774C0D3910A /* Views/RootView.swift */; };
+		AA65A60F841A7E9762789F5A /* Views/TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA19B65929C3431094CF271C /* Views/TodayView.swift */; };
+		AAA5DE95EBB2405CCF47A7C6 /* Resources/foods.json in Resources */ = {isa = PBXBuildFile; fileRef = AAE6706BD588A022995124F5 /* Resources/foods.json */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AA38A007151ABE87CC01A5B6 /* MealValue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MealValue.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AADB9F6276B920CCF17E5BB7 /* Avatar/AvatarSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Avatar/AvatarSceneView.swift"; sourceTree = "<group>"; };
+		AAD87232DF8929AA414C42E0 /* CostCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CostCalculator.swift"; sourceTree = "<group>"; };
+		AA95759AD381DDA1502BD374 /* HealthKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HealthKitService.swift"; sourceTree = "<group>"; };
+		AA267C870C803BA12CC1954B /* MealValueApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MealValueApp.swift"; sourceTree = "<group>"; };
+		AA78FD430803560F137BDECE /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Models.swift"; sourceTree = "<group>"; };
+		AA6DD0965B9AA75A38903C51 /* NutritionCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NutritionCalculator.swift"; sourceTree = "<group>"; };
+		AAEF81C3224F29BE7F0B0967 /* SeedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeedData.swift"; sourceTree = "<group>"; };
+		AA435F48F77A26D5E9323945 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Theme.swift"; sourceTree = "<group>"; };
+		AAB0CF302F8FD511FF2ABD88 /* Views/AvatarPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/AvatarPageView.swift"; sourceTree = "<group>"; };
+		AA68D99AF84963F29DD197CE /* Views/LogMealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/LogMealView.swift"; sourceTree = "<group>"; };
+		AAC7C73E53CCAE4050385BFB /* Views/ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/ProfileView.swift"; sourceTree = "<group>"; };
+		AA9BD2658CEA46ECE3E32386 /* Views/RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/RecordView.swift"; sourceTree = "<group>"; };
+		AAAB8A13561E0B04DF1C5BC3 /* Views/ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/ReportView.swift"; sourceTree = "<group>"; };
+		AAD1F033A6480774C0D3910A /* Views/RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/RootView.swift"; sourceTree = "<group>"; };
+		AA19B65929C3431094CF271C /* Views/TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/TodayView.swift"; sourceTree = "<group>"; };
+		AAE6706BD588A022995124F5 /* Resources/foods.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "Resources/foods.json"; sourceTree = "<group>"; };
+		AA68E77A9D7BC78A97D4F4E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Resources/Info.plist"; sourceTree = "<group>"; };
+		AAC9103F506F771211C88B84 /* MealValue.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Resources/MealValue.entitlements"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AACF5BDB0BEAFE176F962919 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AAADCF10F76EBF2A74473E9D = {
+			isa = PBXGroup;
+			children = (
+				AA9642F1047C1002A1EE72F0 /* Sources */,
+				AA00C45FD35CB0F9C5F764F0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AA9642F1047C1002A1EE72F0 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				AADB9F6276B920CCF17E5BB7 /* Avatar/AvatarSceneView.swift */,
+				AAD87232DF8929AA414C42E0 /* CostCalculator.swift */,
+				AA95759AD381DDA1502BD374 /* HealthKitService.swift */,
+				AA267C870C803BA12CC1954B /* MealValueApp.swift */,
+				AA78FD430803560F137BDECE /* Models.swift */,
+				AA6DD0965B9AA75A38903C51 /* NutritionCalculator.swift */,
+				AAEF81C3224F29BE7F0B0967 /* SeedData.swift */,
+				AA435F48F77A26D5E9323945 /* Theme.swift */,
+				AAB0CF302F8FD511FF2ABD88 /* Views/AvatarPageView.swift */,
+				AA68D99AF84963F29DD197CE /* Views/LogMealView.swift */,
+				AAC7C73E53CCAE4050385BFB /* Views/ProfileView.swift */,
+				AA9BD2658CEA46ECE3E32386 /* Views/RecordView.swift */,
+				AAAB8A13561E0B04DF1C5BC3 /* Views/ReportView.swift */,
+				AAD1F033A6480774C0D3910A /* Views/RootView.swift */,
+				AA19B65929C3431094CF271C /* Views/TodayView.swift */,
+				AAE6706BD588A022995124F5 /* Resources/foods.json */,
+				AA68E77A9D7BC78A97D4F4E2 /* Info.plist */,
+				AAC9103F506F771211C88B84 /* MealValue.entitlements */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		AA00C45FD35CB0F9C5F764F0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA38A007151ABE87CC01A5B6 /* MealValue.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AA0E8A3AD980EC179856012B /* MealValue */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AAD28A2B497FA98060CD1B56 /* Build configuration list for PBXNativeTarget "MealValue" */;
+			buildPhases = (
+				AA1CDF2F71A52B082132B04D /* Sources */,
+				AACF5BDB0BEAFE176F962919 /* Frameworks */,
+				AAC02F1309AF4906C92F1EAD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MealValue;
+			productName = MealValue;
+			productReference = AA38A007151ABE87CC01A5B6 /* MealValue.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA98F54143AB4E86B28C3AFE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2700;
+				LastUpgradeCheck = 2700;
+				TargetAttributes = {
+					AA0E8A3AD980EC179856012B = {
+						CreatedOnToolsVersion = 27.2;
+					};
+				};
+			};
+			buildConfigurationList = AA3D29D9F3A882C4202964FB /* Build configuration list for PBXProject "MealValue" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AAADCF10F76EBF2A74473E9D;
+			productRefGroup = AA00C45FD35CB0F9C5F764F0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AA0E8A3AD980EC179856012B /* MealValue */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AAC02F1309AF4906C92F1EAD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAA5DE95EBB2405CCF47A7C6 /* Resources/foods.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AA1CDF2F71A52B082132B04D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA521AC2C24E6770844692F9 /* Avatar/AvatarSceneView.swift in Sources */,
+				AA6845D3D43D423D6DCC49FC /* CostCalculator.swift in Sources */,
+				AAB7CA5A20C04951B8D993EB /* HealthKitService.swift in Sources */,
+				AA03B72864E19BC067F33D8F /* MealValueApp.swift in Sources */,
+				AAC28E3B592A560C32484F49 /* Models.swift in Sources */,
+				AAEC59570540AC75C6EC4792 /* NutritionCalculator.swift in Sources */,
+				AAAEF8539F9A4C42E5FC57EB /* SeedData.swift in Sources */,
+				AAA74D0AEC5B22145C18B557 /* Theme.swift in Sources */,
+				AAF3248D2ED053AAC19B5923 /* Views/AvatarPageView.swift in Sources */,
+				AA942EE9B0E705DF77839103 /* Views/LogMealView.swift in Sources */,
+				AA3516EF48C3D376A0B1D9C0 /* Views/ProfileView.swift in Sources */,
+				AAA0BE6907506A6E72D2CE52 /* Views/RecordView.swift in Sources */,
+				AA75F8D2ED7A38E29AA4EA55 /* Views/ReportView.swift in Sources */,
+				AACAF63E89F3BB11CDD7D5E7 /* Views/RootView.swift in Sources */,
+				AA65A60F841A7E9762789F5A /* Views/TodayView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		AA7E1D8610A1FDC833C06239 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AA08932A93E21156A33E879D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AA2169C5A50C376C4F21FABA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Sources/Resources/MealValue.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SAR5VN6FAA;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Sources/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.levi.mealvalue;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		AAC64FEEF441FCCD1536CACB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Sources/Resources/MealValue.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SAR5VN6FAA;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Sources/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.levi.mealvalue;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AA3D29D9F3A882C4202964FB /* Build configuration list for PBXProject "MealValue" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA7E1D8610A1FDC833C06239 /* Debug */,
+				AA08932A93E21156A33E879D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AAD28A2B497FA98060CD1B56 /* Build configuration list for PBXNativeTarget "MealValue" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA2169C5A50C376C4F21FABA /* Debug */,
+				AAC64FEEF441FCCD1536CACB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AA98F54143AB4E86B28C3AFE /* Project object */;
+}
