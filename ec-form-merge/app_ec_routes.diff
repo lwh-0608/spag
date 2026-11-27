@@ -1,0 +1,57 @@
+--- /tmp/ec_ticket/app_head.py	2026-11-24 17:55:31
++++ /tmp/ec_ticket/app_mine.py	2026-11-24 17:55:31
+@@ -1606,10 +1606,18 @@
+ 
+ @app.route("/checkin")
+ def checkin_page():
+-    """英语角签到页（移动端优先，扫码即开）。"""
++    """英语角「签到 + 反馈」合并页（移动端优先，扫码即开）。
++
++    2026-11-24 起一个二维码进来、两个可切换部分：签到 / 反馈。
++    反馈题目为《JFC 商业英语角｜活动反馈问卷》腾讯问卷现行版 6 题。
++    """
+     return render_template("checkin.html", session=checkin.DEFAULT_SESSION,
++                           default_tab="checkin",
+                            roles=checkin.ROLES, sources=checkin.SOURCES,
+-                           first_time=checkin.FIRST_TIME)
++                           first_time=checkin.FIRST_TIME,
++                           enjoyed=feedback.ENJOYED,
++                           helpfulness=feedback.HELPFULNESS,
++                           topics=feedback.TOPICS)
+ 
+ 
+ @app.route("/api/checkin", methods=["POST"])
+@@ -1658,20 +1666,27 @@
+ # （见文件末尾 api_feedback，写 feedback.jsonl），不能混用。
+ @app.route("/ec-feedback")
+ def feedback_page():
+-    """英语角反馈问卷页（移动端优先，扫码即开）。"""
+-    return render_template("feedback.html", session=feedback.DEFAULT_SESSION,
+-                           sources=feedback.SOURCES, roles=feedback.ROLES,
+-                           skills=feedback.SKILLS, notify=feedback.NOTIFY)
++    """旧反馈二维码入口：仍可用，打开的是同一张合并页并默认落在「反馈」标签。
+ 
++    保留这个路由是为了已打印的反馈桌卡/立牌不作废；新二维码统一指向 /checkin。
++    """
++    return render_template("checkin.html", session=checkin.DEFAULT_SESSION,
++                           default_tab="feedback",
++                           roles=checkin.ROLES, sources=checkin.SOURCES,
++                           first_time=checkin.FIRST_TIME,
++                           enjoyed=feedback.ENJOYED,
++                           helpfulness=feedback.HELPFULNESS,
++                           topics=feedback.TOPICS)
+ 
++
+ @app.route("/api/ec-feedback", methods=["POST"])
+ def api_feedback_submit():
+     """参与者提交英语角反馈。公开接口，无需口令。"""
+     record, error = feedback.add_record(request.get_json(silent=True))
+     if error:
+         return jsonify({"ok": False, "error": error}), 400
+-    log.info("ec-feedback: comfort=%s role=%s",
+-             record.get("comfort") or "-", record.get("role") or "-")
++    log.info("ec-feedback: satisfaction=%s helpfulness=%s",
++             record.get("satisfaction") or "-", record.get("helpfulness") or "-")
+     return jsonify({"ok": True, "record": record})
+ 
+ 
